@@ -1,12 +1,10 @@
 import { Container, List as MuiList, ListItem } from '@mui/material'
-import { lazy, useMemo } from 'react'
+import { useMemo } from 'react'
 
+import { BetCard } from '@/components/Cards/BetCard'
+import { TipsterCard } from '@/components/Cards/TipsterCard'
+import { Filters } from '@/components/Filters/Filters'
 import { FilterType } from '@/services/modalSlice'
-
-import Filters from '../Filters/Filters'
-
-const BetCard = lazy(() => import('@/components/Cards/BetCard'))
-const TipsterCard = lazy(() => import('@/components/Cards/TipsterCard'))
 
 export type ListType = 'bets' | 'tipsters'
 
@@ -23,7 +21,10 @@ export const FilteredList = ({ type, filter }: ListProps) => {
       <Filters filter={filter} />
       <MuiList
         key={`${type}`}
-        style={{ maxHeight: 'calc(100vh - 20vh - 69px - 6vh - 8vh)', overflow: 'auto' }}
+        sx={{
+          maxHeight: { xs: '80vh', sm: 'calc(100vh - 20vh - 69px - 6vh - 8vh)' },
+          overflow: 'auto'
+        }}
       >
         {[...Array(100)].map((_, i) => (
           <ListItem key={`${type}_${i}`}>

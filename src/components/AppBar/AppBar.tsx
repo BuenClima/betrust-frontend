@@ -20,7 +20,10 @@ const pages = [
   { title: 'Tipsters', url: '/tipsters' },
   { title: 'Bets', url: '/bets' }
 ]
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const settings = [
+  { title: 'Account', url: '/account' },
+  { title: 'Logout', url: '/logout' }
+]
 
 export const AppBar = () => {
   const navigate = useNavigate()
@@ -176,8 +179,12 @@ export const AppBar = () => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                  <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                    <Button onClick={() => navigate(setting.url)}>
+                      <Typography textAlign="center" textTransform="none">
+                        {setting.title}
+                      </Typography>
+                    </Button>
                   </MenuItem>
                 ))}
               </Menu>

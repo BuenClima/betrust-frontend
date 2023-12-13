@@ -1,10 +1,11 @@
 import { Grid } from '@mui/material'
 
+import { AccountHeader } from './Headers/AccountHeader'
 import { BetsHeader } from './Headers/BetsHeader'
 import { TipsterHeader } from './Headers/TipsterHeader'
 import { TipstersHeader } from './Headers/TipstersHeader'
 
-export type HeaderType = 'tipsters' | 'bets' | 'tipster' | 'bet'
+export type HeaderType = 'tipsters' | 'bets' | 'tipster' | 'account'
 
 type HeaderProps = {
   type: HeaderType
@@ -15,7 +16,7 @@ export const Header = ({ type }: HeaderProps) => {
     tipsters: <TipstersHeader key={type} />,
     bets: <BetsHeader key={type} />,
     tipster: <TipsterHeader key={type} />,
-    bet: <div>Bet Header</div>
+    account: <AccountHeader key={type} />
   }
 
   return (
