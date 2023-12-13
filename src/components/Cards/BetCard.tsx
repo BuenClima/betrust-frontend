@@ -1,0 +1,69 @@
+import {
+  Avatar,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Grid,
+  Typography
+} from '@mui/material'
+
+import { useAppDispatch } from '@/app/store'
+import { show } from '@/services/modalSlice'
+
+export const BetCard = () => {
+  const dispatch = useAppDispatch()
+
+  const handleCardHeaderClick = () => {
+    dispatch(show('betDetails'))
+  }
+
+  return (
+    <Card
+      sx={{ width: '100%', my: 1, cursor: 'pointer' }}
+      onClick={handleCardHeaderClick}
+    >
+      <CardHeader
+        sx={{ cursor: 'pointer' }}
+        avatar={
+          <Avatar
+            sx={{
+              border: '2px solid #ffd700',
+              width: 56,
+              height: 56,
+              '&:hover': {
+                opacity: 0.9
+              }
+            }}
+            src="https://i.pinimg.com/originals/42/77/ae/4277ae71a295e64b2148519aca4042cd.png"
+          />
+        }
+        title="#1 Football"
+        subheader={`${new Date()} | Spain | La Liga`}
+        titleTypographyProps={{ variant: 'h6' }}
+      />
+      <CardContent>
+        <Grid container justifyContent="center" alignItems="center">
+          <Grid item xs={12} container justifyContent="center" alignItems="center">
+            <Typography variant={'h6'}>Real Madrid vs Barcelona</Typography>
+          </Grid>
+          <Grid item xs={12} container justifyContent="center" alignItems="center">
+            <Typography variant={'subtitle1'}>Real Madrid to win</Typography>
+          </Grid>
+          <Grid item xs={12} container justifyContent="center" alignItems="center">
+            <Button
+              onClick={(e) => {
+                e.stopPropagation()
+                console.log('first')
+              }}
+            >
+              Show
+            </Button>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  )
+}
+
+export default BetCard
