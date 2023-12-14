@@ -67,7 +67,7 @@ export const Account = () => {
         <TabPanel value={value} index={1}>
           <Accordion TransitionProps={{ unmountOnExit: true }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography>History</Typography>
+              <Typography>History (100)</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <FilteredList type="bets" filter="filterBets" />

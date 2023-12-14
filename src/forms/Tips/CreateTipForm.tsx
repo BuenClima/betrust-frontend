@@ -1,17 +1,21 @@
-import { Box, Button, Grid, Slider, Stack, Typography } from '@mui/material'
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  TextField,
+  Typography
+} from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
-import { MultiSelect } from '@/components/Inputs/MultiSelect/MultiSelect'
-import {
-  FilterTipstersFormValues,
-  useFilterTipstersForm
-} from '@/hooks/Tipsters/useFilterTipstersForm'
+import { Select } from '@/components/Inputs/Select/Select'
+import { CreateTipFormValues, useCreateTipForm } from '@/hooks/Tips/useCreateTipForm'
 
-export const TipstersFilterForm = () => {
-  const { control, handleSubmit, errors } = useFilterTipstersForm()
+export const CreateTipForm = () => {
+  const { control, handleSubmit, errors } = useCreateTipForm()
 
-  const onSubmit = (data: FilterTipstersFormValues) => {
+  const onSubmit = (data: CreateTipFormValues) => {
     console.log(data)
   }
 
@@ -25,7 +29,7 @@ export const TipstersFilterForm = () => {
       spacing={1}
     >
       <Grid item xs={10} container justifyContent="center">
-        <Typography variant="h6">Filters</Typography>
+        <Typography variant="h6">Create Tip</Typography>
       </Grid>
       <Grid item xs={10}>
         <Controller
@@ -52,7 +56,7 @@ export const TipstersFilterForm = () => {
           name="sport"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <MultiSelect
+            <Select
               value={value}
               setValue={onChange}
               error={!!errors.sport}
@@ -72,7 +76,7 @@ export const TipstersFilterForm = () => {
           name="league"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <MultiSelect
+            <Select
               value={value}
               setValue={onChange}
               error={!!errors.league}
@@ -89,69 +93,93 @@ export const TipstersFilterForm = () => {
 
       <Grid item xs={10}>
         <Controller
-          name="picks"
+          name="provider"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <Box>
-              <Typography variant="body1">Picks</Typography>
-              <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-                <Slider value={value} onChange={onChange} min={0} max={1000} />
-                <Typography variant="caption">{value}</Typography>
-              </Stack>
-            </Box>
+            <Select
+              value={value}
+              setValue={onChange}
+              error={!!errors.provider}
+              options={[
+                { name: 'Bet365', id: 'bet365' },
+                { name: 'William Hill', id: 'williamhill' }
+              ]}
+              placeholder="Provider"
+              helperText={errors.provider?.message ?? 'Helper text'}
+            />
           )}
         />
       </Grid>
 
       <Grid item xs={10}>
         <Controller
-          name="yield"
+          name="tip"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <Box>
-              <Typography variant="body1">Yield</Typography>
-              <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-                <Slider value={value} onChange={onChange} />
-                <Typography variant="caption">{value}%</Typography>
-              </Stack>
-            </Box>
+            <TextField
+              label="Tip"
+              value={value}
+              onChange={onChange}
+              fullWidth
+              helperText={errors.tip?.message ?? 'Helper text'}
+              error={!!errors.tip}
+              multiline
+              rows={4}
+            />
           )}
         />
       </Grid>
       <Grid item xs={10}>
         <Controller
-          name="profit"
+          name="odds"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <Box>
-              <Typography variant="body1">Profit</Typography>
-              <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-                <Slider value={value} onChange={onChange} min={0} max={1000} />
-                <Typography variant="caption">{value}</Typography>
-              </Stack>
-            </Box>
+            <TextField
+              label="Odds"
+              inputProps={{ type: 'number' }}
+              value={value}
+              onChange={onChange}
+              fullWidth
+              helperText={errors.tip?.message ?? 'Helper text'}
+              error={!!errors.tip}
+            />
           )}
         />
       </Grid>
       <Grid item xs={10}>
         <Controller
-          name="winRate"
+          name="stake"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <Box>
-              <Typography variant="body1">Win Rate</Typography>
-              <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-                <Slider value={value} onChange={onChange} />
-                <Typography variant="caption">{value}%</Typography>
-              </Stack>
-            </Box>
+            <TextField
+              label="Stake"
+              inputProps={{ type: 'number' }}
+              value={value}
+              onChange={onChange}
+              fullWidth
+              helperText={errors.tip?.message ?? 'Helper text'}
+              error={!!errors.tip}
+            />
+          )}
+        />
+      </Grid>
+
+      <Grid item xs={10}>
+        <Controller
+          name="paid"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <FormControlLabel
+              label="Paid"
+              control={<Checkbox checked={value} onChange={onChange} />}
+            />
           )}
         />
       </Grid>
 
       <Grid item xs={12} container justifyContent="center">
         <Button type="submit" variant="contained">
-          Apply
+          Create
         </Button>
       </Grid>
     </Grid>

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type FilterType = 'filterBets' | 'filterTipsters'
 
-export type ModalType = FilterType | 'betDetails' | 'null' | 'sort'
+export type ModalType = FilterType | 'betDetails' | 'null' | 'sort' | 'createTip'
 
 /**
  * @description Modal State

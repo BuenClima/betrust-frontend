@@ -1,15 +1,7 @@
 import SearchIcon from '@mui/icons-material/Search'
-import {
-  Autocomplete,
-  Box,
-  createFilterOptions,
-  InputAdornment,
-  styled,
-  TextField,
-  Typography
-} from '@mui/material'
+import { Autocomplete, Box, InputAdornment, TextField, Typography } from '@mui/material'
 import PropTypes from 'prop-types'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { SelectValueProps } from '@/types'
 
@@ -34,10 +26,8 @@ export type SelectProps = {
   placeholder?: string
   helperText?: string
   error?: boolean
-  disableCreateOption?: true
   'data-testid'?: string
   disabled?: boolean
-  customSetInput?: React.Dispatch<React.SetStateAction<string>>
 }
 
 /**
@@ -80,24 +70,13 @@ export const Select = ({
   placeholder,
   helperText,
   error,
-  disableCreateOption,
   'data-testid': dataTestId,
-  disabled,
-  customSetInput
+  disabled
 }: SelectProps): JSX.Element => {
   const [input, setInput] = useState<string>('')
 
-  /**
-   * @description On Change on the local input it sets the value to the custom input
-   */
-  useEffect(() => {
-    if (customSetInput !== undefined) {
-      customSetInput(input)
-    }
-  }, [input])
-
   return (
-    <StyledAutocomplete
+    <Autocomplete
       disabled={disabled ?? false}
       data-testid={dataTestId}
       value={value}
@@ -133,79 +112,12 @@ export const Select = ({
           <Typography textTransform="capitalize">{option.name}</Typography>
         </Box>
       )}
-      filterOptions={(options: any, params: any) => {
-        const isDisabled = disableCreateOption && disableCreateOption === true
-        const filtered = filter(options, params)
-        const { inputValue } = params
-        const isExisting = options.some((option: any) => inputValue === option.name)
-        if (inputValue !== '' && !isExisting && !isDisabled)
-          filtered.push({ id: 0, name: `${inputValue}` })
-        return filtered
-      }}
       isOptionEqualToValue={(option: any, value: any) =>
         option?.name?.toLowerCase() === value?.name?.toLowerCase()
       }
     />
   )
 }
-
-/**
- * @description Creates a filter for the autocomplete
- */
-const filter = createFilterOptions()
-
-/**
- * @description Styled autocomplete
- * @param {JSX.Element} Autocomplete - The autocomplete component
- */
-const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
-  '& .Mui-error': {
-    color: theme.palette.error.main + ' !important'
-  },
-  '& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)': {
-    // Default transform is "translate(14px, 20px) scale(1)""
-    // This lines up the label with the initial cursor position in the input
-    // after changing its padding-left.
-    transform: 'translate(34px, 20px) scale(1);'
-  },
-  '&.Mui-focused .MuiInputLabel-outlined': {
-    color: '#fff'
-  },
-  '& .MuiFormHelperText-root': {
-    color: '#d0d0d0'
-  },
-  '& .MuiAutocomplete-inputRoot': {
-    backgroundColor: '#405463',
-    color: '#fff',
-    // This matches the specificity of the default styles at https://github.com/mui-org/material-ui/blob/v4.11.3/packages/material-ui-lab/src/Autocomplete/Autocomplete.js#L90
-    '&[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input:first-of-type': {
-      // Default left padding is 6px
-      paddingLeft: 0
-    },
-    '& .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#808080'
-    },
-    '&:hover .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#fff'
-    },
-    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: theme.palette.primary.main,
-      color: '#fff'
-    },
-    '& .MuiSvgIcon-root': {
-      color: '#808080'
-    },
-    '&.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root': {
-      color: '#fff'
-    },
-    '&.Mui-focused .MuiAutocomplete-endAdornment .MuiSvgIcon-root': {
-      color: '#fff'
-    },
-    '&Mui-focused': {
-      color: '#fff'
-    }
-  }
-}))
 
 /**
  * Defines the prop types for the `Select` component.
@@ -228,8 +140,6 @@ Select.propTypes = {
   placeholder: PropTypes.string,
   helperText: PropTypes.string,
   error: PropTypes.bool,
-  disableCreateOption: PropTypes.bool,
   'data-testid': PropTypes.string,
-  disabled: PropTypes.bool,
-  customSetInput: PropTypes.func
+  disabled: PropTypes.bool
 }

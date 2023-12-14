@@ -10,7 +10,16 @@ import {
   Typography
 } from '@mui/material'
 
+import { useAppDispatch } from '@/app/store'
+import { show } from '@/services/modalSlice'
+
 export const AccountHeader = () => {
+  const dispatch = useAppDispatch()
+
+  const handleClickOnCreateTip = () => {
+    dispatch(show('createTip'))
+  }
+
   return (
     <Grid container justifyContent={'center'} alignItems={'center'}>
       <Grid
@@ -76,7 +85,11 @@ export const AccountHeader = () => {
         </Grid>
         <Grid item xs={12} sm={6} container>
           <Tooltip title="Create tip">
-            <Button variant="outlined" startIcon={<AddIcon />}>
+            <Button
+              variant="outlined"
+              startIcon={<AddIcon />}
+              onClick={handleClickOnCreateTip}
+            >
               Create tip
             </Button>
           </Tooltip>

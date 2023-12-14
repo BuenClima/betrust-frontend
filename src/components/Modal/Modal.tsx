@@ -4,6 +4,7 @@ import { Box, IconButton, Modal as MuiModal } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '@/app/store'
 import { BetsFilterForm } from '@/forms/Bets/BetsFilterForm'
 import { SortForm } from '@/forms/Sort/SortForm'
+import { CreateTipForm } from '@/forms/Tips/CreateTipForm'
 import { TipstersFilterForm } from '@/forms/Tipsters/TipstersFilterForm'
 import { BetDetails } from '@/pages/BetDetails/BetDetails'
 import { hide, ModalType } from '@/services/modalSlice'
@@ -41,7 +42,8 @@ export const Modal = () => {
     filterTipsters: <TipstersFilterForm />,
     betDetails: <BetDetails />,
     sort: <SortForm />,
-    null: <></>
+    null: <></>,
+    createTip: <CreateTipForm />
   }
 
   return (

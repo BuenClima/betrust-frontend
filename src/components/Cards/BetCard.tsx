@@ -1,12 +1,5 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Grid,
-  Typography
-} from '@mui/material'
+import { Avatar, Card, CardContent, CardHeader, Grid, Typography } from '@mui/material'
+import dayjs from 'dayjs'
 
 import { useAppDispatch } from '@/app/store'
 import { show } from '@/services/modalSlice'
@@ -39,7 +32,7 @@ export const BetCard = () => {
           />
         }
         title="#1 Football"
-        subheader={`${new Date()} | Spain | La Liga`}
+        subheader={`${dayjs().format('DD/MM/YYYY HH:mm:ss')} | Spain | La Liga`}
         titleTypographyProps={{ variant: 'h6' }}
       />
       <CardContent>
@@ -49,16 +42,6 @@ export const BetCard = () => {
           </Grid>
           <Grid item xs={12} container justifyContent="center" alignItems="center">
             <Typography variant={'subtitle1'}>Real Madrid to win</Typography>
-          </Grid>
-          <Grid item xs={12} container justifyContent="center" alignItems="center">
-            <Button
-              onClick={(e) => {
-                e.stopPropagation()
-                console.log('first')
-              }}
-            >
-              Show
-            </Button>
           </Grid>
         </Grid>
       </CardContent>

@@ -3,11 +3,7 @@ import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
 import { MultiSelect } from '@/components/Inputs/MultiSelect/MultiSelect'
-
-import {
-  FilterBetsFormValues,
-  useFilterBetsForm
-} from '../../hooks/Bets/useFilterBetsForm'
+import { FilterBetsFormValues, useFilterBetsForm } from '@/hooks/Bets/useFilterBetsForm'
 
 export const BetsFilterForm = () => {
   const { control, handleSubmit, errors } = useFilterBetsForm()

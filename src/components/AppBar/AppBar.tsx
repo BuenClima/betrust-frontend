@@ -116,7 +116,7 @@ export const AppBar = () => {
               variant="h5"
               noWrap
               component="a"
-              href="#app-bar-with-responsive-menu"
+              href="/"
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },
@@ -138,7 +138,16 @@ export const AppBar = () => {
                     navigate(page.url)
                     handleCloseNavMenu()
                   }}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{
+                    my: 2,
+                    color: 'white',
+                    display: 'block',
+                    fontSize: '1rem',
+                    letterSpacing: '.1rem',
+                    '&:hover': {
+                      opacity: 0.8
+                    }
+                  }}
                 >
                   {page.title}
                 </Button>
