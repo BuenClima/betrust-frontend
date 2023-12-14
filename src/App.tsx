@@ -1,7 +1,7 @@
 import './index.css'
 
 import { lazy } from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { AppProvider } from '@/providers/AppProvider'
 
@@ -9,6 +9,7 @@ const List = lazy(() => import('@/pages/List/List'))
 const TipsterDetails = lazy(() => import('./pages/TipsterDetails/TipsterDetails'))
 const Auth = lazy(() => import('@/pages/Auth/Auth'))
 const Account = lazy(() => import('@/pages/Account/Account'))
+const Home = lazy(() => import('@/pages/Home/Home'))
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
 
             <Route path="/account" element={<Account />} />
 
-            <Route path="/" element={<Navigate to={'/tipsters'} replace />} />
+            <Route path="/" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </div>

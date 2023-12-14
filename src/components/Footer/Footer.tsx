@@ -4,8 +4,6 @@ export const Footer = () => {
   return (
     <Box
       sx={{
-        position: 'fixed',
-        bottom: 0,
         width: '100%',
         height: '2vh',
         backgroundColor: 'primary.main',
@@ -16,7 +14,7 @@ export const Footer = () => {
       <Container maxWidth="lg">
         <Grid container direction="column" alignItems="center">
           <Grid item xs={12}>
-            <Typography color="white" variant="subtitle1">
+            <Typography color="#fff" variant="subtitle1">
               {`${new Date().getFullYear()} @ Mr.Tipster`}
             </Typography>
           </Grid>

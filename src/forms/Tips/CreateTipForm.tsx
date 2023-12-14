@@ -9,14 +9,18 @@ import {
 import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
+import { useAppDispatch } from '@/app/store'
 import { Select } from '@/components/Inputs/Select/Select'
 import { CreateTipFormValues, useCreateTipForm } from '@/hooks/Tips/useCreateTipForm'
+import { hide } from '@/services/modalSlice'
 
 export const CreateTipForm = () => {
+  const dispatch = useAppDispatch()
   const { control, handleSubmit, errors } = useCreateTipForm()
 
   const onSubmit = (data: CreateTipFormValues) => {
     console.log(data)
+    dispatch(hide())
   }
 
   return (

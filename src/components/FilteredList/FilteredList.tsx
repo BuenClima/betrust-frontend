@@ -29,7 +29,7 @@ export const FilteredList = ({ type, filter }: ListProps) => {
       <MuiList
         key={`${type}`}
         sx={{
-          maxHeight: { xs: '80vh', sm: 'calc(100vh - 20vh - 69px - 6vh - 8vh)' },
+          maxHeight: { xs: '80vh', sm: 'calc(100vh - 20vh - 69px - 4vh - 8vh)' },
           overflow: 'auto'
         }}
       >
