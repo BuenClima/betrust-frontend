@@ -31,7 +31,7 @@ export const Header = ({ type }: HeaderProps) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        height: { xs: '100vh', sm: '20vh' }
+        height: { xs: '100vh', sm: '25vh' }
       }}
     >
       {headers[type]}
