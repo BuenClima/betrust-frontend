@@ -47,7 +47,7 @@ export const Modal = () => {
   }
 
   return (
-    <MuiModal open={modal.show} onClose={handleClose}>
+    <MuiModal open={modal.show} onClose={handleClose} keepMounted>
       <Box sx={style}>
         <IconButton
           onClick={handleClose}
