@@ -2,14 +2,26 @@ import { Button, Grid, Typography } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
+import { useAppDispatch } from '@/app/store'
 import { MultiSelect } from '@/components/Inputs/MultiSelect/MultiSelect'
 import { FilterBetsFormValues, useFilterBetsForm } from '@/hooks/Bets/useFilterBetsForm'
+import { filter } from '@/services/filtersSlice'
+import { hide } from '@/services/modalSlice'
 
 export const BetsFilterForm = () => {
+  const dispatch = useAppDispatch()
   const { control, handleSubmit, errors } = useFilterBetsForm()
 
   const onSubmit = (data: FilterBetsFormValues) => {
-    console.log(data)
+    dispatch(
+      filter({
+        active: true,
+        filters: {
+          ...data
+        }
+      })
+    )
+    dispatch(hide())
   }
 
   return (

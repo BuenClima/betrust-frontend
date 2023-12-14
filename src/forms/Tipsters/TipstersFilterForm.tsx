@@ -2,17 +2,29 @@ import { Box, Button, Grid, Slider, Stack, Typography } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
+import { useAppDispatch } from '@/app/store'
 import { MultiSelect } from '@/components/Inputs/MultiSelect/MultiSelect'
 import {
   FilterTipstersFormValues,
   useFilterTipstersForm
 } from '@/hooks/Tipsters/useFilterTipstersForm'
+import { filter } from '@/services/filtersSlice'
+import { hide } from '@/services/modalSlice'
 
 export const TipstersFilterForm = () => {
+  const dispatch = useAppDispatch()
   const { control, handleSubmit, errors } = useFilterTipstersForm()
 
   const onSubmit = (data: FilterTipstersFormValues) => {
-    console.log(data)
+    dispatch(
+      filter({
+        active: true,
+        filters: {
+          ...data
+        }
+      })
+    )
+    dispatch(hide())
   }
 
   return (

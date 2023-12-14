@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
-import loadingSlice from '../services/loadingSlice'
-import modalSlice from '../services/modalSlice'
+import filtersSlice from '@/services/filtersSlice'
+import loadingSlice from '@/services/loadingSlice'
+import modalSlice from '@/services/modalSlice'
 
 /**
  * @description Initialize Redux store
@@ -10,7 +11,8 @@ import modalSlice from '../services/modalSlice'
 export const store = configureStore({
   reducer: {
     loading: loadingSlice,
-    modal: modalSlice
+    modal: modalSlice,
+    filters: filtersSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware()
 })

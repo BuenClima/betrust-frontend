@@ -65,7 +65,7 @@ export const Account = () => {
           <AccountForm />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Accordion TransitionProps={{ unmountOnExit: true }}>
+          <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography>History (100)</Typography>
             </AccordionSummary>
