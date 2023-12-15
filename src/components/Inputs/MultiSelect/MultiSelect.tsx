@@ -79,12 +79,12 @@ export const MultiSelect = ({
       multiple
       value={value}
       getOptionLabel={(option) => (option as SelectValueProps).name}
-      onChange={(event, newValue) => {
+      onChange={(_event, newValue) => {
         setValue(newValue as SelectValueProps[])
       }}
       sx={{ width: '100%' }}
       inputValue={input}
-      onInputChange={(event, newInputValue) => setInput(newInputValue)}
+      onInputChange={(_event, newInputValue) => setInput(newInputValue)}
       options={options}
       renderInput={(params) => (
         <TextField
