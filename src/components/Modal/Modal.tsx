@@ -17,7 +17,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: {
+  minWidth: {
     xs: '85vw',
     sm: '30vw'
   },
