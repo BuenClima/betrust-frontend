@@ -1,7 +1,10 @@
 import { Button, Grid, TextField } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
-import { AccountFormValues, useAccountForm } from '@/hooks/Account/useAccountForm'
+import {
+  AccountFormValues,
+  useAccountForm
+} from '@/features/Account/hooks/useAccountForm'
 
 export const AccountForm = () => {
   const { control, handleSubmit, errors } = useAccountForm()

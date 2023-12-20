@@ -2,11 +2,11 @@ import { ClearSharp } from '@mui/icons-material'
 import { Box, IconButton, Modal as MuiModal } from '@mui/material'
 
 import { useAppDispatch, useAppSelector } from '@/app/store'
-import { BetsFilterForm } from '@/forms/Bets/BetsFilterForm'
-import { SortForm } from '@/forms/Sort/SortForm'
-import { CreateTipForm } from '@/forms/Tips/CreateTipForm'
-import { TipstersFilterForm } from '@/forms/Tipsters/TipstersFilterForm'
-import { BetDetails } from '@/pages/BetDetails/BetDetails'
+import { SortForm } from '@/features/List/forms/SortForm'
+import { TipsFilterForm } from '@/features/List/forms/TipsFilterForm'
+import { TipstersFilterForm } from '@/features/List/forms/TipstersFilterForm'
+import { CreateTipForm } from '@/features/Tips/forms/CreateTipForm'
+import { TipDetails } from '@/features/Tips/pages/TipDetails'
 import { hide, ModalType } from '@/services/modalSlice'
 
 const style = {
@@ -38,9 +38,9 @@ export const Modal = () => {
   }
 
   const forms: Record<ModalType, JSX.Element> = {
-    filterBets: <BetsFilterForm />,
+    filterTips: <TipsFilterForm />,
     filterTipsters: <TipstersFilterForm />,
-    betDetails: <BetDetails />,
+    tipDetails: <TipDetails />,
     sort: <SortForm />,
     null: <></>,
     createTip: <CreateTipForm />

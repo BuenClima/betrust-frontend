@@ -2,13 +2,13 @@ import { Container, List as MuiList, ListItem } from '@mui/material'
 import { useEffect, useMemo } from 'react'
 
 import { useAppDispatch } from '@/app/store'
-import { BetCard } from '@/components/Cards/BetCard'
+import { TipCard } from '@/components/Cards/TipCard'
 import { TipsterCard } from '@/components/Cards/TipsterCard'
 import { Filters } from '@/components/Filters/Filters'
 import { reset } from '@/services/filtersSlice'
 import { FilterType } from '@/services/modalSlice'
 
-export type ListType = 'bets' | 'tipsters'
+export type ListType = 'tips' | 'tipsters'
 
 type ListProps = {
   type: ListType
@@ -17,7 +17,7 @@ type ListProps = {
 
 export const FilteredList = ({ type, filter }: ListProps) => {
   const dispatch = useAppDispatch()
-  const ListComponent = useMemo(() => (type === 'bets' ? BetCard : TipsterCard), [type])
+  const ListComponent = useMemo(() => (type === 'tips' ? TipCard : TipsterCard), [type])
 
   useEffect(() => {
     dispatch(reset())

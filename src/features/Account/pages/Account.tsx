@@ -14,7 +14,7 @@ import { useState } from 'react'
 
 import { FilteredList } from '@/components/FilteredList/FilteredList'
 import { Header } from '@/components/Header/Header'
-import { AccountForm } from '@/forms/Account/AccountForm'
+import { AccountForm } from '@/features/Account/forms/AccountForm'
 import { Layout } from '@/layouts/Layout'
 
 function a11yProps(index: number) {
@@ -70,7 +70,7 @@ export const Account = () => {
               <Typography>History (100)</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <FilteredList type="bets" filter="filterBets" />
+              <FilteredList type="tips" filter="filterTips" />
             </AccordionDetails>
           </Accordion>
         </TabPanel>

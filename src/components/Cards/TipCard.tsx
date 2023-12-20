@@ -4,11 +4,11 @@ import dayjs from 'dayjs'
 import { useAppDispatch } from '@/app/store'
 import { show } from '@/services/modalSlice'
 
-export const BetCard = () => {
+export const TipCard = () => {
   const dispatch = useAppDispatch()
 
   const handleCardHeaderClick = () => {
-    dispatch(show('betDetails'))
+    dispatch(show('tipDetails'))
   }
 
   return (
@@ -49,4 +49,4 @@ export const BetCard = () => {
   )
 }
 
-export default BetCard
+export default TipCard

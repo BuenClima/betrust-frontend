@@ -4,15 +4,18 @@ import { Controller } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store'
 import { MultiSelect } from '@/components/Inputs/MultiSelect/MultiSelect'
-import { FilterBetsFormValues, useFilterBetsForm } from '@/hooks/Bets/useFilterBetsForm'
+import {
+  FilterTipsFormValues,
+  useFilterTipsForm
+} from '@/features/List/hooks/useFilterTipsForm'
 import { filter } from '@/services/filtersSlice'
 import { hide } from '@/services/modalSlice'
 
-export const BetsFilterForm = () => {
+export const TipsFilterForm = () => {
   const dispatch = useAppDispatch()
-  const { control, handleSubmit, errors } = useFilterBetsForm()
+  const { control, handleSubmit, errors } = useFilterTipsForm()
 
-  const onSubmit = (data: FilterBetsFormValues) => {
+  const onSubmit = (data: FilterTipsFormValues) => {
     dispatch(
       filter({
         active: true,

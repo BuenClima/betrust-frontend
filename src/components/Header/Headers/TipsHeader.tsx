@@ -1,11 +1,11 @@
 import { Grid, Typography } from '@mui/material'
 
-export const BetsHeader = () => {
+export const TipsHeader = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={10} container justifyContent="center" alignItems="center">
         <Typography variant="h4" component="h1" gutterBottom sx={{ color: '#fff' }}>
-          Our Tipsters Bets
+          Our Tipsters Tips
         </Typography>
       </Grid>
       <Grid item xs={10} container justifyContent="center" alignItems="center">

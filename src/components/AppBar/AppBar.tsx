@@ -18,7 +18,7 @@ import { useNavigate } from 'react-router-dom'
 
 const pages = [
   { title: 'Tipsters', url: '/tipsters' },
-  { title: 'Bets', url: '/bets' }
+  { title: 'Tips', url: '/tips' }
 ]
 const settings = [
   { title: 'Account', url: '/account' },

@@ -5,6 +5,8 @@ import { ListType } from '@/components/FilteredList/FilteredList'
 import { HeaderType } from '@/components/Header/Header'
 import { FilterType } from '@/services/modalSlice'
 
+type ContentType = 'tipsters' | 'tips'
+
 export const useContentOnLocation = () => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -18,16 +20,16 @@ export const useContentOnLocation = () => {
   useEffect(() => {
     const type = location.pathname.split('/')[1]
 
-    const filters: Record<'tipsters' | 'bets', FilterType> = {
+    const filters: Record<ContentType, FilterType> = {
       tipsters: 'filterTipsters',
-      bets: 'filterBets'
+      tips: 'filterTips'
     }
 
-    if (type === 'tipsters' || type === 'bets')
+    if (['tipsters', 'tips'].includes(type))
       setContent({
-        header: type,
-        filter: filters[type],
-        content: type
+        header: type as ContentType,
+        filter: filters[type as ContentType],
+        content: type as ContentType
       })
     else navigate('/tipsters')
   }, [location.pathname])

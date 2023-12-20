@@ -4,12 +4,12 @@ import { useForm } from 'react-hook-form'
 import { useAppSelector } from '@/app/store'
 import { SelectValueProps } from '@/types'
 
-export type FilterBetsFormValues = {
+export type FilterTipsFormValues = {
   date: Dayjs | null
   sport: SelectValueProps[]
   status: SelectValueProps[]
 }
-export const useFilterBetsForm = () => {
+export const useFilterTipsForm = () => {
   const filters = useAppSelector((state) => state.filters)
 
   const {
@@ -17,7 +17,7 @@ export const useFilterBetsForm = () => {
     handleSubmit,
     setValue,
     formState: { errors }
-  } = useForm<FilterBetsFormValues>({
+  } = useForm<FilterTipsFormValues>({
     defaultValues: {
       ...filters.filters
     }

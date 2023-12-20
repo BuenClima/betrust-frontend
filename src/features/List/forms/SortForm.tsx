@@ -1,7 +1,7 @@
 import { Button, Checkbox, FormControlLabel, Grid, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
-import { SortFormValues, useSortForm } from '@/hooks/Sort/useSortForm'
+import { SortFormValues, useSortForm } from '@/features/List/hooks/useSortForm'
 
 export const SortForm = () => {
   const { control, handleSubmit } = useSortForm()

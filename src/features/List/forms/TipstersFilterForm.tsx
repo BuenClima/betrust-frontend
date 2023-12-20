@@ -1,25 +1,29 @@
-import {
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Grid,
-  TextField,
-  Typography
-} from '@mui/material'
+import { Box, Button, Grid, Slider, Stack, Typography } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store'
-import { Select } from '@/components/Inputs/Select/Select'
-import { CreateTipFormValues, useCreateTipForm } from '@/hooks/Tips/useCreateTipForm'
+import { MultiSelect } from '@/components/Inputs/MultiSelect/MultiSelect'
+import {
+  FilterTipstersFormValues,
+  useFilterTipstersForm
+} from '@/features/List/hooks/useFilterTipstersForm'
+import { filter } from '@/services/filtersSlice'
 import { hide } from '@/services/modalSlice'
 
-export const CreateTipForm = () => {
+export const TipstersFilterForm = () => {
   const dispatch = useAppDispatch()
-  const { control, handleSubmit, errors } = useCreateTipForm()
+  const { control, handleSubmit, errors } = useFilterTipstersForm()
 
-  const onSubmit = (data: CreateTipFormValues) => {
-    console.log(data)
+  const onSubmit = (data: FilterTipstersFormValues) => {
+    dispatch(
+      filter({
+        active: true,
+        filters: {
+          ...data
+        }
+      })
+    )
     dispatch(hide())
   }
 
@@ -33,7 +37,7 @@ export const CreateTipForm = () => {
       spacing={1}
     >
       <Grid item xs={10} container justifyContent="center">
-        <Typography variant="h6">Create Tip</Typography>
+        <Typography variant="h6">Filters</Typography>
       </Grid>
       <Grid item xs={10}>
         <Controller
@@ -60,7 +64,7 @@ export const CreateTipForm = () => {
           name="sport"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <Select
+            <MultiSelect
               value={value}
               setValue={onChange}
               error={!!errors.sport}
@@ -80,7 +84,7 @@ export const CreateTipForm = () => {
           name="league"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <Select
+            <MultiSelect
               value={value}
               setValue={onChange}
               error={!!errors.league}
@@ -97,93 +101,69 @@ export const CreateTipForm = () => {
 
       <Grid item xs={10}>
         <Controller
-          name="provider"
+          name="picks"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <Select
-              value={value}
-              setValue={onChange}
-              error={!!errors.provider}
-              options={[
-                { name: 'Bet365', id: 'bet365' },
-                { name: 'William Hill', id: 'williamhill' }
-              ]}
-              placeholder="Provider"
-              helperText={errors.provider?.message ?? 'Helper text'}
-            />
+            <Box>
+              <Typography variant="body1">Picks</Typography>
+              <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+                <Slider value={value} onChange={onChange} min={0} max={1000} />
+                <Typography variant="caption">{value}</Typography>
+              </Stack>
+            </Box>
           )}
         />
       </Grid>
 
       <Grid item xs={10}>
         <Controller
-          name="tip"
+          name="yield"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <TextField
-              label="Tip"
-              value={value}
-              onChange={onChange}
-              fullWidth
-              helperText={errors.tip?.message ?? 'Helper text'}
-              error={!!errors.tip}
-              multiline
-              rows={4}
-            />
+            <Box>
+              <Typography variant="body1">Yield</Typography>
+              <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+                <Slider value={value} onChange={onChange} />
+                <Typography variant="caption">{value}%</Typography>
+              </Stack>
+            </Box>
           )}
         />
       </Grid>
       <Grid item xs={10}>
         <Controller
-          name="odds"
+          name="profit"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <TextField
-              label="Odds"
-              inputProps={{ type: 'number' }}
-              value={value}
-              onChange={onChange}
-              fullWidth
-              helperText={errors.tip?.message ?? 'Helper text'}
-              error={!!errors.tip}
-            />
+            <Box>
+              <Typography variant="body1">Profit</Typography>
+              <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+                <Slider value={value} onChange={onChange} min={0} max={1000} />
+                <Typography variant="caption">{value}</Typography>
+              </Stack>
+            </Box>
           )}
         />
       </Grid>
       <Grid item xs={10}>
         <Controller
-          name="stake"
+          name="winRate"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <TextField
-              label="Stake"
-              inputProps={{ type: 'number' }}
-              value={value}
-              onChange={onChange}
-              fullWidth
-              helperText={errors.tip?.message ?? 'Helper text'}
-              error={!!errors.tip}
-            />
-          )}
-        />
-      </Grid>
-
-      <Grid item xs={10}>
-        <Controller
-          name="paid"
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <FormControlLabel
-              label="Paid"
-              control={<Checkbox checked={value} onChange={onChange} />}
-            />
+            <Box>
+              <Typography variant="body1">Win Rate</Typography>
+              <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+                <Slider value={value} onChange={onChange} />
+                <Typography variant="caption">{value}%</Typography>
+              </Stack>
+            </Box>
           )}
         />
       </Grid>
 
       <Grid item xs={12} container justifyContent="center">
         <Button type="submit" variant="contained">
-          Create
+          Apply
         </Button>
       </Grid>
     </Grid>

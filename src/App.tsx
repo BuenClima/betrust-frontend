@@ -5,11 +5,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { AppProvider } from '@/providers/AppProvider'
 
-const List = lazy(() => import('@/pages/List/List'))
-const TipsterDetails = lazy(() => import('./pages/TipsterDetails/TipsterDetails'))
-const Auth = lazy(() => import('@/pages/Auth/Auth'))
-const Account = lazy(() => import('@/pages/Account/Account'))
-const Home = lazy(() => import('@/pages/Home/Home'))
+const List = lazy(() => import('@/features/List/pages/List'))
+const Tipster = lazy(() => import('./features/Tipster/pages/Tipster'))
+const Auth = lazy(() => import('@/features/Auth/pages/Auth'))
+const Account = lazy(() => import('@/features/Account/pages/Account'))
+const Home = lazy(() => import('@/features/Home/pages/Home'))
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
             <Route path="/auth/signin" element={<Auth />} />
 
             <Route path="/:resource" element={<List />} />
-            <Route path="/:resource/:id" element={<TipsterDetails />} />
+
+            <Route path="/tipsters/:id" element={<Tipster />} />
 
             <Route path="/account" element={<Account />} />
 
