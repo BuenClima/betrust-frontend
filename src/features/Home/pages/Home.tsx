@@ -3,7 +3,11 @@ import { Grid, Typography } from '@mui/material'
 import Footer from '@/components/Footer/Footer'
 import { Layout } from '@/layouts/Layout'
 
-export const Home = () => {
+/**
+ * @description Home component
+ * @returns {JSX.Element} Home component
+ */
+export const Home = (): JSX.Element => {
   return (
     <Layout>
       <>

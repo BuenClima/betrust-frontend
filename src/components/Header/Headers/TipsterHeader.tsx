@@ -2,7 +2,11 @@ import { Avatar, Grid, Typography } from '@mui/material'
 
 import { TipsterStatistics } from '@/components/TipsterStatistics/TipsterStatistic'
 
-export const TipsterHeader = () => {
+/**
+ * @description TipsterHeader component
+ * @returns {JSX.Element} TipsterHeader component
+ */
+export const TipsterHeader = (): JSX.Element => {
   return (
     <Grid container justifyContent={'center'} alignItems={'center'}>
       <Grid
@@ -64,3 +68,5 @@ export const TipsterHeader = () => {
     </Grid>
   )
 }
+
+export default TipsterHeader

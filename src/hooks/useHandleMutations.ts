@@ -9,6 +9,14 @@ import { useHandleNotification } from './useHandleNotification'
 
 /**
  * @description Use handle mutation props
+ * @property {boolean} isLoading - Is loading.
+ * @property {boolean} isSuccess - Is success.
+ * @property {boolean} isError - Is error.
+ * @property {FetchBaseQueryError | SerializedError | null} error - Error.
+ * @property {() => void} onSuccess - On success.
+ * @property {() => void} onError - On error.
+ * @property {string} success - Success.
+ * @property {string} error - Error.
  */
 type UseHandleMutationProps = {
   state: {
@@ -30,6 +38,8 @@ type UseHandleMutationProps = {
 
 /**
  * @description Handle mutation hook
+ * @param {UseHandleMutationProps} props - Props
+ * @returns {void} Void
  */
 export const useHandleMutation = ({
   state,

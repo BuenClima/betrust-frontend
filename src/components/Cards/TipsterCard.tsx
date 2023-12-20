@@ -18,10 +18,18 @@ import { useNavigate } from 'react-router-dom'
 
 import { TipsterStatistics } from '@/components/TipsterStatistics/TipsterStatistic'
 
+/**
+ * @description ExpandMoreProps interface
+ */
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean
 }
 
+/**
+ * @description ExpandMore component
+ * @param {ExpandMoreProps} props - ExpandMoreProps
+ * @returns {JSX.Element} ExpandMore component
+ */
 const ExpandMore = styled((props: ExpandMoreProps) => {
   // eslint-disable-next-line
   const { expand, ...other } = props
@@ -34,7 +42,11 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   })
 }))
 
-export const TipsterCard = () => {
+/**
+ * @description TipsterCard component
+ * @returns {JSX.Element} TipsterCard component
+ */
+export const TipsterCard = (): JSX.Element => {
   const navigate = useNavigate()
   const [expanded, setExpanded] = React.useState(false)
 

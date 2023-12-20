@@ -3,7 +3,11 @@ import { Backdrop, CircularProgress } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '@/app/store'
 import { hide } from '@/services/loadingSlice'
 
-export const Loading = () => {
+/**
+ * @description Loading component
+ * @returns {JSX.Element} Loading component
+ */
+export const Loading = (): JSX.Element => {
   const loading = useAppSelector((state) => state.loading)
   const dispatch = useAppDispatch()
 
@@ -18,3 +22,5 @@ export const Loading = () => {
     </Backdrop>
   )
 }
+
+export default Loading

@@ -1,15 +1,25 @@
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
 import SortIcon from '@mui/icons-material/Sort'
 import { Button, Grid, IconButton, Tooltip } from '@mui/material'
+import PropTypes from 'prop-types'
 
 import { useAppDispatch } from '@/app/store'
 import { FilterType, show } from '@/services/modalSlice'
 
+/**
+ * @description FiltersProps interface
+ * @property {FilterType} filter - FilterType
+ */
 type FiltersProps = {
   filter: FilterType
 }
 
-export const Filters = ({ filter }: FiltersProps) => {
+/**
+ * @description Filters component
+ * @param {FiltersProps} { filter } - FiltersProps
+ * @returns {JSX.Element} Filters component
+ */
+export const Filters = ({ filter }: FiltersProps): JSX.Element => {
   const dispatch = useAppDispatch()
 
   const handleOpen = () => {
@@ -47,3 +57,11 @@ export const Filters = ({ filter }: FiltersProps) => {
 }
 
 export default Filters
+
+/**
+ * @description Filters propTypes
+ * @property {FilterType} filter - FilterType
+ */
+Filters.propTypes = {
+  filter: PropTypes.string.isRequired
+}

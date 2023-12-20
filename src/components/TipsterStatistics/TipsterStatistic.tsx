@@ -1,6 +1,10 @@
 import { Grid, Typography } from '@mui/material'
-
-export const TipsterStatistics = () => {
+import PropTypes from 'prop-types'
+/**
+ * @description TipsterStatistics component
+ * @returns {JSX.Element} TipsterStatistics component
+ */
+export const TipsterStatistics = (): JSX.Element => {
   return (
     <Grid container justifyContent="space-between" alignItems="flex-start">
       <Statistic value="929" label="Picks" />
@@ -13,13 +17,24 @@ export const TipsterStatistics = () => {
     </Grid>
   )
 }
+export default TipsterStatistics
 
+/**
+ * @description StatisticProps interface
+ * @property {string | number} value - value
+ * @property {string} label - label
+ */
 type StatisticProps = {
   value: string | number
   label: string
 }
 
-const Statistic = ({ value, label }: StatisticProps) => {
+/**
+ * @description Statistic component
+ * @param {StatisticProps} { value, label } - StatisticProps
+ * @returns {JSX.Element} Statistic component
+ */
+const Statistic = ({ value, label }: StatisticProps): JSX.Element => {
   return (
     <Grid item xs={12} sm={1} container>
       <Grid item xs={12}>
@@ -34,4 +49,14 @@ const Statistic = ({ value, label }: StatisticProps) => {
       </Grid>
     </Grid>
   )
+}
+
+/**
+ * @description Statistic props types
+ * @property {string | number} value - value
+ * @property {string} label - label
+ */
+Statistic.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  label: PropTypes.string.isRequired
 }

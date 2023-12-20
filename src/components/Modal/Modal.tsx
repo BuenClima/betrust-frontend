@@ -9,6 +9,9 @@ import { CreateTipForm } from '@/features/Tips/forms/CreateTipForm'
 import { TipDetails } from '@/features/Tips/pages/TipDetails'
 import { hide, ModalType } from '@/services/modalSlice'
 
+/**
+ * @description style object for Modal component
+ */
 const style = {
   position: 'absolute' as const,
   top: '50%',
@@ -29,7 +32,11 @@ const style = {
   borderRadius: 2
 }
 
-export const Modal = () => {
+/**
+ * @description Modal component
+ * @returns {JSX.Element} Modal component
+ */
+export const Modal = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const modal = useAppSelector((state) => state.modal)
 
@@ -60,3 +67,5 @@ export const Modal = () => {
     </MuiModal>
   )
 }
+
+export default Modal

@@ -1,4 +1,5 @@
 import { Container, List as MuiList, ListItem } from '@mui/material'
+import PropTypes from 'prop-types'
 import { useEffect, useMemo } from 'react'
 
 import { useAppDispatch } from '@/app/store'
@@ -8,14 +9,25 @@ import { Filters } from '@/components/Filters/Filters'
 import { reset } from '@/services/filtersSlice'
 import { FilterType } from '@/services/modalSlice'
 
+/**
+ * @description ListType type
+ */
 export type ListType = 'tips' | 'tipsters'
 
+/**
+ * @description ListProps interface
+ */
 type ListProps = {
   type: ListType
   filter: FilterType
 }
 
-export const FilteredList = ({ type, filter }: ListProps) => {
+/**
+ * @description FilteredList component
+ * @param {ListProps} { type, filter} - ListProps
+ * @returns {JSX.Element} FilteredList component
+ */
+export const FilteredList = ({ type, filter }: ListProps): JSX.Element => {
   const dispatch = useAppDispatch()
   const ListComponent = useMemo(() => (type === 'tips' ? TipCard : TipsterCard), [type])
 
@@ -41,4 +53,16 @@ export const FilteredList = ({ type, filter }: ListProps) => {
       </MuiList>
     </Container>
   )
+}
+
+export default FilteredList
+
+/**
+ * @description FilteredList propTypes
+ * @property {typeof LisType[]} type - ListType
+ * @property {typeof FilterType[]} filter - FilterType
+ */
+FilteredList.propTypes = {
+  type: PropTypes.array.isRequired,
+  filter: PropTypes.array.isRequired
 }

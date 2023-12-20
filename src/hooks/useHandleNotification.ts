@@ -3,6 +3,13 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { t } from 'i18next'
 import { OptionsObject, useSnackbar } from 'notistack'
 
+/**
+ * @description Use handle notification return type.
+ * @property {(error: FetchBaseQueryError | SerializedError | string | null) => void} handleError - Handle error.
+ * @property {(message: string) => void} handleSuccess - Handle success.
+ * @property {(message: string) => void} handleWarning - Handle warning.
+ * @property {(message: string) => void} handleInfo - Handle info.
+ */
 type UseHandleNotificationReturn = {
   handleError: (error: FetchBaseQueryError | SerializedError | string | null) => void
   handleSuccess: (message: string) => void
@@ -10,6 +17,10 @@ type UseHandleNotificationReturn = {
   handleInfo: (message: string) => void
 }
 
+/**
+ * @description useHandleNotification hook
+ * @returns {UseHandleNotificationReturn} UseHandleNotificationReturn.
+ */
 const baseOptions: OptionsObject<'error' | 'default' | 'info' | 'success' | 'warning'> = {
   anchorOrigin: {
     vertical: 'top',
@@ -18,6 +29,10 @@ const baseOptions: OptionsObject<'error' | 'default' | 'info' | 'success' | 'war
   autoHideDuration: 3000
 }
 
+/**
+ * @description useHandleNotification hook
+ * @returns {UseHandleNotificationReturn} UseHandleNotificationReturn.
+ */
 export const useHandleNotification = (): UseHandleNotificationReturn => {
   const { enqueueSnackbar } = useSnackbar()
 
@@ -59,3 +74,5 @@ export const useHandleNotification = (): UseHandleNotificationReturn => {
     handleInfo
   }
 }
+
+export default useHandleNotification

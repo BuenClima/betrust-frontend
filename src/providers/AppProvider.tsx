@@ -12,10 +12,20 @@ import { Provider } from 'react-redux'
 import store from '@/app/store'
 import { theme } from '@/app/theme'
 import { Fallback } from '@/components/Loading/Fallback'
+
+/**
+ * @description AppProviderProps type
+ * @property {React.ReactNode | React.ReactNode[]} children - children
+ */
 type AppProviderProps = {
   children: React.ReactNode | React.ReactNode[]
 }
 
+/**
+ * @description AppProvider component
+ * @param {React.ReactNode | React.ReactNode[]} children - children
+ * @returns {JSX.Element} AppProvider component
+ */
 export const AppProvider = ({ children }: AppProviderProps): JSX.Element => {
   return (
     <HelmetProvider>
@@ -31,3 +41,5 @@ export const AppProvider = ({ children }: AppProviderProps): JSX.Element => {
     </HelmetProvider>
   )
 }
+
+export default AppProvider

@@ -1,6 +1,10 @@
 import { Box, CircularProgress } from '@mui/material'
 
-export const Fallback = () => {
+/**
+ * @description Fallback component
+ * @returns {JSX.Element} Fallback component
+ */
+export const Fallback = (): JSX.Element => {
   return (
     <Box sx={{ color: '#fff', backgroundColor: '#000', height: '100vh', width: '100vw' }}>
       <Box
@@ -16,3 +20,5 @@ export const Fallback = () => {
     </Box>
   )
 }
+
+export default Fallback

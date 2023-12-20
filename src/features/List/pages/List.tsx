@@ -3,7 +3,11 @@ import { Header } from '@/components/Header/Header'
 import { useContentOnLocation } from '@/hooks/useContentOnLocation'
 import { Layout } from '@/layouts/Layout'
 
-export const List = () => {
+/**
+ * @description List page
+ * @returns {JSX.Element} List page
+ */
+export const List = (): JSX.Element => {
   const content = useContentOnLocation()
 
   return (

@@ -1,17 +1,30 @@
 import { Grid } from '@mui/material'
+import PropTypes from 'prop-types'
 
 import { AccountHeader } from './Headers/AccountHeader'
 import { TipsHeader } from './Headers/TipsHeader'
 import { TipsterHeader } from './Headers/TipsterHeader'
 import { TipstersHeader } from './Headers/TipstersHeader'
 
+/**
+ * @description HeaderType type
+ */
 export type HeaderType = 'tipsters' | 'tips' | 'tipster' | 'account'
 
+/**
+ * @description HeaderProps interface
+ * @property {HeaderType} type - HeaderType
+ */
 type HeaderProps = {
   type: HeaderType
 }
 
-export const Header = ({ type }: HeaderProps) => {
+/**
+ * @description Header component
+ * @param {HeaderProps} { type } - HeaderProps
+ * @returns {JSX.Element} Header component
+ */
+export const Header = ({ type }: HeaderProps): JSX.Element => {
   const headers: Record<HeaderType, JSX.Element> = {
     tipsters: <TipstersHeader key={type} />,
     tips: <TipsHeader key={type} />,
@@ -37,4 +50,14 @@ export const Header = ({ type }: HeaderProps) => {
       {headers[type]}
     </Grid>
   )
+}
+
+export default Header
+
+/**
+ * @description Header props types
+ * @property {HeaderType} type - HeaderType
+ */
+Header.propTypes = {
+  type: PropTypes.string.isRequired
 }

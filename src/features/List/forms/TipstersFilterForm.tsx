@@ -11,7 +11,11 @@ import {
 import { filter } from '@/services/filtersSlice'
 import { hide } from '@/services/modalSlice'
 
-export const TipstersFilterForm = () => {
+/**
+ * @description TipstersFilterForm component
+ * @returns {JSX.Element} TipstersFilterForm component
+ */
+export const TipstersFilterForm = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { control, handleSubmit, errors } = useFilterTipstersForm()
 
@@ -169,3 +173,5 @@ export const TipstersFilterForm = () => {
     </Grid>
   )
 }
+
+export default TipstersFilterForm

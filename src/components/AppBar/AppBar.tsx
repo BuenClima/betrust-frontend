@@ -16,16 +16,28 @@ import {
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+/**
+ * @description AppBar pages
+ */
 const pages = [
   { title: 'Tipsters', url: '/tipsters' },
   { title: 'Tips', url: '/tips' }
 ]
+
+/**
+ * @description AppBar settings
+ */
 const settings = [
   { title: 'Account', url: '/account' },
   { title: 'Logout', url: '/logout' }
 ]
 
-export const AppBar = () => {
+/**
+ *
+ * @description AppBar component
+ * @returns {JSX.Element} AppBar component
+ */
+export const AppBar = (): JSX.Element => {
   const navigate = useNavigate()
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null)
@@ -158,7 +170,7 @@ export const AppBar = () => {
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
-                    alt="Remy Sharp"
+                    alt="Avatar of the user"
                     src="https://i.pravatar.cc/300"
                     sx={{
                       border: '2px solid #fff',

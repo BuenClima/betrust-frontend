@@ -1,8 +1,25 @@
 import dayjs, { Dayjs } from 'dayjs'
-import { useForm } from 'react-hook-form'
+import {
+  Control,
+  FieldErrors,
+  useForm,
+  UseFormHandleSubmit,
+  UseFormSetValue
+} from 'react-hook-form'
 
 import { SelectValueProps } from '@/types'
 
+/**
+ * @description CreateTipFormValues type
+ * @property {SelectValueProps | null} sport
+ * @property {SelectValueProps | null} league
+ * @property {string} tip
+ * @property {Dayjs} date
+ * @property {SelectValueProps | null} provider
+ * @property {number} odds
+ * @property {number} stake
+ * @property {boolean} paid
+ */
 export type CreateTipFormValues = {
   sport: SelectValueProps | null
   league: SelectValueProps | null
@@ -14,7 +31,25 @@ export type CreateTipFormValues = {
   paid: boolean
 }
 
-export const useCreateTipForm = () => {
+/**
+ * @description CreateTipForm type
+ * @property {Control<CreateTipFormValues, any>} control
+ * @property {UseFormHandleSubmit<CreateTipFormValues, undefined>} handleSubmit
+ * @property {UseFormSetValue<CreateTipFormValues>} setValue
+ * @property {FieldErrors<CreateTipFormValues>} errors
+ */
+type CreateTipForm = {
+  control: Control<CreateTipFormValues, any>
+  handleSubmit: UseFormHandleSubmit<CreateTipFormValues, undefined>
+  setValue: UseFormSetValue<CreateTipFormValues>
+  errors: FieldErrors<CreateTipFormValues>
+}
+
+/**
+ * @description useCreateTipForm hook
+ * @returns {CreateTipForm} CreateTipForm
+ */
+export const useCreateTipForm = (): CreateTipForm => {
   const {
     control,
     handleSubmit,
@@ -40,3 +75,5 @@ export const useCreateTipForm = () => {
     errors
   }
 }
+
+export default useCreateTipForm

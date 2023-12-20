@@ -4,7 +4,11 @@ import dayjs from 'dayjs'
 import { useAppDispatch } from '@/app/store'
 import { show } from '@/services/modalSlice'
 
-export const TipCard = () => {
+/**
+ * @description TipCard component
+ * @returns {JSX.Element} TipCard component
+ */
+export const TipCard = (): JSX.Element => {
   const dispatch = useAppDispatch()
 
   const handleCardHeaderClick = () => {

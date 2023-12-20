@@ -17,7 +17,11 @@ import {
 } from '@/features/Tips/hooks/useCreateTipForm'
 import { hide } from '@/services/modalSlice'
 
-export const CreateTipForm = () => {
+/**
+ * @description CreateTipForm component
+ * @returns {JSX.Element} CreateTipForm component
+ */
+export const CreateTipForm = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { control, handleSubmit, errors } = useCreateTipForm()
 
@@ -192,3 +196,5 @@ export const CreateTipForm = () => {
     </Grid>
   )
 }
+
+export default CreateTipForm

@@ -1,6 +1,10 @@
 import { Grid, Typography } from '@mui/material'
 
-export const TipsHeader = () => {
+/**
+ * @description TipsHeader component
+ * @returns {JSX.Element} TipsHeader component
+ */
+export const TipsHeader = (): JSX.Element => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={10} container justifyContent="center" alignItems="center">
@@ -27,3 +31,5 @@ export const TipsHeader = () => {
     </Grid>
   )
 }
+
+export default TipsHeader

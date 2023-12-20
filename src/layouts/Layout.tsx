@@ -5,11 +5,20 @@ import AppBar from '@/components/AppBar/AppBar'
 import { Loading } from '@/components/Loading/Loading'
 import { Modal } from '@/components/Modal/Modal'
 
+/**
+ * @description Layout component
+ * @param {React.ReactNode | React.ReactNode[]} children - children
+ */
 type LayoutProps = {
   children: React.ReactNode | React.ReactNode[]
 }
 
-export const Layout = ({ children }: LayoutProps) => {
+/**
+ * @description Layout component
+ * @param {React.ReactNode | React.ReactNode[]} children - children
+ * @returns {JSX.Element} Layout component
+ */
+export const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <div>
       <AppBar />
@@ -19,3 +28,5 @@ export const Layout = ({ children }: LayoutProps) => {
     </div>
   )
 }
+
+export default Layout

@@ -13,7 +13,11 @@ import {
 import { useAppDispatch } from '@/app/store'
 import { show } from '@/services/modalSlice'
 
-export const AccountHeader = () => {
+/**
+ * @description AccountHeader component
+ * @returns {JSX.Element} AccountHeader component
+ */
+export const AccountHeader = (): JSX.Element => {
   const dispatch = useAppDispatch()
 
   const handleClickOnCreateTip = () => {
@@ -98,3 +102,5 @@ export const AccountHeader = () => {
     </Grid>
   )
 }
+
+export default AccountHeader

@@ -2,14 +2,18 @@ import { Button, Grid, TextField } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
 import {
-  AccountFormValues,
-  useAccountForm
-} from '@/features/Account/hooks/useAccountForm'
+  ProfileFormValues,
+  useProfileForm
+} from '@/features/Account/hooks/useProfileForm'
 
-export const AccountForm = () => {
-  const { control, handleSubmit, errors } = useAccountForm()
+/**
+ * @description Profile form
+ * @returns {JSX.Element} Profile form
+ */
+export const ProfileForm = (): JSX.Element => {
+  const { control, handleSubmit, errors } = useProfileForm()
 
-  const onSubmit = (data: AccountFormValues) => {
+  const onSubmit = (data: ProfileFormValues) => {
     console.log(data)
   }
 
@@ -81,3 +85,5 @@ export const AccountForm = () => {
     </Grid>
   )
 }
+
+export default ProfileForm

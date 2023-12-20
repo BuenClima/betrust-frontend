@@ -9,11 +9,16 @@ import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link'
 import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
+import Typography, { TypographyProps } from '@mui/material/Typography'
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Copyright(props: any) {
+/**
+ * @description CopyRight component
+ * @param {TypographyProps} props - props
+ * @returns {JSX.Element} CopyRight component
+ */
+const Copyright = ({ ...props }: TypographyProps): JSX.Element => {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
@@ -26,7 +31,11 @@ function Copyright(props: any) {
   )
 }
 
-export default function SignIn() {
+/**
+ * @description SignIn component
+ * @returns {JSX.Element} SignIn component
+ */
+export const SignIn = (): JSX.Element => {
   const navigate = useNavigate()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -134,3 +143,5 @@ export default function SignIn() {
     </Grid>
   )
 }
+
+export default SignIn

@@ -1,6 +1,10 @@
 import { Box, Container, Grid, Typography } from '@mui/material'
 
-export const Footer = () => {
+/**
+ * @description Footer component
+ * @returns {JSX.Element} Footer component
+ */
+export const Footer = (): JSX.Element => {
   return (
     <Box
       sx={{

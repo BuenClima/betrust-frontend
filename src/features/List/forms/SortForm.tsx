@@ -3,7 +3,11 @@ import { Controller } from 'react-hook-form'
 
 import { SortFormValues, useSortForm } from '@/features/List/hooks/useSortForm'
 
-export const SortForm = () => {
+/**
+ * @description SortForm component
+ * @returns {JSX.Element} SortForm component
+ */
+export const SortForm = (): JSX.Element => {
   const { control, handleSubmit } = useSortForm()
 
   const onSubmit = (data: SortFormValues) => {
@@ -55,3 +59,5 @@ export const SortForm = () => {
     </Grid>
   )
 }
+
+export default SortForm

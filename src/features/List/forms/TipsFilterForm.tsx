@@ -11,7 +11,11 @@ import {
 import { filter } from '@/services/filtersSlice'
 import { hide } from '@/services/modalSlice'
 
-export const TipsFilterForm = () => {
+/**
+ * @description TipsFilterForm component
+ * @returns {JSX.Element} TipsFilterForm component
+ */
+export const TipsFilterForm = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { control, handleSubmit, errors } = useFilterTipsForm()
 
@@ -108,3 +112,5 @@ export const TipsFilterForm = () => {
     </Grid>
   )
 }
+
+export default TipsFilterForm

@@ -11,7 +11,11 @@ const Auth = lazy(() => import('@/features/Auth/pages/Auth'))
 const Account = lazy(() => import('@/features/Account/pages/Account'))
 const Home = lazy(() => import('@/features/Home/pages/Home'))
 
-function App() {
+/**
+ * @description App component
+ * @returns {JSX.Element} App component
+ */
+function App(): JSX.Element {
   return (
     <AppProvider>
       <div style={{ height: '100vh', width: '100vw' }}>
