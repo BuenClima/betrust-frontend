@@ -6,8 +6,9 @@ import { SortForm } from '@/features/List/forms/SortForm'
 import { TipsFilterForm } from '@/features/List/forms/TipsFilterForm'
 import { TipstersFilterForm } from '@/features/List/forms/TipstersFilterForm'
 import { CreateTipForm } from '@/features/Tips/forms/CreateTipForm'
-import { TipDetails } from '@/features/Tips/pages/TipDetails'
 import { hide, ModalType } from '@/services/modalSlice'
+
+import TipCard from '../Cards/TipCard'
 
 /**
  * @description style object for Modal component
@@ -47,7 +48,7 @@ export const Modal = (): JSX.Element => {
   const forms: Record<ModalType, JSX.Element> = {
     filterTips: <TipsFilterForm />,
     filterTipsters: <TipstersFilterForm />,
-    tipDetails: <TipDetails />,
+    tipDetails: <TipCard extended />,
     sort: <SortForm />,
     null: <></>,
     createTip: <CreateTipForm />

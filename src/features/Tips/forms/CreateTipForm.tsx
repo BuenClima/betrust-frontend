@@ -1,6 +1,6 @@
 import Tabs from '@/components/Tabs/Tabs'
 
-import Layout from '../Layouts/Layout'
+import Layout from '../layouts/Layout'
 import { BetForm } from './BetForm'
 import { PricingForm } from './PricingForm'
 import { ProviderForm } from './ProviderForm'

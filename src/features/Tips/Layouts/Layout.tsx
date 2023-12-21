@@ -16,7 +16,7 @@ type LayoutProps = {
  */
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <Container maxWidth="xl" sx={{ width: '50vw', minHeight: '50vh' }}>
+    <Container maxWidth="xl" sx={{ width: '50vw', minHeight: '35vh' }}>
       {children}
     </Container>
   )
