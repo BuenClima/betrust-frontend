@@ -1,5 +1,4 @@
 import { Button, Grid, TextField } from '@mui/material'
-import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store'
@@ -8,7 +7,7 @@ import { hide } from '@/services/modalSlice'
 
 import useCreateTipForm, { CreateTipFormValues } from '../hooks/useCreateTipForm'
 
-export const BetForm = () => {
+export const ProviderForm = () => {
   const dispatch = useAppDispatch()
   const { control, handleSubmit, errors } = useCreateTipForm()
 
@@ -27,59 +26,19 @@ export const BetForm = () => {
     >
       <Grid item xs={10}>
         <Controller
-          name="date"
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <DatePicker
-              label="Date"
-              value={value}
-              onChange={onChange}
-              slotProps={{
-                textField: {
-                  fullWidth: true,
-                  helperText: errors.date?.message ?? 'Helper Text',
-                  error: !!errors.date
-                }
-              }}
-            />
-          )}
-        />
-      </Grid>
-      <Grid item xs={10}>
-        <Controller
-          name="sport"
+          name="provider"
           control={control}
           render={({ field: { onChange, value } }) => (
             <Select
               value={value}
               setValue={onChange}
-              error={!!errors.sport}
+              error={!!errors.provider}
               options={[
-                { name: 'Football', id: 'football' },
-                { name: 'Basketball', id: 'basketball' },
-                { name: 'Tennis', id: 'tennis' }
+                { name: 'Bet365', id: 'bet365' },
+                { name: 'William Hill', id: 'williamhill' }
               ]}
-              placeholder="Sport"
-              helperText={errors.sport?.message ?? 'Helper text'}
-            />
-          )}
-        />
-      </Grid>
-      <Grid item xs={10}>
-        <Controller
-          name="league"
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <Select
-              value={value}
-              setValue={onChange}
-              error={!!errors.league}
-              options={[
-                { name: 'Premier', id: 'premier' },
-                { name: 'La Liga', id: 'laliga' }
-              ]}
-              placeholder="League"
-              helperText={errors.league?.message ?? 'Helper text'}
+              placeholder="Provider"
+              helperText={errors.provider?.message ?? 'Helper text'}
             />
           )}
         />
@@ -87,18 +46,34 @@ export const BetForm = () => {
 
       <Grid item xs={10}>
         <Controller
-          name="tip"
+          name="odds"
           control={control}
           render={({ field: { onChange, value } }) => (
             <TextField
-              label="Tip"
+              label="Odds"
+              inputProps={{ type: 'number' }}
               value={value}
               onChange={onChange}
               fullWidth
               helperText={errors.tip?.message ?? 'Helper text'}
               error={!!errors.tip}
-              multiline
-              rows={4}
+            />
+          )}
+        />
+      </Grid>
+      <Grid item xs={10}>
+        <Controller
+          name="stake"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <TextField
+              label="Stake"
+              inputProps={{ type: 'number' }}
+              value={value}
+              onChange={onChange}
+              fullWidth
+              helperText={errors.tip?.message ?? 'Helper text'}
+              error={!!errors.tip}
             />
           )}
         />
