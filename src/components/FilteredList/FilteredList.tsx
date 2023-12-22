@@ -47,7 +47,7 @@ export const FilteredList = ({ type, filter }: ListProps): JSX.Element => {
       >
         {[...Array(100)].map((_, i) => (
           <ListItem key={`${type}_${i}`}>
-            <ListComponent />
+            <ListComponent extended={false} />
           </ListItem>
         ))}
       </MuiList>

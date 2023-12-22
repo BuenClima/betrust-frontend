@@ -1,7 +1,5 @@
 import { Avatar, Grid, Typography } from '@mui/material'
 
-import { TipsterStatistics } from '@/components/TipsterStatistics/TipsterStatistic'
-
 /**
  * @description TipsterHeader component
  * @returns {JSX.Element} TipsterHeader component
@@ -53,16 +51,6 @@ export const TipsterHeader = (): JSX.Element => {
           <Grid item xs={12}>
             <Typography variant={'subtitle1'}>Tipster description</Typography>
           </Grid>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          container
-          justifyContent={'center'}
-          alignItems={'center'}
-        >
-          <TipsterStatistics />
         </Grid>
       </Grid>
     </Grid>

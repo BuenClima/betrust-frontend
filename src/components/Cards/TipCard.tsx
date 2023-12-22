@@ -3,8 +3,10 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Chip,
   Grid,
   IconButton,
+  Stack,
   Typography
 } from '@mui/material'
 import dayjs from 'dayjs'
@@ -43,14 +45,19 @@ export const TipCard = ({ extended }: TipCardProps): JSX.Element => {
 
   const extendedCardContent = useMemo(
     () => (
-      <>
-        <Grid item xs={12} container justifyContent="center" alignItems="center">
-          <Typography variant={'subtitle1'}>Odds: 1</Typography>
-        </Grid>
-        <Grid item xs={12} container justifyContent="center" alignItems="center">
-          <Typography variant={'subtitle1'}>STK: 1</Typography>
-        </Grid>
-      </>
+      <Stack direction="row" spacing={2}>
+        <Chip
+          label="Bet365"
+          color="success"
+          component="a"
+          href="#basic-chip"
+          clickable
+          variant="outlined"
+        />
+        <Chip label="Odds 1" color="warning" variant="outlined" />
+        <Chip label="SKT 1" color="primary" variant="outlined" />
+        <Chip label="Result" color="primary" variant="outlined" />
+      </Stack>
     ),
     [extended]
   )
@@ -89,25 +96,27 @@ export const TipCard = ({ extended }: TipCardProps): JSX.Element => {
         }
         title={
           <Grid container gap={1} alignItems="center">
-            <Typography variant="h6">#Sport by</Typography>
+            <Typography variant="h6">Real Madrid vs Barcelona by</Typography>
 
             <IconButton onClick={handleTipsterClick} sx={{ borderRadius: 0.3 }}>
               <Typography>Tipster Name</Typography>
             </IconButton>
           </Grid>
         }
-        subheader={`${dayjs().format('DD/MM/YYYY HH:mm:ss')} | Spain | La Liga`}
+        subheader={`Football | Spain | La Liga @ ${dayjs().format('DD MMMM YYYY HH:mm')}`}
         action={cardHeader}
       />
       <CardContent>
-        <Grid container justifyContent="center" alignItems="center">
+        <Grid container justifyContent="center" alignItems="center" spacing={1}>
           <Grid item xs={12} container justifyContent="center" alignItems="center">
             <Typography variant={'h6'}>Real Madrid vs Barcelona</Typography>
           </Grid>
           <Grid item xs={12} container justifyContent="center" alignItems="center">
             <Typography variant={'subtitle1'}>Real Madrid to win</Typography>
           </Grid>
-          {extended && extendedCardContent}
+          <Grid item xs={12} container justifyContent="center" alignItems="center">
+            {extended && extendedCardContent}
+          </Grid>
         </Grid>
       </CardContent>
     </Card>

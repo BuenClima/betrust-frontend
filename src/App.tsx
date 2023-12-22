@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AppProvider } from '@/providers/AppProvider'
 
 const List = lazy(() => import('@/features/List/pages/List'))
-const Tipster = lazy(() => import('./features/Tipster/pages/Tipster'))
 const Auth = lazy(() => import('@/features/Auth/pages/Auth'))
 const Account = lazy(() => import('@/features/Account/pages/Account'))
 const Home = lazy(() => import('@/features/Home/pages/Home'))
@@ -25,9 +24,15 @@ function App(): JSX.Element {
 
             <Route path="/:resource" element={<List />} />
 
-            <Route path="/tipsters/:id" element={<Tipster />} />
+            <Route
+              path="/tipsters/:id"
+              element={<Account type="tipster" permission="read" />}
+            />
 
-            <Route path="/account" element={<Account />} />
+            <Route
+              path="/account"
+              element={<Account type="tipster" permission="write" />}
+            />
 
             <Route path="/" element={<Home />} />
           </Routes>

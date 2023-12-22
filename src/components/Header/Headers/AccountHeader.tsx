@@ -9,26 +9,42 @@ import {
   Tooltip,
   Typography
 } from '@mui/material'
+import { useMemo } from 'react'
 
 import { useAppDispatch } from '@/app/store'
 import { show } from '@/services/modalSlice'
+import { AccountType, PermissionType } from '@/types/account'
+
+/**
+ * @description AccountHeader props
+ * @property {string} type - Account type
+ */
+type AccountHeaderProps = {
+  type: AccountType
+  permission: PermissionType
+}
 
 /**
  * @description AccountHeader component
  * @returns {JSX.Element} AccountHeader component
  */
-export const AccountHeader = (): JSX.Element => {
+export const AccountHeader = ({ type, permission }: AccountHeaderProps): JSX.Element => {
   const dispatch = useAppDispatch()
 
   const handleClickOnCreateTip = () => {
     dispatch(show('createTip'))
   }
 
+  const isTipsterAccount = useMemo(
+    () => type === 'tipster' && permission === 'write',
+    [type, permission]
+  )
+
   return (
     <Grid container justifyContent={'center'} alignItems={'center'}>
       <Grid
         item
-        xs={12}
+        xs={10}
         container
         justifyContent={'center'}
         alignItems={'center'}
@@ -52,9 +68,15 @@ export const AccountHeader = (): JSX.Element => {
               onChange={(e) => {
                 console.log(e.target)
               }}
+              disabled={permission === 'read'}
             />
             <Tooltip title="Add a profile image">
-              <IconButton color="primary" aria-label="upload picture" component="span">
+              <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="span"
+                disabled={permission === 'read'}
+              >
                 <Avatar
                   sx={{
                     border: '4px solid #ffd700',
@@ -87,7 +109,9 @@ export const AccountHeader = (): JSX.Element => {
             <Typography variant={'subtitle1'}>Description</Typography>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} container>
+      </Grid>
+      {isTipsterAccount && (
+        <Grid item xs={12} sm={2} container>
           <Tooltip title="Create tip">
             <Button
               variant="outlined"
@@ -98,7 +122,7 @@ export const AccountHeader = (): JSX.Element => {
             </Button>
           </Tooltip>
         </Grid>
-      </Grid>
+      )}
     </Grid>
   )
 }

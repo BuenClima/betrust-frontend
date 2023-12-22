@@ -3,7 +3,6 @@ import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
-import CssBaseline from '@mui/material/CssBaseline'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link'
@@ -48,7 +47,6 @@ export const SignIn = (): JSX.Element => {
 
   return (
     <Grid container component="main" sx={{ height: '100vh' }}>
-      <CssBaseline />
       <Grid
         item
         xs={false}

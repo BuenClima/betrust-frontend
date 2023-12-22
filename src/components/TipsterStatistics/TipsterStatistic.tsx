@@ -36,16 +36,26 @@ type StatisticProps = {
  */
 const Statistic = ({ value, label }: StatisticProps): JSX.Element => {
   return (
-    <Grid item xs={12} sm={1} container>
+    <Grid
+      item
+      xs={12}
+      sm={1}
+      container
+      sx={{
+        cursor: 'pointer',
+        color: 'text.secondary',
+        '&:hover': {
+          color: 'primary.main'
+        }
+      }}
+    >
       <Grid item xs={12}>
-        <Typography variant="body1" color="text.secondary" fontWeight={700}>
+        <Typography variant="body1" fontWeight={700}>
           {value}
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="caption" color="text.secondary">
-          {label}
-        </Typography>
+        <Typography variant="caption">{label}</Typography>
       </Grid>
     </Grid>
   )

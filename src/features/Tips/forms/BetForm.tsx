@@ -84,6 +84,25 @@ export const BetForm = () => {
           )}
         />
       </Grid>
+      <Grid item xs={10}>
+        <Controller
+          name="league"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <Select
+              value={value}
+              setValue={onChange}
+              error={!!errors.league}
+              options={[
+                { name: 'Femenine', id: 'premier' },
+                { name: 'Masculine', id: 'laliga' }
+              ]}
+              placeholder="Gender"
+              helperText={errors.league?.message ?? 'Helper text'}
+            />
+          )}
+        />
+      </Grid>
 
       <Grid item xs={10}>
         <Controller

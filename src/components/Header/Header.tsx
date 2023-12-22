@@ -1,15 +1,16 @@
 import { Grid } from '@mui/material'
 import PropTypes from 'prop-types'
 
+import { AccountType } from '@/types/account'
+
 import { AccountHeader } from './Headers/AccountHeader'
 import { TipsHeader } from './Headers/TipsHeader'
-import { TipsterHeader } from './Headers/TipsterHeader'
 import { TipstersHeader } from './Headers/TipstersHeader'
 
 /**
  * @description HeaderType type
  */
-export type HeaderType = 'tipsters' | 'tips' | 'tipster' | 'account'
+export type HeaderType = 'tipsters' | 'tips' | 'tipster' | 'user' | 'admin'
 
 /**
  * @description HeaderProps interface
@@ -28,8 +29,9 @@ export const Header = ({ type }: HeaderProps): JSX.Element => {
   const headers: Record<HeaderType, JSX.Element> = {
     tipsters: <TipstersHeader key={type} />,
     tips: <TipsHeader key={type} />,
-    tipster: <TipsterHeader key={type} />,
-    account: <AccountHeader key={type} />
+    tipster: <AccountHeader key={type} type={type as AccountType} permission="read" />,
+    user: <AccountHeader key={type} type={type as AccountType} permission="write" />,
+    admin: <></>
   }
 
   return (
@@ -44,7 +46,7 @@ export const Header = ({ type }: HeaderProps): JSX.Element => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        height: { xs: '100vh', sm: '25vh' }
+        height: { xs: '100vh', sm: '20vh' }
       }}
     >
       {headers[type]}

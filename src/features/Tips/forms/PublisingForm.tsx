@@ -2,6 +2,7 @@ import { Button, Grid, TextField } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store'
+import { Select } from '@/components/Inputs/Select/Select'
 import { hide } from '@/services/modalSlice'
 
 import useCreateTipForm, { CreateTipFormValues } from '../hooks/useCreateTipForm'
@@ -53,6 +54,26 @@ export const PublishingForm = () => {
               fullWidth
               helperText={errors.tip?.message ?? 'Helper text'}
               error={!!errors.tip}
+            />
+          )}
+        />
+      </Grid>
+
+      <Grid item xs={10}>
+        <Controller
+          name="league"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <Select
+              value={value}
+              setValue={onChange}
+              error={!!errors.league}
+              options={[
+                { name: 'Intuition', id: 'premier' },
+                { name: 'Trends', id: 'laliga' }
+              ]}
+              placeholder="Method"
+              helperText={errors.league?.message ?? 'Helper text'}
             />
           )}
         />
