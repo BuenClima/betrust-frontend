@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
+import authSlice from '@/features/Auth/services/authSlice'
 import filtersSlice from '@/services/filtersSlice'
 import loadingSlice from '@/services/loadingSlice'
 import modalSlice from '@/services/modalSlice'
@@ -12,7 +13,8 @@ export const store = configureStore({
   reducer: {
     loading: loadingSlice,
     modal: modalSlice,
-    filters: filtersSlice
+    filters: filtersSlice,
+    auth: authSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware()
 })

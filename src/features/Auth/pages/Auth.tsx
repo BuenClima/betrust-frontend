@@ -10,7 +10,11 @@ import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
 import Typography, { TypographyProps } from '@mui/material/Typography'
 import * as React from 'react'
+import { useSignIn } from 'react-auth-kit'
 import { useNavigate } from 'react-router-dom'
+
+import { useAppDispatch } from '@/app/store'
+import { signIn } from '@/features/Auth/services/authSlice'
 
 /**
  * @description CopyRight component
@@ -35,7 +39,9 @@ const Copyright = ({ ...props }: TypographyProps): JSX.Element => {
  * @returns {JSX.Element} SignIn component
  */
 export const SignIn = (): JSX.Element => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const authSignIn = useSignIn()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -113,6 +119,62 @@ export const SignIn = (): JSX.Element => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+            <Button
+              onClick={() => {
+                const user = {
+                  id: '1',
+                  email: 'user@email.com',
+                  name: 'User',
+                  role: {
+                    id: 1,
+                    name: 'user'
+                  }
+                }
+                dispatch(
+                  signIn({
+                    token: '123',
+                    user
+                  })
+                )
+                authSignIn({
+                  token: '123',
+                  tokenType: 'Bearer',
+                  expiresIn: 3600,
+                  authState: user
+                })
+                navigate('/')
+              }}
+            >
+              Sign In User
+            </Button>
+            <Button
+              onClick={() => {
+                const user = {
+                  id: '1',
+                  email: 'tipster@email.com',
+                  name: 'Tipster',
+                  role: {
+                    id: 1,
+                    name: 'tipster'
+                  }
+                }
+                dispatch(
+                  signIn({
+                    token: '123',
+                    user
+                  })
+                )
+                authSignIn({
+                  token: '123',
+                  tokenType: 'Bearer',
+                  expiresIn: 3600,
+                  authState: user
+                })
+                navigate('/')
+              }}
+            >
+              Sign In Tipster
+            </Button>
             <Button
               type="submit"
               fullWidth

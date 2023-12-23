@@ -9,36 +9,33 @@ import {
   Tooltip,
   Typography
 } from '@mui/material'
+import PropTypes from 'prop-types'
 import { useMemo } from 'react'
 
-import { useAppDispatch } from '@/app/store'
+import { useAppDispatch, useAppSelector } from '@/app/store'
 import { show } from '@/services/modalSlice'
-import { AccountType, PermissionType } from '@/types/account'
 
 /**
  * @description AccountHeader props
  * @property {string} type - Account type
  */
 type AccountHeaderProps = {
-  type: AccountType
-  permission: PermissionType
+  self?: boolean
 }
 
 /**
  * @description AccountHeader component
  * @returns {JSX.Element} AccountHeader component
  */
-export const AccountHeader = ({ type, permission }: AccountHeaderProps): JSX.Element => {
+export const AccountHeader = ({ self }: AccountHeaderProps): JSX.Element => {
+  const user = useAppSelector((state) => state.auth.user)
   const dispatch = useAppDispatch()
 
   const handleClickOnCreateTip = () => {
     dispatch(show('createTip'))
   }
 
-  const isTipsterAccount = useMemo(
-    () => type === 'tipster' && permission === 'write',
-    [type, permission]
-  )
+  const isTipsterAccount = useMemo(() => user?.role?.name === 'tipster', [user])
 
   return (
     <Grid container justifyContent={'center'} alignItems={'center'}>
@@ -68,14 +65,14 @@ export const AccountHeader = ({ type, permission }: AccountHeaderProps): JSX.Ele
               onChange={(e) => {
                 console.log(e.target)
               }}
-              disabled={permission === 'read'}
+              disabled={!self}
             />
             <Tooltip title="Add a profile image">
               <IconButton
                 color="primary"
                 aria-label="upload picture"
                 component="span"
-                disabled={permission === 'read'}
+                disabled={!self}
               >
                 <Avatar
                   sx={{
@@ -128,3 +125,11 @@ export const AccountHeader = ({ type, permission }: AccountHeaderProps): JSX.Ele
 }
 
 export default AccountHeader
+
+/**
+ * @description AccountHeader props
+ * @property {boolean} self - Is self account
+ */
+AccountHeader.propTypes = {
+  self: PropTypes.bool
+}

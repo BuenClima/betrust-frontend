@@ -1,49 +1,66 @@
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
+import { useAuthUser } from 'react-auth-kit'
+import { useLocation } from 'react-router-dom'
 
 import FilteredList from '@/components/FilteredList/FilteredList'
 import { Header } from '@/components/Header/Header'
 import Tabs from '@/components/Tabs/Tabs'
 import { Layout } from '@/layouts/Layout'
-import { AccountType, PermissionType } from '@/types/account'
 
 import { Stats } from '../components/Stats/Stats'
 import ProfileForm from '../forms/ProfileForm'
 
 /**
  * @description Account props
- * @property {string} type - Account type
+ * @property {PermissionType} permission - Account permission
  */
 type AccountProps = {
-  type: AccountType
-  permission: PermissionType
+  self?: boolean
 }
 
 /**
  * @description Account page
  * @returns {JSX.Element} Account page
  */
-export const Account = ({ type, permission }: AccountProps): JSX.Element => {
+export const Account = ({ self }: AccountProps): JSX.Element => {
+  const user = useAuthUser()
+  const location = useLocation()
+  const tipsterRegexPath = /\/tipsters\/[0-9]+/
+
+  const role = useMemo(() => user()?.role?.name, [user])
+
+  const type = useMemo(() => {
+    if (self) return 'self'
+    return role
+  }, [role, self])
+
   const tabs = useMemo(() => {
-    if (type === 'tipster' && permission === 'read') {
+    if (location.pathname === '/account') {
+      const tabs = []
+      if (role === 'tipster') {
+        tabs.push(
+          { label: 'Stats', component: <Stats /> },
+          { label: 'Tips', component: <FilteredList type="tips" filter="filterTips" /> }
+        )
+      }
+      if (self) {
+        tabs.push({ label: 'Profile', component: <ProfileForm /> })
+      }
+      return tabs
+    }
+    if (location.pathname.match(tipsterRegexPath)) {
       return [
         { label: 'Stats', component: <Stats /> },
         { label: 'Tips', component: <FilteredList type="tips" filter="filterTips" /> }
       ]
     }
-    if (type === 'tipster' && permission === 'write') {
-      return [
-        { label: 'Stats', component: <Stats /> },
-        { label: 'Tips', component: <FilteredList type="tips" filter="filterTips" /> },
-        { label: 'Profile', component: <ProfileForm /> }
-      ]
-    }
-    return [{ label: 'Profile', component: <ProfileForm /> }]
-  }, [type, permission])
+    return []
+  }, [type, self])
 
   return (
     <Layout>
-      <Header type={type} />
+      <Header type="user" self={self} />
       <Tabs tabs={tabs} />
     </Layout>
   )
@@ -53,8 +70,8 @@ export default Account
 
 /**
  * @description Account prop types
- * @property {string} type - Account type
+ * @property {string} permission - Account permission
  */
 Account.propTypes = {
-  type: PropTypes.oneOf(['tipster', 'account'])
+  permission: PropTypes.string
 }

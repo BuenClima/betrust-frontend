@@ -1,9 +1,11 @@
 import './index.css'
 
 import { lazy } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { AppProvider } from '@/providers/AppProvider'
+
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 
 const List = lazy(() => import('@/features/List/pages/List'))
 const Auth = lazy(() => import('@/features/Auth/pages/Auth'))
@@ -22,19 +24,43 @@ function App(): JSX.Element {
           <Routes>
             <Route path="/auth/signin" element={<Auth />} />
 
-            <Route path="/:resource" element={<List />} />
+            <Route
+              path="/:resource"
+              element={
+                <PrivateRoute>
+                  <List />
+                </PrivateRoute>
+              }
+            />
 
             <Route
               path="/tipsters/:id"
-              element={<Account type="tipster" permission="read" />}
+              element={
+                <PrivateRoute>
+                  <Account />
+                </PrivateRoute>
+              }
             />
 
             <Route
               path="/account"
-              element={<Account type="tipster" permission="write" />}
+              element={
+                <PrivateRoute>
+                  <Account self />
+                </PrivateRoute>
+              }
             />
 
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
+
+            <Route path="*" element={<Navigate to={'/'} replace />} />
           </Routes>
         </BrowserRouter>
       </div>

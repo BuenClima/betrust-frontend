@@ -1,16 +1,21 @@
 import { Grid } from '@mui/material'
 import PropTypes from 'prop-types'
 
-import { AccountType } from '@/types/account'
+import { AccountHeader } from '../../features/Account/components/Header/AccountHeader'
+import { ListHeader } from '../../features/List/Header/ListHeader'
 
-import { AccountHeader } from './Headers/AccountHeader'
-import { TipsHeader } from './Headers/TipsHeader'
-import { TipstersHeader } from './Headers/TipstersHeader'
+const loreIpsum = `Vestibulum dapibus ipsum lorem, in sollicitudin enim fermentum ac. Duis sagittis
+lobortis justo. Aliquam id lorem posuere, lobortis sem quis, eleifend nunc.
+Pellentesque at vulputate libero. Nullam tempor viverra bibendum. Mauris gravida
+malesuada eros, id placerat turpis interdum ut. Donec ut interdum risus.
+Pellentesque tincidunt elementum purus, quis finibus erat interdum quis. Integer
+ut purus ut massa scelerisque feugiat facilisis sed velit. Cras diam urna,
+hendrerit eget egestas a, fringilla at mi.`
 
 /**
  * @description HeaderType type
  */
-export type HeaderType = 'tipsters' | 'tips' | 'tipster' | 'user' | 'admin'
+export type HeaderType = 'tipsters' | 'tips' | 'user'
 
 /**
  * @description HeaderProps interface
@@ -18,6 +23,7 @@ export type HeaderType = 'tipsters' | 'tips' | 'tipster' | 'user' | 'admin'
  */
 type HeaderProps = {
   type: HeaderType
+  self?: boolean
 }
 
 /**
@@ -25,13 +31,11 @@ type HeaderProps = {
  * @param {HeaderProps} { type } - HeaderProps
  * @returns {JSX.Element} Header component
  */
-export const Header = ({ type }: HeaderProps): JSX.Element => {
+export const Header = ({ type, self }: HeaderProps): JSX.Element => {
   const headers: Record<HeaderType, JSX.Element> = {
-    tipsters: <TipstersHeader key={type} />,
-    tips: <TipsHeader key={type} />,
-    tipster: <AccountHeader key={type} type={type as AccountType} permission="read" />,
-    user: <AccountHeader key={type} type={type as AccountType} permission="write" />,
-    admin: <></>
+    tipsters: <ListHeader key={type} title="Our Tipsters" body={loreIpsum} />,
+    tips: <ListHeader key={type} title="Our Tipsters Tips" body={loreIpsum} />,
+    user: <AccountHeader key={type} self={self} />
   }
 
   return (

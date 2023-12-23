@@ -7,11 +7,10 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import { Suspense } from 'react'
-import AuthProvider from 'react-auth-kit/AuthProvider'
+import { AuthProvider } from 'react-auth-kit'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
 
-import { authStore } from '@/app/authStore'
 import store from '@/app/store'
 import { theme } from '@/app/theme'
 import { Fallback } from '@/components/Loading/Fallback'
@@ -37,7 +36,7 @@ export const AppProvider = ({ children }: AppProviderProps): JSX.Element => {
           <ThemeProvider theme={theme}>
             <Suspense fallback={<Fallback />}>
               <SnackbarProvider maxSnack={3}>
-                <AuthProvider store={authStore}>
+                <AuthProvider authType="localstorage" authName="auth">
                   <CssBaseline />
                   {children}
                 </AuthProvider>

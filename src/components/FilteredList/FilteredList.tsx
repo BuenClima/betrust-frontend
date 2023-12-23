@@ -59,10 +59,10 @@ export default FilteredList
 
 /**
  * @description FilteredList propTypes
- * @property {typeof LisType[]} type - ListType
- * @property {typeof FilterType[]} filter - FilterType
+ * @property {typeof LisType} type - ListType
+ * @property {typeof FilterType} filter - FilterType
  */
 FilteredList.propTypes = {
-  type: PropTypes.array.isRequired,
-  filter: PropTypes.array.isRequired
+  type: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired
 }
