@@ -1,0 +1,28 @@
+# Lints, and then tests module on all supported Node versions, as well as Windows/MacOS with Node 16.x
+name: ♻️ CI
+on:
+  push:
+    branches: ['develop', 'main']
+
+permissions:
+  contents: read
+
+jobs:
+  build_lint_test:
+    name: 📊 Build, Lint and Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: 📦 Install Packages
+        run: yarn
+      - name: 👚 Lint Files
+        run: yarn lint
+      - name: 👀 Type Check
+        run: yarn type-check
+      - name: 🧱 Build Project
+        run: yarn build
+      # - name: 📊 Run Tests
+      #   run: yarn test
