@@ -1,5 +1,5 @@
 import { Container, Tab, Tabs as TabsMui } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { a11yProps } from '@/components/A11ly/A11y'
 import { TabPanel } from '@/components/TabPanel/TabPanel'
@@ -32,6 +32,11 @@ export const Tabs = ({ tabs }: TabsProps): JSX.Element => {
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
+
+  useEffect(() => {
+    setValue(0)
+  }, [tabs])
+
   return (
     <Container maxWidth="xl">
       <TabsMui value={value} onChange={handleChange}>
