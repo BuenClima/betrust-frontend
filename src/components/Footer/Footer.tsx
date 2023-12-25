@@ -9,7 +9,7 @@ export const Footer = (): JSX.Element => {
     <Box
       sx={{
         width: '100%',
-        height: '2vh',
+        height: '5vh',
         backgroundColor: 'primary.main',
         paddingTop: '1rem',
         paddingBottom: '1rem'
