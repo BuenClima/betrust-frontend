@@ -20,26 +20,23 @@ import { hide, show } from '@/services/modalSlice'
 /**
  * @description TipCard component props
  * @property {boolean} extended - extended
+ * @property {boolean} owner - owner
  */
 type TipCardProps = {
   extended: boolean
+  owner?: boolean
 }
 
 /**
  * @description TipCard component
  * @returns {JSX.Element} TipCard component
  */
-export const TipCard = ({ extended }: TipCardProps): JSX.Element => {
+export const TipCard = ({ extended, owner }: TipCardProps): JSX.Element => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
   const cardStyle = useMemo(
     () => ({ cursor: `${extended ? '' : 'pointer'}` }),
-    [extended]
-  )
-
-  const cardHeader = useMemo(
-    () => (extended ? <Typography variant={'h6'}>Active</Typography> : undefined),
     [extended]
   )
 
@@ -64,7 +61,8 @@ export const TipCard = ({ extended }: TipCardProps): JSX.Element => {
 
   const handleCardHeaderClick = () => {
     if (extended) return
-    dispatch(show('tipDetails'))
+    if (owner) dispatch(show('createTip'))
+    else dispatch(show('tipDetails'))
   }
 
   const handleTipsterClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -104,7 +102,7 @@ export const TipCard = ({ extended }: TipCardProps): JSX.Element => {
           </Grid>
         }
         subheader={`Football | Spain | La Liga @ ${dayjs().format('DD MMMM YYYY HH:mm')}`}
-        action={cardHeader}
+        action={<Typography variant={'h6'}>Active</Typography>}
       />
       <CardContent>
         <Grid container justifyContent="center" alignItems="center" spacing={1}>
@@ -128,7 +126,9 @@ export default TipCard
 /**
  * @description TipCard component props default values
  * @property {boolean} extended - extended
+ * @property {boolean} owner - owner
  */
 TipCard.propTypes = {
-  extended: PropTypes.bool.isRequired
+  extended: PropTypes.bool.isRequired,
+  owner: PropTypes.bool
 }

@@ -13,7 +13,7 @@ import ProfileForm from '../forms/ProfileForm'
 
 /**
  * @description Account props
- * @property {PermissionType} permission - Account permission
+ * @property {boolean} self - Is account page for self
  */
 type AccountProps = {
   self?: boolean
@@ -30,18 +30,16 @@ export const Account = ({ self }: AccountProps): JSX.Element => {
 
   const role = useMemo(() => user()?.role?.name, [user])
 
-  const type = useMemo(() => {
-    if (self) return 'self'
-    return role
-  }, [role, self])
-
   const tabs = useMemo(() => {
     if (location.pathname === '/account') {
       const tabs = []
       if (role === 'tipster') {
         tabs.push(
           { label: 'Stats', component: <Stats /> },
-          { label: 'Tips', component: <FilteredList type="tips" filter="filterTips" /> }
+          {
+            label: 'Tips',
+            component: <FilteredList type="tips" filter="filterTips" owner />
+          }
         )
       }
       if (self) {
@@ -56,7 +54,7 @@ export const Account = ({ self }: AccountProps): JSX.Element => {
       ]
     }
     return []
-  }, [type, self])
+  }, [self])
 
   return (
     <Layout>
@@ -70,8 +68,8 @@ export default Account
 
 /**
  * @description Account prop types
- * @property {string} permission - Account permission
+ * @property {boolean} self - Is account page for self
  */
 Account.propTypes = {
-  permission: PropTypes.string
+  self: PropTypes.bool
 }

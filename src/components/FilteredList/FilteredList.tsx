@@ -16,10 +16,14 @@ export type ListType = 'tips' | 'tipsters'
 
 /**
  * @description ListProps interface
+ * @property {typeof LisType} type - ListType
+ * @property {typeof FilterType} filter - FilterType
+ * @property {boolean} owner - owner
  */
 type ListProps = {
   type: ListType
   filter: FilterType
+  owner?: true
 }
 
 /**
@@ -27,7 +31,7 @@ type ListProps = {
  * @param {ListProps} { type, filter} - ListProps
  * @returns {JSX.Element} FilteredList component
  */
-export const FilteredList = ({ type, filter }: ListProps): JSX.Element => {
+export const FilteredList = ({ type, filter, owner }: ListProps): JSX.Element => {
   const dispatch = useAppDispatch()
   const ListComponent = useMemo(() => (type === 'tips' ? TipCard : TipsterCard), [type])
 
@@ -47,7 +51,7 @@ export const FilteredList = ({ type, filter }: ListProps): JSX.Element => {
       >
         {[...Array(100)].map((_, i) => (
           <ListItem key={`${type}_${i}`}>
-            <ListComponent extended={false} />
+            <ListComponent extended={false} owner={owner} />
           </ListItem>
         ))}
       </MuiList>
@@ -61,8 +65,10 @@ export default FilteredList
  * @description FilteredList propTypes
  * @property {typeof LisType} type - ListType
  * @property {typeof FilterType} filter - FilterType
+ * @property {boolean} owner - owner
  */
 FilteredList.propTypes = {
   type: PropTypes.string.isRequired,
-  filter: PropTypes.string.isRequired
+  filter: PropTypes.string.isRequired,
+  owner: PropTypes.bool
 }

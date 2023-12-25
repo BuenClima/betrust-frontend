@@ -1,18 +1,13 @@
 import AddIcon from '@mui/icons-material/Add'
-import {
-  Avatar,
-  Button,
-  Grid,
-  IconButton,
-  Input,
-  InputLabel,
-  Tooltip,
-  Typography
-} from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
+import { Avatar, Button, Grid, Tooltip, Typography } from '@mui/material'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
+import { useAuthUser } from 'react-auth-kit'
+import { useLocation } from 'react-router-dom'
 
-import { useAppDispatch, useAppSelector } from '@/app/store'
+import { useAppDispatch } from '@/app/store'
+import ImageUpload from '@/components/Inputs/ImageUpload/ImageUpload'
 import { show } from '@/services/modalSlice'
 
 /**
@@ -28,14 +23,18 @@ type AccountHeaderProps = {
  * @returns {JSX.Element} AccountHeader component
  */
 export const AccountHeader = ({ self }: AccountHeaderProps): JSX.Element => {
-  const user = useAppSelector((state) => state.auth.user)
+  const location = useLocation()
+  const user = useAuthUser()
   const dispatch = useAppDispatch()
 
   const handleClickOnCreateTip = () => {
     dispatch(show('createTip'))
   }
 
-  const isTipsterAccount = useMemo(() => user?.role?.name === 'tipster', [user])
+  const isTipsterAccount = useMemo(
+    () => user()?.role?.name === 'tipster' && location.pathname === '/account',
+    [user, location.pathname]
+  )
 
   return (
     <Grid container justifyContent={'center'} alignItems={'center'}>
@@ -55,40 +54,20 @@ export const AccountHeader = ({ self }: AccountHeaderProps): JSX.Element => {
           justifyContent={'flex-end'}
           alignItems={'center'}
         >
-          <InputLabel htmlFor="avatar-button-file">
-            <Input
-              style={{ display: 'none' }}
-              id="avatar-button-file"
-              name="avatar-button-file"
-              type="file"
-              inputProps={{ accept: 'image/*' }}
-              onChange={(e) => {
-                console.log(e.target)
+          <ImageUpload self={self} tooltip="Upload avatar image">
+            <Avatar
+              sx={{
+                border: '4px solid #ffd700',
+                width: 124,
+                height: 124,
+                '&:hover': {
+                  opacity: 0.9
+                }
               }}
-              disabled={!self}
+              aria-label="recipe"
+              src="https://i.pravatar.cc/300"
             />
-            <Tooltip title="Add a profile image">
-              <IconButton
-                color="primary"
-                aria-label="upload picture"
-                component="span"
-                disabled={!self}
-              >
-                <Avatar
-                  sx={{
-                    border: '4px solid #ffd700',
-                    width: 124,
-                    height: 124,
-                    '&:hover': {
-                      opacity: 0.9
-                    }
-                  }}
-                  aria-label="recipe"
-                  src="https://i.pravatar.cc/300"
-                />
-              </IconButton>
-            </Tooltip>
-          </InputLabel>
+          </ImageUpload>
         </Grid>
 
         <Grid
@@ -108,17 +87,31 @@ export const AccountHeader = ({ self }: AccountHeaderProps): JSX.Element => {
         </Grid>
       </Grid>
       {isTipsterAccount && (
-        <Grid item xs={12} sm={2} container>
-          <Tooltip title="Create tip">
-            <Button
-              variant="outlined"
-              startIcon={<AddIcon />}
-              onClick={handleClickOnCreateTip}
-            >
-              Create tip
-            </Button>
-          </Tooltip>
-        </Grid>
+        <>
+          <ImageUpload
+            self={self}
+            tooltip="Upload cover image"
+            iconButtonSx={{
+              position: 'absolute !important',
+              top: 100,
+              right: 20,
+              color: '#fff'
+            }}
+          >
+            <EditIcon />
+          </ImageUpload>
+          <Grid item xs={12} sm={2} container>
+            <Tooltip title="Create tip">
+              <Button
+                variant="outlined"
+                startIcon={<AddIcon />}
+                onClick={handleClickOnCreateTip}
+              >
+                Create tip
+              </Button>
+            </Tooltip>
+          </Grid>
+        </>
       )}
     </Grid>
   )
