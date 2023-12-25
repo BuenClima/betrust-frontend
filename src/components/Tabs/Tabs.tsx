@@ -26,7 +26,8 @@ type TabsProps = {
  * @description Tabs component
  * @returns {JSX.Element} Tabs component
  */
-export const Tabs = ({ tabs }: TabsProps): JSX.Element => {
+export const Tabs = (props: TabsProps): JSX.Element => {
+  const { tabs } = props
   const [value, setValue] = useState(0)
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {

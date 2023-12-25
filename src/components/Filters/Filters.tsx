@@ -19,7 +19,8 @@ type FiltersProps = {
  * @param {FiltersProps} { filter } - FiltersProps
  * @returns {JSX.Element} Filters component
  */
-export const Filters = ({ filter }: FiltersProps): JSX.Element => {
+export const Filters = (props: FiltersProps): JSX.Element => {
+  const { filter } = props
   const dispatch = useAppDispatch()
 
   const handleOpen = () => {

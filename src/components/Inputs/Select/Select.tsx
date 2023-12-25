@@ -63,16 +63,17 @@ export type SelectProps = {
  *  customSetInput={customSetInput}
  * />
  */
-export const Select = ({
-  value,
-  setValue,
-  options,
-  placeholder,
-  helperText,
-  error,
-  'data-testid': dataTestId,
-  disabled
-}: SelectProps): JSX.Element => {
+export const Select = (props: SelectProps): JSX.Element => {
+  const {
+    value,
+    setValue,
+    options,
+    placeholder,
+    helperText,
+    error,
+    'data-testid': dataTestId,
+    disabled
+  } = props
   const [input, setInput] = useState<string>('')
 
   return (

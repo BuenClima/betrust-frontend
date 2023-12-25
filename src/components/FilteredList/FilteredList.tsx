@@ -31,7 +31,8 @@ type ListProps = {
  * @param {ListProps} { type, filter} - ListProps
  * @returns {JSX.Element} FilteredList component
  */
-export const FilteredList = ({ type, filter, owner }: ListProps): JSX.Element => {
+export const FilteredList = (props: ListProps): JSX.Element => {
+  const { type, filter, owner } = props
   const dispatch = useAppDispatch()
   const ListComponent = useMemo(() => (type === 'tips' ? TipCard : TipsterCard), [type])
 

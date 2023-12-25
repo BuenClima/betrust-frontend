@@ -23,7 +23,9 @@ type AccountProps = {
  * @description Account page
  * @returns {JSX.Element} Account page
  */
-export const Account = ({ self }: AccountProps): JSX.Element => {
+export const Account = (props: AccountProps): JSX.Element => {
+  const { self } = props
+
   const user = useAuthUser()
   const location = useLocation()
   const tipsterRegexPath = /\/tipsters\/[0-9]+/

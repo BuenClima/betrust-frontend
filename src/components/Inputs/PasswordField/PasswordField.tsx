@@ -52,15 +52,16 @@ export type PasswordFieldProps = {
  *  data-testid="password-field"
  * />
  */
-export const PasswordField = ({
-  onChange,
-  value,
-  error,
-  placeholder,
-  helperText,
-  label = '',
-  'data-testid': dataTestId
-}: PasswordFieldProps): JSX.Element => {
+export const PasswordField = (props: PasswordFieldProps): JSX.Element => {
+  const {
+    onChange,
+    value,
+    error,
+    placeholder,
+    helperText,
+    label,
+    'data-testid': dataTestId
+  } = props
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const handleClickShowPassword = () => setShowPassword(!showPassword)

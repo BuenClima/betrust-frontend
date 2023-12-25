@@ -18,13 +18,15 @@ type LayoutProps = {
  * @param {React.ReactNode | React.ReactNode[]} children - children
  * @returns {JSX.Element} Layout component
  */
-export const Layout = ({ children }: LayoutProps): JSX.Element => {
+export const Layout = (props: LayoutProps): JSX.Element => {
   return (
     <div>
       <AppBar />
       <Loading />
       <Modal />
-      <Box style={{ height: 'calc(100vh - 69px - 4vh)', width: '100%' }}>{children}</Box>
+      <Box style={{ height: 'calc(100vh - 69px - 4vh)', width: '100%' }}>
+        {props.children}
+      </Box>
     </div>
   )
 }

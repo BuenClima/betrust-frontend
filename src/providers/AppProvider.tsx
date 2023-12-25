@@ -28,7 +28,7 @@ type AppProviderProps = {
  * @param {React.ReactNode | React.ReactNode[]} children - children
  * @returns {JSX.Element} AppProvider component
  */
-export const AppProvider = ({ children }: AppProviderProps): JSX.Element => {
+export const AppProvider = (props: AppProviderProps): JSX.Element => {
   return (
     <HelmetProvider>
       <Provider store={store}>
@@ -38,7 +38,7 @@ export const AppProvider = ({ children }: AppProviderProps): JSX.Element => {
               <SnackbarProvider maxSnack={3}>
                 <AuthProvider authType="localstorage" authName="auth">
                   <CssBaseline />
-                  {children}
+                  {props.children}
                 </AuthProvider>
               </SnackbarProvider>
             </Suspense>

@@ -14,7 +14,8 @@ type ListHeaderProps = {
  * @description ListHeader component
  * @returns {JSX.Element} ListHeader component
  */
-export const ListHeader = ({ title, body }: ListHeaderProps): JSX.Element => {
+export const ListHeader = (props: ListHeaderProps): JSX.Element => {
+  const { title, body } = props
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={10} container justifyContent="center" alignItems="center">

@@ -31,7 +31,8 @@ type TipCardProps = {
  * @description TipCard component
  * @returns {JSX.Element} TipCard component
  */
-export const TipCard = ({ extended, owner }: TipCardProps): JSX.Element => {
+export const TipCard = (props: TipCardProps): JSX.Element => {
+  const { extended, owner } = props
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 

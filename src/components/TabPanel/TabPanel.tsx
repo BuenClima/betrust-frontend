@@ -19,12 +19,8 @@ interface TabPanelProps {
  * @param {number} value - value
  * @return {JSX.Element} TabPanel component
  */
-export const TabPanel = ({
-  children,
-  value,
-  index,
-  ...rest
-}: TabPanelProps): JSX.Element => {
+export const TabPanel = (props: TabPanelProps): JSX.Element => {
+  const { children, value, index, ...rest } = props
   return (
     <div
       role="tabpanel"

@@ -14,10 +14,10 @@ type LayoutProps = {
  * @param {LayoutProps} props - props
  * @returns {JSX.Element} Layout component
  */
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout = (props: LayoutProps): JSX.Element => {
   return (
     <Container maxWidth="xl" sx={{ width: '50vw', minHeight: '35vh' }}>
-      {children}
+      {props.children}
     </Container>
   )
 }

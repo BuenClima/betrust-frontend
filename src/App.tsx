@@ -3,9 +3,8 @@ import './index.css'
 import { lazy } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
+import PrivateRoute from '@/components/PrivateRoute/PrivateRoute'
 import { AppProvider } from '@/providers/AppProvider'
-
-import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 
 const List = lazy(() => import('@/features/List/pages/List'))
 const Auth = lazy(() => import('@/features/Auth/pages/Auth'))

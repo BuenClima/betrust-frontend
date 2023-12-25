@@ -31,7 +31,7 @@ type PrivateRouteProps = {
  *  <p>This is a protected route.</p>
  * </PrivateRoute>
  */
-export const PrivateRoute = ({ children }: PrivateRouteProps): JSX.Element => {
+export const PrivateRoute = (props: PrivateRouteProps): JSX.Element => {
   const authToken = useAppSelector((state) => state.auth.token)
   const token = useAuthHeader()
   const dispath = useAppDispatch()
@@ -66,7 +66,7 @@ export const PrivateRoute = ({ children }: PrivateRouteProps): JSX.Element => {
    */
   if (isAuthenticated()) {
     if (!authToken) dispatchAuthenticatedToken()
-    return children
+    return props.children
   } else dispatchUnauthenticatedToken()
 
   return <Navigate to={'/auth/signin'} state={{ from: location }} replace />

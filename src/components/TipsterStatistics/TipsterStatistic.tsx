@@ -34,7 +34,8 @@ type StatisticProps = {
  * @param {StatisticProps} { value, label } - StatisticProps
  * @returns {JSX.Element} Statistic component
  */
-const Statistic = ({ value, label }: StatisticProps): JSX.Element => {
+const Statistic = (props: StatisticProps): JSX.Element => {
+  const { value, label } = props
   return (
     <Grid
       item

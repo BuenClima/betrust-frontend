@@ -62,15 +62,16 @@ export type MultiSelectProps = {
  *   dataTestId="multi-select"
  * />
  */
-export const MultiSelect = ({
-  value,
-  setValue,
-  options,
-  placeholder,
-  helperText,
-  error,
-  'data-testid': dataTestId
-}: MultiSelectProps): JSX.Element => {
+export const MultiSelect = (props: MultiSelectProps): JSX.Element => {
+  const {
+    value,
+    setValue,
+    options,
+    placeholder,
+    helperText,
+    error,
+    'data-testid': dataTestId
+  } = props
   const [input, setInput] = useState<string>('')
 
   return (

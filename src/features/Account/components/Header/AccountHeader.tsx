@@ -22,7 +22,8 @@ type AccountHeaderProps = {
  * @description AccountHeader component
  * @returns {JSX.Element} AccountHeader component
  */
-export const AccountHeader = ({ self }: AccountHeaderProps): JSX.Element => {
+export const AccountHeader = (props: AccountHeaderProps): JSX.Element => {
+  const { self } = props
   const location = useLocation()
   const user = useAuthUser()
   const dispatch = useAppDispatch()

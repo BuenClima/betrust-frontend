@@ -20,12 +20,8 @@ type ImageUploadProps = {
  * @param {ImageUploadProps} { tooltip, component, self } - ImageUploadProps
  * @returns {JSX.Element} ImageUpload component
  */
-export const ImageUpload = ({
-  tooltip,
-  children,
-  iconButtonSx,
-  self
-}: ImageUploadProps): JSX.Element => {
+export const ImageUpload = (props: ImageUploadProps): JSX.Element => {
+  const { tooltip, children, self, iconButtonSx } = props
   return (
     <InputLabel htmlFor="avatar-button-file">
       <Input

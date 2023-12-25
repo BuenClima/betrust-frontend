@@ -31,7 +31,8 @@ type HeaderProps = {
  * @param {HeaderProps} { type } - HeaderProps
  * @returns {JSX.Element} Header component
  */
-export const Header = ({ type, self }: HeaderProps): JSX.Element => {
+export const Header = (props: HeaderProps): JSX.Element => {
+  const { type, self } = props
   const headers: Record<HeaderType, JSX.Element> = {
     tipsters: <ListHeader key={type} title="Our Tipsters" body={loreIpsum} />,
     tips: <ListHeader key={type} title="Our Tipsters Tips" body={loreIpsum} />,
