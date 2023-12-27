@@ -53,7 +53,6 @@ export const CardTipsterContent = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false)
 
   const handleExpandClick = () => {
-    console.log('in')
     setExpanded(!expanded)
   }
 
