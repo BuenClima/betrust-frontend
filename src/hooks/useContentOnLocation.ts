@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { ListType } from '@/components/FilteredList/FilteredList'
+import { CardType } from '@/components/Cards/Card'
 import { HeaderType } from '@/components/Header/Header'
 import { FilterType } from '@/services/modalSlice'
 
@@ -20,7 +20,7 @@ type ContentType = 'tipsters' | 'tips'
 type Content = {
   header: HeaderType
   filter: FilterType
-  content: ListType
+  content: CardType
 }
 
 /**
@@ -34,7 +34,7 @@ export const useContentOnLocation = (): Content => {
   const [content, setContent] = useState<Content>({
     header: 'tipsters',
     filter: 'filterTipsters',
-    content: 'tipsters'
+    content: 'tipster'
   })
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const useContentOnLocation = (): Content => {
       setContent({
         header: type as ContentType,
         filter: filters[type as ContentType],
-        content: type as ContentType
+        content: type.substring(0, type.length - 1) as CardType
       })
     else navigate('/tipsters')
   }, [location.pathname])

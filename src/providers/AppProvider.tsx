@@ -13,7 +13,7 @@ import { Provider } from 'react-redux'
 
 import store from '@/app/store'
 import { theme } from '@/app/theme'
-import { Fallback } from '@/components/Loading/Fallback'
+import { Fallback } from '@/components/Fallback/Fallback'
 
 /**
  * @description AppProviderProps type

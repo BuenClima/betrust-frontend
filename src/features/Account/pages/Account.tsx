@@ -40,7 +40,7 @@ export const Account = (props: AccountProps): JSX.Element => {
           { label: 'Stats', component: <Stats /> },
           {
             label: 'Tips',
-            component: <FilteredList type="tips" filter="filterTips" owner />
+            component: <FilteredList type="tip" filter="filterTips" owner />
           }
         )
       }
@@ -52,7 +52,7 @@ export const Account = (props: AccountProps): JSX.Element => {
     if (location.pathname.match(tipsterRegexPath)) {
       return [
         { label: 'Stats', component: <Stats /> },
-        { label: 'Tips', component: <FilteredList type="tips" filter="filterTips" /> }
+        { label: 'Tips', component: <FilteredList type="tip" filter="filterTips" /> }
       ]
     }
     return []

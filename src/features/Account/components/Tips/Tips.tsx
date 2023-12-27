@@ -14,7 +14,7 @@ export const Tips = (): JSX.Element => {
         <Typography>History (100)</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <FilteredList type="tips" filter="filterTips" />
+        <FilteredList type="tip" filter="filterTips" />
       </AccordionDetails>
     </Accordion>
   )

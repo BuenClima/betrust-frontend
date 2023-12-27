@@ -1,18 +1,13 @@
 import { Container, List as MuiList, ListItem } from '@mui/material'
 import PropTypes from 'prop-types'
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 
 import { useAppDispatch } from '@/app/store'
-import { TipCard } from '@/components/Cards/TipCard'
-import { TipsterCard } from '@/components/Cards/TipsterCard'
 import { Filters } from '@/components/Filters/Filters'
 import { reset } from '@/services/filtersSlice'
 import { FilterType } from '@/services/modalSlice'
 
-/**
- * @description ListType type
- */
-export type ListType = 'tips' | 'tipsters'
+import Card, { CardType } from '../Cards/Card'
 
 /**
  * @description ListProps interface
@@ -21,7 +16,7 @@ export type ListType = 'tips' | 'tipsters'
  * @property {boolean} owner - owner
  */
 type ListProps = {
-  type: ListType
+  type: CardType
   filter: FilterType
   owner?: true
 }
@@ -34,7 +29,6 @@ type ListProps = {
 export const FilteredList = (props: ListProps): JSX.Element => {
   const { type, filter, owner } = props
   const dispatch = useAppDispatch()
-  const ListComponent = useMemo(() => (type === 'tips' ? TipCard : TipsterCard), [type])
 
   useEffect(() => {
     dispatch(reset())
@@ -52,7 +46,7 @@ export const FilteredList = (props: ListProps): JSX.Element => {
       >
         {[...Array(100)].map((_, i) => (
           <ListItem key={`${type}_${i}`}>
-            <ListComponent extended={false} owner={owner} />
+            <Card type={type} extended={false} owner={owner} />
           </ListItem>
         ))}
       </MuiList>

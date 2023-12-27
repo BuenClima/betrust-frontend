@@ -2,21 +2,17 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShareIcon from '@mui/icons-material/Share'
 import {
-  Avatar,
-  Card,
   CardActions,
   CardContent,
-  CardHeader,
   Collapse,
   IconButton,
   IconButtonProps,
   styled,
   Typography
-} from '@mui/material/'
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+} from '@mui/material'
+import { useState } from 'react'
 
-import { TipsterStatistics } from '@/components/TipsterStatistics/TipsterStatistic'
+import TipsterStatistics from '@/components/TipsterStatistics/TipsterStatistic'
 
 /**
  * @description ExpandMoreProps interface
@@ -43,46 +39,26 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }))
 
 /**
- * @description TipsterCard component
- * @returns {JSX.Element} TipsterCard component
+ * @description CardTipsterContent props
  */
-export const TipsterCard = (): JSX.Element => {
-  const navigate = useNavigate()
-  const [expanded, setExpanded] = React.useState(false)
+export type CardTipsterContentProps = unknown
+
+/**
+ * @description CardTipsterContent component
+ * @param {CardTipsterContentProps} props - CardTipsterContentProps
+ * @returns {JSX.Element} CardTipsterContent component
+ */
+// eslint-disable-next-line
+export const CardTipsterContent = (props: CardTipsterContentProps): JSX.Element => {
+  const [expanded, setExpanded] = useState(false)
 
   const handleExpandClick = () => {
+    console.log('in')
     setExpanded(!expanded)
   }
 
-  const handleCardHeaderClick = () => {
-    navigate('/tipsters/1')
-  }
-
   return (
-    <Card sx={{ width: '100%', my: 1 }}>
-      <CardHeader
-        sx={{ cursor: 'pointer' }}
-        onClick={handleCardHeaderClick}
-        avatar={
-          <Avatar
-            sx={{
-              border: '2px solid #ffd700',
-              width: 56,
-              height: 56,
-              '&:hover': {
-                opacity: 0.9
-              }
-            }}
-            aria-label="recipe"
-            src="https://i.pravatar.cc/300"
-          >
-            R
-          </Avatar>
-        }
-        title="#1 Diego Martin"
-        subheader="Football | Baseball"
-        titleTypographyProps={{ variant: 'h6' }}
-      />
+    <>
       <CardContent>
         <TipsterStatistics />
       </CardContent>
@@ -131,8 +107,8 @@ export const TipsterCard = (): JSX.Element => {
           </Typography>
         </CardContent>
       </Collapse>
-    </Card>
+    </>
   )
 }
 
-export default TipsterCard
+export default CardTipsterContent
