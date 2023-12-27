@@ -48,8 +48,8 @@ export type CardTipsterContentProps = unknown
  * @param {CardTipsterContentProps} props - CardTipsterContentProps
  * @returns {JSX.Element} CardTipsterContent component
  */
-// eslint-disable-next-line
-export const CardTipsterContent = (props: CardTipsterContentProps): JSX.Element => {
+
+export const CardTipsterContent = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false)
 
   const handleExpandClick = () => {
