@@ -1,7 +1,32 @@
 {
   "name": "frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "A React project",
+  "author": "Diego Martín Hernández",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuenClima/betrust-frontend"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "typescript",
+    "eslint",
+    "prettier",
+    "storybook",
+    "react-testing-library",
+    "vitest",
+    "react-router-dom",
+    "react-redux",
+    "redux-toolkit",
+    "react-auth-kit",
+    "react-hook-form",
+    "dayjs",
+    "i18next",
+    "notistack",
+    "material-ui"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
