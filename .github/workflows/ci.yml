@@ -1,7 +1,7 @@
 # Lints, and then tests module on all supported Node versions, as well as Windows/MacOS with Node 16.x
 name: ♻️ CI
 on:
-  push:
+  pull_request:
     branches: ['develop', 'main']
 
 permissions:
@@ -26,5 +26,5 @@ jobs:
         run: yarn type-check
       - name: 🧱 Build Project
         run: yarn build
-      # - name: 📊 Run Tests
-      #   run: yarn test
+      - name: 📊 Run Tests
+        run: yarn test
