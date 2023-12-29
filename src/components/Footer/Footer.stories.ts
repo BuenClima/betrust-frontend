@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { AppBar } from './AppBar'
+import { Footer } from './Footer'
 
 const meta = {
-  title: 'Components/AppBar',
-  component: AppBar,
+  title: 'Components/Footer',
+  component: Footer,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs']
-} satisfies Meta<typeof AppBar>
+} satisfies Meta<typeof Footer>
 
 export default meta
 type Story = StoryObj<typeof meta>

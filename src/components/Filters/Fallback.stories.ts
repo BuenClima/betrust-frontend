@@ -1,42 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { FilteredList } from './FilteredList'
+import { Filters } from './Filters'
 
 const meta = {
-  title: 'Components/FilteredList',
+  title: 'Components/Filters',
   // @ts-expect-error Invalid PropTypes
-  component: FilteredList,
+  component: Filters,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs'],
   argTypes: {
-    type: {
-      control: {
-        type: 'select',
-        options: ['tip', 'tipster']
-      }
-    },
     filter: {
       control: {
         type: 'select',
         options: ['filterTips', 'filterTipsters']
       }
-    },
-    owner: {
-      control: {
-        type: 'boolean'
-      }
     }
   }
-} satisfies Meta<typeof FilteredList>
+} satisfies Meta<typeof Filters>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    type: 'tipster',
     filter: 'filterTipsters'
   }
 }
