@@ -1,15 +1,43 @@
 {
   "name": "frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "A React project",
+  "author": "Diego Martín Hernández",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuenClima/betrust-frontend"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "typescript",
+    "eslint",
+    "prettier",
+    "storybook",
+    "react-testing-library",
+    "vitest",
+    "react-router-dom",
+    "react-redux",
+    "redux-toolkit",
+    "react-auth-kit",
+    "react-hook-form",
+    "dayjs",
+    "i18next",
+    "notistack",
+    "material-ui"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "test": "vitest",
+    "lint": "eslint ./src --ext ts,tsx",
     "prettify": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -35,6 +63,17 @@
     "react-router-dom": "^6.20.0"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/react": "^7.6.6",
+    "@storybook/react-vite": "^7.6.6",
+    "@storybook/test": "^7.6.6",
+    "@testing-library/jest-dom": "^6.1.6",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
     "@types/prop-types": "^15",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
@@ -51,11 +90,16 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-storybook": "^0.6.15",
     "husky": "^8.0.3",
+    "jsdom": "^23.0.1",
     "lint-staged": "^15.1.0",
+    "node-fetch": "^3.3.2",
     "prettier": "^3.1.0",
+    "storybook": "^7.6.6",
     "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "vite": "^5.0.5",
+    "vitest": "^1.1.0"
   },
   "packageManager": "yarn@4.0.2",
   "lint-staged": {

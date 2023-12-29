@@ -63,7 +63,7 @@ export default FilteredList
  * @property {boolean} owner - owner
  */
 FilteredList.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['tipster', 'tip']).isRequired,
   filter: PropTypes.string.isRequired,
   owner: PropTypes.bool
 }

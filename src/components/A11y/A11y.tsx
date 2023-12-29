@@ -8,6 +8,6 @@ type a11y = { id: string; 'aria-controls': string }
 export const a11yProps = (index: number): a11y => {
   return {
     id: `tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
+    'aria-controls': `tabpanel-${index}`
   }
 }

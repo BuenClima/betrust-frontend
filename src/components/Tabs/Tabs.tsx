@@ -1,7 +1,7 @@
 import { Container, Tab, Tabs as TabsMui } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-import { a11yProps } from '@/components/A11ly/A11y'
+import { a11yProps } from '@/components/A11y/A11y'
 import { TabPanel } from '@/components/TabPanel/TabPanel'
 
 /**
