@@ -1,7 +1,7 @@
 import './index.css'
 
 import { lazy } from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import PrivateRoute from '@/components/PrivateRoute/PrivateRoute'
 import { AppProvider } from '@/providers/AppProvider'
@@ -18,51 +18,47 @@ const Home = lazy(() => import('@/features/Home/pages/Home'))
 function App(): JSX.Element {
   return (
     <AppProvider>
-      <div style={{ height: '100vh', width: '100vw' }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/auth/signin" element={<Auth />} />
+      <Routes>
+        <Route path="/auth/signin" element={<Auth />} />
 
-            <Route
-              path="/:resource"
-              element={
-                <PrivateRoute>
-                  <List />
-                </PrivateRoute>
-              }
-            />
+        <Route
+          path="/:resource"
+          element={
+            <PrivateRoute>
+              <List />
+            </PrivateRoute>
+          }
+        />
 
-            <Route
-              path="/tipsters/:id"
-              element={
-                <PrivateRoute>
-                  <Account />
-                </PrivateRoute>
-              }
-            />
+        <Route
+          path="/tipsters/:id"
+          element={
+            <PrivateRoute>
+              <Account />
+            </PrivateRoute>
+          }
+        />
 
-            <Route
-              path="/account"
-              element={
-                <PrivateRoute>
-                  <Account self />
-                </PrivateRoute>
-              }
-            />
+        <Route
+          path="/account"
+          element={
+            <PrivateRoute>
+              <Account self />
+            </PrivateRoute>
+          }
+        />
 
-            <Route
-              path="/"
-              element={
-                <PrivateRoute>
-                  <Home />
-                </PrivateRoute>
-              }
-            />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
 
-            <Route path="*" element={<Navigate to={'/'} replace />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+        <Route path="*" element={<Navigate to={'/'} replace />} />
+      </Routes>
     </AppProvider>
   )
 }
