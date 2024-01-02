@@ -8,7 +8,7 @@ import { TipstersFilterForm } from '@/features/List/forms/TipstersFilterForm'
 import { CreateTipForm } from '@/features/Tips/forms/CreateTipForm'
 import { hide, ModalType } from '@/services/modalSlice'
 
-import Card from '../Cards/Card'
+import Card from '../Card/Card'
 
 /**
  * @description style object for Modal component

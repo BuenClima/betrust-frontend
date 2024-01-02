@@ -15,7 +15,7 @@ export type CardTipActionProps = {
  */
 export const CardTipAction = (props: CardTipActionProps): JSX.Element => {
   const { status } = props
-  return <Typography>{status}</Typography>
+  return <Typography data-testid="card-tip-action">{status}</Typography>
 }
 
 export default CardTipAction

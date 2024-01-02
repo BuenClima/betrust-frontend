@@ -10,7 +10,7 @@ import {
   styled,
   Typography
 } from '@mui/material'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import TipsterStatistics from '@/components/TipsterStatistics/TipsterStatistic'
 
@@ -57,11 +57,11 @@ export const CardTipsterContent = (): JSX.Element => {
   }
 
   return (
-    <>
-      <CardContent>
+    <React.Fragment>
+      <CardContent data-testid="card-tipster-content">
         <TipsterStatistics />
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions disableSpacing data-testid="card-tipster-content-actions">
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
@@ -73,6 +73,7 @@ export const CardTipsterContent = (): JSX.Element => {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          data-testid="card-tipster-content-collapse-button"
         >
           <ExpandMoreIcon />
         </ExpandMore>
@@ -106,7 +107,7 @@ export const CardTipsterContent = (): JSX.Element => {
           </Typography>
         </CardContent>
       </Collapse>
-    </>
+    </React.Fragment>
   )
 }
 

@@ -16,7 +16,7 @@ export type CardTipsterTitleProps = {
  */
 export const CardTipsterTitle = (props: CardTipsterTitleProps): JSX.Element => {
   const { title } = props
-  return <Typography>{title}</Typography>
+  return <Typography data-testid="card-tipster-title">{title}</Typography>
 }
 
 export default CardTipsterTitle

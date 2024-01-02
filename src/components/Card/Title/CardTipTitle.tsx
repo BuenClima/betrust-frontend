@@ -24,10 +24,14 @@ export const CardTipTitle = (props: CardTipTitleProps): JSX.Element => {
     handleTipsterCallback && handleTipsterCallback(e)
   }
   return (
-    <Grid container gap={1} alignItems="center">
+    <Grid container gap={1} alignItems="center" data-testid="card-tip-title">
       <Typography variant="h6">{title}</Typography>
 
-      <IconButton onClick={handleTipsterClick} sx={{ borderRadius: 0.3 }}>
+      <IconButton
+        onClick={handleTipsterClick}
+        sx={{ borderRadius: 0.3 }}
+        data-testid="card-tip-button"
+      >
         <Typography>{tipster}</Typography>
       </IconButton>
     </Grid>

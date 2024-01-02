@@ -16,7 +16,7 @@ export type CardTipsterSubtitleProps = {
  */
 export const CardTipSubtitle = (props: CardTipsterSubtitleProps): JSX.Element => {
   const { subtitle } = props
-  return <Typography>{subtitle}</Typography>
+  return <Typography data-testid="card-tip-subtitle">{subtitle}</Typography>
 }
 
 export default CardTipSubtitle

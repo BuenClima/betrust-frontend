@@ -7,7 +7,7 @@ import { Filters } from '@/components/Filters/Filters'
 import { reset } from '@/services/filtersSlice'
 import { FilterType } from '@/services/modalSlice'
 
-import Card, { CardType } from '../Cards/Card'
+import Card, { CardType } from '../Card/Card'
 
 /**
  * @description ListProps interface
