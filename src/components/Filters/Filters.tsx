@@ -37,6 +37,7 @@ export const Filters = (props: FiltersProps): JSX.Element => {
       container
       justifyContent="space-between"
       alignItems="center"
+      data-testid="filters"
     >
       <Tooltip title="Filters">
         <Button
