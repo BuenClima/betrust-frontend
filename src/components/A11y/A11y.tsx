@@ -1,3 +1,8 @@
+/**
+ * @description a11y type
+ * @property {string} id - id
+ * @property {string} aria-controls - aria-controls
+ */
 type a11y = { id: string; 'aria-controls': string }
 
 /**

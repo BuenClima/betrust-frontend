@@ -16,7 +16,7 @@ export type CardTipContentProps = {
  * @param {CardTipContentProps} props - CardTipContentProps
  * @returns {JSX.Element} CardTipContent component
  */
-export const CardTipContent = (props: CardTipContentProps) => {
+export const CardTipContent = (props: CardTipContentProps): JSX.Element => {
   const { extended, handleTipClick } = props
 
   const handleOnClick = () => {
@@ -25,7 +25,7 @@ export const CardTipContent = (props: CardTipContentProps) => {
 
   const extendedCardContent = useMemo(
     () => (
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} data-testid="card-tip-content-extended-info">
         <Chip
           label="Bet365"
           color="success"
@@ -42,13 +42,17 @@ export const CardTipContent = (props: CardTipContentProps) => {
     [extended]
   )
   return (
-    <CardContent onClick={handleOnClick}>
+    <CardContent onClick={handleOnClick} data-testid="card-tip-content">
       <Grid container justifyContent="center" alignItems="center" spacing={1}>
         <Grid item xs={12} container justifyContent="center" alignItems="center">
-          <Typography variant={'h6'}>Real Madrid vs Barcelona</Typography>
+          <Typography variant={'h6'} data-testid="card-tip-content-title">
+            Real Madrid vs Barcelona
+          </Typography>
         </Grid>
         <Grid item xs={12} container justifyContent="center" alignItems="center">
-          <Typography variant={'subtitle1'}>Real Madrid to win</Typography>
+          <Typography variant={'subtitle1'} data-testid="card-tip-content-subtitle">
+            Real Madrid to win
+          </Typography>
         </Grid>
         <Grid item xs={12} container justifyContent="center" alignItems="center">
           {extended && extendedCardContent}

@@ -7,7 +7,7 @@ import { Filters } from '@/components/Filters/Filters'
 import { reset } from '@/services/filtersSlice'
 import { FilterType } from '@/services/modalSlice'
 
-import Card, { CardType } from '../Cards/Card'
+import Card, { CardType } from '../Card/Card'
 
 /**
  * @description ListProps interface
@@ -38,6 +38,7 @@ export const FilteredList = (props: ListProps): JSX.Element => {
     <Container maxWidth={'xl'}>
       <Filters filter={filter} />
       <MuiList
+        data-testid="filtered-list"
         key={`${type}`}
         sx={{
           maxHeight: { xs: '80vh', sm: 'calc(100vh - 20vh - 69px - 4vh - 8vh)' },

@@ -45,7 +45,7 @@ export const useHandleMutation = ({
   state,
   callbacks,
   messages
-}: UseHandleMutationProps) => {
+}: UseHandleMutationProps): void => {
   const dispatch = useAppDispatch()
   const { handleError, handleSuccess } = useHandleNotification()
 

@@ -14,9 +14,9 @@ export type CardTipsterSubtitleProps = {
  * @param {CardTipsterSubtitleProps} props - CardTipsterSubtitleProps
  * @returns {JSX.Element} CardTipsterSubtitle component
  */
-export const CardTipsterSubtitle = (props: CardTipsterSubtitleProps) => {
+export const CardTipsterSubtitle = (props: CardTipsterSubtitleProps): JSX.Element => {
   const { subtitle } = props
-  return <Typography>{subtitle}</Typography>
+  return <Typography data-testid="card-tipster-subtitle">{subtitle}</Typography>
 }
 
 export default CardTipsterSubtitle

@@ -72,12 +72,18 @@ export const Card = (props: CardProps): JSX.Element => {
   }
 
   return (
-    <MuiCard sx={{ width: '100%', my: 1, ...cardStyle }} elevation={extended ? 0 : 1}>
+    <MuiCard
+      sx={{ width: '100%', my: 1, ...cardStyle }}
+      elevation={extended ? 0 : 1}
+      data-testid="card"
+    >
       <CardHeader
+        data-testid="card-header"
         onClick={handleCardHeaderClick}
         sx={{ ...cardStyle }}
         avatar={
           <Avatar
+            data-testid="card-avatar"
             sx={{
               border: '2px solid #ffd700',
               width: 56,
