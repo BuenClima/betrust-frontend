@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="./.github/assets/logo.png" style="border-radius: 16px; height: 200px;" />
+  <img src="./.github/assets/doris.png" style="border-radius: 16px; height: 200px;" />
   <br />
   <br />
-  <h1> BeTrust - Frontend</h1>
+  <h1> Doris - Frontend</h1>
 </div>
 
 <div align="center">
@@ -19,7 +19,7 @@
 
 Clone the repo to a local folder.
 
-`git clone https://github.com/BuenClima/betrust-frontend`
+`git clone https://github.com/draios/doris-frontend`
 
 Enable corepack on the project.
 
@@ -31,10 +31,28 @@ CD into the folder and yarn to install dependencies through.
 
 ## **Environment Variables**
 
-You will need various environment variables set to run the project. Ask another team member to send you these as save them in a file `.env` in the current folder. The `.env` is used on production and `.env.development` on development environment. A `.env.example` file is provided to fill it with the required variables.
+You will need various environment variables set to run the project. Ask another team member to send you these as save them in a file `.env` in the current folder. A `.env.example` file is provided to fill it with the required variables.
 
-## **Run the app**
+## **Run**
 
 To run the app locally
 
 `yarn dev`
+
+## **Storybook**
+
+To run the app locally
+
+`yarn storybook`
+
+## **Test**
+
+To run the tests
+
+`yarn test`
+
+## **Build**
+
+To build the app
+
+`yarn build`
