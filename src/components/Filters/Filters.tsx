@@ -45,12 +45,13 @@ export const Filters = (props: FiltersProps): JSX.Element => {
           variant="contained"
           sx={{ mx: 2 }}
           onClick={handleOpen}
+          data-testid="filters-button"
         >
           Filters
         </Button>
       </Tooltip>
       <Tooltip title="Sort">
-        <IconButton sx={{ mx: 2 }} onClick={handleOpenSort}>
+        <IconButton sx={{ mx: 2 }} onClick={handleOpenSort} data-testid="sort-button">
           <SortIcon />
         </IconButton>
       </Tooltip>

@@ -41,7 +41,9 @@ export const TipsFilterForm = (): JSX.Element => {
       spacing={1}
     >
       <Grid item xs={10} container justifyContent="center">
-        <Typography variant="h6">Filters</Typography>
+        <Typography variant="h6" data-testid="filter-title">
+          Filters
+        </Typography>
       </Grid>
       <Grid item xs={10}>
         <Controller

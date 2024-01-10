@@ -56,7 +56,7 @@ export const Modal = (): JSX.Element => {
 
   return (
     <MuiModal open={modal.show} onClose={handleClose} keepMounted>
-      <Box sx={style}>
+      <Box sx={style} data-testid="modal">
         <IconButton
           onClick={handleClose}
           sx={{ color: 'primary.main', position: 'absolute', top: 8, right: 8 }}
