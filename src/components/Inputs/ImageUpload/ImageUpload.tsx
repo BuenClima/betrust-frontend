@@ -1,4 +1,4 @@
-import { IconButton, Input, InputLabel, SxProps, Tooltip } from '@mui/material'
+import { IconButton, Input, InputLabel, Tooltip } from '@mui/material'
 import PropTypes from 'prop-types'
 
 /**
@@ -6,13 +6,12 @@ import PropTypes from 'prop-types'
  * @property {string} tooltip - Tooltip
  * @property {React.ReactNode} children - Children
  * @property {boolean} self - Self
- * @property {SxProps} iconButtonSx - IconButton SxProps
  */
 type ImageUploadProps = {
   tooltip?: string
   children: React.ReactNode
   self?: boolean
-  iconButtonSx?: SxProps
+  htmlFor: string
 }
 
 /**
@@ -21,13 +20,13 @@ type ImageUploadProps = {
  * @returns {JSX.Element} ImageUpload component
  */
 export const ImageUpload = (props: ImageUploadProps): JSX.Element => {
-  const { tooltip, children, self, iconButtonSx } = props
+  const { tooltip, children, self, htmlFor } = props
   return (
-    <InputLabel htmlFor="avatar-button-file">
+    <InputLabel htmlFor={`${htmlFor}-button-file`}>
       <Input
         style={{ display: 'none' }}
-        id="avatar-button-file"
-        name="avatar-button-file"
+        id={`${htmlFor}-button-file`}
+        name={`${htmlFor}-button-file`}
         type="file"
         inputProps={{ accept: 'image/*' }}
         onChange={(e) => {
@@ -40,7 +39,6 @@ export const ImageUpload = (props: ImageUploadProps): JSX.Element => {
           color="primary"
           aria-label="upload picture"
           component="span"
-          sx={iconButtonSx}
           disabled={!self}
         >
           {children}
@@ -57,11 +55,9 @@ export default ImageUpload
  * @property {string} tooltip - Tooltip
  * @property {React.ReactNode} children - Children
  * @property {boolean} self - Self
- * @property {SxProps} iconButtonSx - IconButton SxProps
  */
 ImageUpload.propTypes = {
   tooltip: PropTypes.string,
   children: PropTypes.node.isRequired,
-  self: PropTypes.bool,
-  iconButtonSx: PropTypes.object
+  self: PropTypes.bool
 }

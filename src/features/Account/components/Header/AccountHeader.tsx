@@ -1,8 +1,8 @@
 import AddIcon from '@mui/icons-material/Add'
 import EditIcon from '@mui/icons-material/Edit'
-import { Avatar, Button, Grid, Tooltip, Typography } from '@mui/material'
+import { Avatar, Box, Button, Grid, Tooltip, Typography } from '@mui/material'
 import PropTypes from 'prop-types'
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useAuthUser } from 'react-auth-kit'
 import { useLocation } from 'react-router-dom'
 
@@ -55,7 +55,7 @@ export const AccountHeader = (props: AccountHeaderProps): JSX.Element => {
           justifyContent={'flex-end'}
           alignItems={'center'}
         >
-          <ImageUpload self={self} tooltip="Upload avatar image">
+          <ImageUpload self={self} tooltip="Upload avatar image" htmlFor="avatar">
             <Avatar
               sx={{
                 border: '4px solid #ffd700',
@@ -88,19 +88,17 @@ export const AccountHeader = (props: AccountHeaderProps): JSX.Element => {
         </Grid>
       </Grid>
       {isTipsterAccount && (
-        <>
-          <ImageUpload
-            self={self}
-            tooltip="Upload cover image"
-            iconButtonSx={{
-              position: 'absolute !important',
-              top: 100,
-              right: 20,
-              color: '#fff'
-            }}
-          >
-            <EditIcon />
-          </ImageUpload>
+        <React.Fragment>
+          <Box sx={{ position: 'absolute', top: '7%', right: 100 }}>
+            <ImageUpload htmlFor="cover" self={self} tooltip="Upload cover image">
+              <EditIcon
+                sx={{
+                  width: 25,
+                  height: 25
+                }}
+              />
+            </ImageUpload>
+          </Box>
           <Grid item xs={12} sm={2} container>
             <Tooltip title="Create tip">
               <Button
@@ -112,7 +110,7 @@ export const AccountHeader = (props: AccountHeaderProps): JSX.Element => {
               </Button>
             </Tooltip>
           </Grid>
-        </>
+        </React.Fragment>
       )}
     </Grid>
   )
