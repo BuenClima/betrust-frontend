@@ -23,9 +23,9 @@ const meta = {
         type: 'boolean'
       }
     },
-    iconButtonSx: {
+    htmlFor: {
       control: {
-        type: 'object'
+        type: 'text'
       }
     }
   }
@@ -38,9 +38,7 @@ export const Default: Story = {
   args: {
     tooltip: 'Upload Image',
     self: false,
-    iconButtonSx: {
-      color: 'primary.main'
-    },
-    children: 'Upload Image'
+    children: 'Upload Image',
+    htmlFor: 'image'
   }
 }
