@@ -38,7 +38,12 @@ export const AccountHeader = (props: AccountHeaderProps): JSX.Element => {
   )
 
   return (
-    <Grid container justifyContent={'center'} alignItems={'center'}>
+    <Grid
+      container
+      justifyContent={'center'}
+      alignItems={'center'}
+      data-testid="account-header"
+    >
       <Grid
         item
         xs={10}

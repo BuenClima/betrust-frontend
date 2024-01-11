@@ -6,13 +6,13 @@ import AppProvider from '@/providers/AppProvider'
 import Footer from './Footer'
 
 /**
- * @description Filters unit tests
+ * @description Footer unit tests
  */
-describe('Filters', async () => {
+describe('Footer', async () => {
   /**
-   * @description renders a Filters for a list of tips with a tip filter
+   * @description renders a Footer for a list of tips with a tip filter
    */
-  it('renders a Filters for a list of tips with a tip filter', async () => {
+  it('renders a Footer for a list of tips with a tip filter', async () => {
     render(
       <AppProvider>
         <Footer />
