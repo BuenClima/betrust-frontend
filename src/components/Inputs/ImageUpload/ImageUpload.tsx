@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
  * @property {string} tooltip - Tooltip
  * @property {React.ReactNode} children - Children
  * @property {boolean} self - Self
+ * @property {string} htmlFor - For
  */
 type ImageUploadProps = {
   tooltip?: string
@@ -24,6 +25,7 @@ export const ImageUpload = (props: ImageUploadProps): JSX.Element => {
   return (
     <InputLabel htmlFor={`${htmlFor}-button-file`}>
       <Input
+        data-testid="image-upload"
         style={{ display: 'none' }}
         id={`${htmlFor}-button-file`}
         name={`${htmlFor}-button-file`}
@@ -55,9 +57,11 @@ export default ImageUpload
  * @property {string} tooltip - Tooltip
  * @property {React.ReactNode} children - Children
  * @property {boolean} self - Self
+ * @property {string} htmlFor - For
  */
 ImageUpload.propTypes = {
   tooltip: PropTypes.string,
   children: PropTypes.node.isRequired,
-  self: PropTypes.bool
+  self: PropTypes.bool,
+  htmlFor: PropTypes.string.isRequired
 }
