@@ -3,27 +3,31 @@ import { Provider } from 'react-redux'
 
 import setupStore from '@/app/store'
 
-import { Loading } from './Loading'
+import { Modal } from './Modal'
 
 const meta = {
-  title: 'Components/Loading',
-  component: Loading,
+  title: 'Components/Modal',
+  component: Modal,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    controls: {
+      exclude: ['setValue']
+    }
   },
   tags: ['autodocs'],
+  argTypes: {},
   decorators: [
     (Story) => (
-      <Provider
-        store={setupStore({ loading: { isLoading: true, message: 'Loading message' } })}
-      >
+      <Provider store={setupStore({ modal: { show: true, type: 'null' } })}>
         <Story />
       </Provider>
     )
   ]
-} satisfies Meta<typeof Loading>
+} satisfies Meta<typeof Modal>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+  args: {}
+}

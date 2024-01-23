@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
+import { Provider } from 'react-redux'
 import { describe, expect, it } from 'vitest'
 
-import AppProvider from '@/providers/AppProvider'
+import setupStore from '@/app/store'
 
 import Loading from './Loading'
 
@@ -14,11 +15,11 @@ describe('Loading', async () => {
    */
   it('renders a Loading', async () => {
     render(
-      <AppProvider
-        preloadedState={{ loading: { isLoading: true, message: 'Loading message' } }}
+      <Provider
+        store={setupStore({ loading: { isLoading: true, message: 'Loading message' } })}
       >
         <Loading />
-      </AppProvider>
+      </Provider>
     )
     const circularProgressLoading = screen.getByTestId('circular-progress-loading')
     await waitFor(() => expect(circularProgressLoading).toBeInTheDocument())
