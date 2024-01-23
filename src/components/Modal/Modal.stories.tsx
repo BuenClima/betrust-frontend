@@ -9,10 +9,7 @@ const meta = {
   title: 'Components/Modal',
   component: Modal,
   parameters: {
-    layout: 'centered',
-    controls: {
-      exclude: ['setValue']
-    }
+    layout: 'centered'
   },
   tags: ['autodocs'],
   argTypes: {},
