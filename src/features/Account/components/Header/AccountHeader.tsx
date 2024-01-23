@@ -7,7 +7,7 @@ import { useAuthUser } from 'react-auth-kit'
 import { useLocation } from 'react-router-dom'
 
 import { useAppDispatch } from '@/app/store'
-import ImageUpload from '@/components/Inputs/ImageUpload/ImageUpload'
+import ImageUpload from '@/components/ImageUpload/ImageUpload'
 import { show } from '@/services/modalSlice'
 
 /**

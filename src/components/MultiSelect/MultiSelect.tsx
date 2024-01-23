@@ -161,3 +161,5 @@ MultiSelect.propTypes = {
   disableCreateOption: PropTypes.bool,
   'data-testid': PropTypes.string
 }
+
+export default MultiSelect

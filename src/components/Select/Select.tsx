@@ -135,7 +135,10 @@ export const Select = (props: SelectProps): JSX.Element => {
  * @param {React.Dispatch<React.SetStateAction<string>>} customSetInput - A function to handle custom input changes.
  */
 Select.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  }),
   setValue: PropTypes.func.isRequired,
   options: PropTypes.array.isRequired,
   placeholder: PropTypes.string,
@@ -144,3 +147,5 @@ Select.propTypes = {
   'data-testid': PropTypes.string,
   disabled: PropTypes.bool
 }
+
+export default Select

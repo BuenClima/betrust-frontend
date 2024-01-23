@@ -3,7 +3,7 @@ import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store'
-import { MultiSelect } from '@/components/Inputs/MultiSelect/MultiSelect'
+import { MultiSelect } from '@/components/MultiSelect/MultiSelect'
 import {
   FilterTipstersFormValues,
   useFilterTipstersForm

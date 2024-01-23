@@ -90,9 +90,15 @@ export const PasswordField = (props: PasswordFieldProps): JSX.Element => {
               data-testid="toggle-password-visibility"
             >
               {showPassword ? (
-                <Visibility sx={{ color: '#d0d0d0' }} />
+                <Visibility
+                  sx={{ color: '#d0d0d0' }}
+                  data-testid="password-visible-button"
+                />
               ) : (
-                <VisibilityOff sx={{ color: '#d0d0d0' }} />
+                <VisibilityOff
+                  sx={{ color: '#d0d0d0' }}
+                  data-testid="password-invisible-button"
+                />
               )}
             </IconButton>
           </InputAdornment>
@@ -122,3 +128,5 @@ PasswordField.propTypes = {
   label: PropTypes.string,
   dataTestId: PropTypes.string
 }
+
+export default PasswordField
