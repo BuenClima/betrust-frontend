@@ -4,6 +4,7 @@
 [ ] Bugfix
 [ ] CI / CD Update
 [ ] Documentation
+[ ] Tests
 
 ### What is the impact of the development
 

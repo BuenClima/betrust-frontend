@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { CardType } from '@/components/Cards/Card'
+import { CardType } from '@/components/Card/Card'
 import { HeaderType } from '@/components/Header/Header'
 import { FilterType } from '@/services/modalSlice'
 

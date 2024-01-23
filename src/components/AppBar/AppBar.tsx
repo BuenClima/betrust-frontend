@@ -61,8 +61,11 @@ export const AppBar = (): JSX.Element => {
     <>
       <AppBarMui position="fixed">
         <Container maxWidth="xl">
-          <Toolbar disableGutters id="appBar">
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Toolbar disableGutters id="appBar" data-testid="toolbar">
+            <AdbIcon
+              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+              data-testid="logo-md"
+            />
             <Typography
               variant="h6"
               noWrap
@@ -77,6 +80,7 @@ export const AppBar = (): JSX.Element => {
                 color: 'inherit',
                 textDecoration: 'none'
               }}
+              data-testid="logo-name-md"
             >
               Mr.Tipsters
             </Typography>
@@ -89,6 +93,7 @@ export const AppBar = (): JSX.Element => {
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
                 color="inherit"
+                data-testid="menu-icon"
               >
                 <MenuIcon />
               </IconButton>
@@ -109,9 +114,11 @@ export const AppBar = (): JSX.Element => {
                 sx={{
                   display: { xs: 'block', md: 'none' }
                 }}
+                data-testid="menu"
               >
                 {pages.map((page) => (
                   <MenuItem
+                    data-testid={`xs-menu-${page.title?.toLowerCase()}-button`}
                     key={page.title}
                     onClick={() => {
                       navigate(page.url)
@@ -123,7 +130,10 @@ export const AppBar = (): JSX.Element => {
                 ))}
               </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+            <AdbIcon
+              sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              data-testid="logo-xs"
+            />
             <Typography
               variant="h5"
               noWrap
@@ -139,12 +149,14 @@ export const AppBar = (): JSX.Element => {
                 color: 'inherit',
                 textDecoration: 'none'
               }}
+              data-testid="logo-name-xs"
             >
-              LOGO
+              Mr.Tipsters
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                 <Button
+                  data-testid={`menu-${page.title?.toLowerCase()}-button`}
                   key={page.title}
                   onClick={() => {
                     navigate(page.url)
@@ -167,8 +179,12 @@ export const AppBar = (): JSX.Element => {
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Tooltip title="Open settings" data-testid="menu-tooltip">
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  sx={{ p: 0 }}
+                  data-testid="menu-user-button"
+                >
                   <Avatar
                     alt="Avatar of the user"
                     src="https://i.pravatar.cc/300"
@@ -198,9 +214,14 @@ export const AppBar = (): JSX.Element => {
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
+                data-testid="menu-user"
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                  <MenuItem
+                    key={setting.title}
+                    onClick={handleCloseUserMenu}
+                    data-testid={`menu-user-${setting.title.toLowerCase()}`}
+                  >
                     <Button onClick={() => navigate(setting.url)}>
                       <Typography textAlign="center" textTransform="none">
                         {setting.title}

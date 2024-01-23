@@ -15,7 +15,11 @@ export const Fallback = (): JSX.Element => {
           transform: 'translate(-50%, -50%)'
         }}
       >
-        <CircularProgress color="inherit" size={60} />
+        <CircularProgress
+          color="inherit"
+          size={60}
+          data-testid="circular-progress-fallback"
+        />
       </Box>
     </Box>
   )

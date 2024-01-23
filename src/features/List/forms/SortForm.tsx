@@ -24,7 +24,9 @@ export const SortForm = (): JSX.Element => {
       spacing={1}
     >
       <Grid item xs={10} container justifyContent="center">
-        <Typography variant="h6">Sort</Typography>
+        <Typography variant="h6" data-testid="sort-title">
+          Sort
+        </Typography>
       </Grid>
       <Grid item xs={10}>
         <Controller

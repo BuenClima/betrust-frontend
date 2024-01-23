@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 import authSlice from '@/features/Auth/services/authSlice'
@@ -7,27 +7,40 @@ import loadingSlice from '@/services/loadingSlice'
 import modalSlice from '@/services/modalSlice'
 
 /**
+ * @description Combine reducers
+ */
+const rootReducer = combineReducers({
+  loading: loadingSlice,
+  modal: modalSlice,
+  filters: filtersSlice,
+  auth: authSlice
+})
+
+/**
  * @description Initialize Redux store
  */
-export const store = configureStore({
-  reducer: {
-    loading: loadingSlice,
-    modal: modalSlice,
-    filters: filtersSlice,
-    auth: authSlice
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware()
-})
+export function setupStore(preloadedState?: Partial<RootState>) {
+  return configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+    preloadedState
+  })
+}
+
+/**
+ * @description Initialize store with preloaded state
+ */
+export type AppStore = ReturnType<typeof setupStore>
 
 /**
  * @description Define RootState type
  */
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof rootReducer>
 
 /**
  * @description Define AppDispatch type
  */
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = AppStore['dispatch']
 
 /**
  * @description Define DispatchFunc type
@@ -41,6 +54,6 @@ export const useAppDispatch: DispatchFunc = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 /**
- * @description Export store
+ * @description Export setupStore function
  */
-export default store
+export default setupStore

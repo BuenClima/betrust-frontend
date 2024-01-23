@@ -1,4 +1,5 @@
 import { Container, Tab, Tabs as TabsMui } from '@mui/material'
+import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
 import { a11yProps } from '@/components/A11y/A11y'
@@ -52,6 +53,14 @@ export const Tabs = (props: TabsProps): JSX.Element => {
       ))}
     </Container>
   )
+}
+
+/**
+ * @description Tabs propTypes
+ * @property {TabType[]} tabs - tabs
+ */
+Tabs.propTypes = {
+  tabs: PropTypes.array.isRequired
 }
 
 export default Tabs
