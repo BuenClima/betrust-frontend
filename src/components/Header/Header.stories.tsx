@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import AppProvider from '@/providers/AppProvider'
+
 import { Header } from './Header'
 
 const meta = {
@@ -22,7 +24,14 @@ const meta = {
         type: 'boolean'
       }
     }
-  }
+  },
+  decorators: [
+    (Story) => (
+      <AppProvider>
+        <Story />
+      </AppProvider>
+    )
+  ]
 } satisfies Meta<typeof Header>
 
 export default meta

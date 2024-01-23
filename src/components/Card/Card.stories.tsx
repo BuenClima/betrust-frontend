@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import AppProvider from '@/providers/AppProvider'
+
 import { Card } from './Card'
 
 const meta = {
@@ -26,7 +28,14 @@ const meta = {
         type: 'boolean'
       }
     }
-  }
+  },
+  decorators: [
+    (Story) => (
+      <AppProvider>
+        <Story />
+      </AppProvider>
+    )
+  ]
 } satisfies Meta<typeof Card>
 
 export default meta

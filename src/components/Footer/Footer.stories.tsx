@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import AppProvider from '@/providers/AppProvider'
+
 import { Footer } from './Footer'
 
 const meta = {
@@ -8,7 +10,14 @@ const meta = {
   parameters: {
     layout: 'centered'
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <AppProvider>
+        <Story />
+      </AppProvider>
+    )
+  ]
 } satisfies Meta<typeof Footer>
 
 export default meta

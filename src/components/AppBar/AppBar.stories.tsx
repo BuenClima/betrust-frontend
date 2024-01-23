@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import AppProvider from '@/providers/AppProvider'
+
 import { AppBar } from './AppBar'
 
 const meta = {
@@ -8,7 +10,14 @@ const meta = {
   parameters: {
     layout: 'centered'
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <AppProvider>
+        <Story />
+      </AppProvider>
+    )
+  ]
 } satisfies Meta<typeof AppBar>
 
 export default meta

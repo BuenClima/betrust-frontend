@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import AppProvider from '@/providers/AppProvider'
+
 import { Filters } from './Filters'
 
 const meta = {
@@ -17,7 +19,14 @@ const meta = {
         options: ['filterTips', 'filterTipsters']
       }
     }
-  }
+  },
+  decorators: [
+    (Story) => (
+      <AppProvider>
+        <Story />
+      </AppProvider>
+    )
+  ]
 } satisfies Meta<typeof Filters>
 
 export default meta

@@ -11,14 +11,7 @@ const preview: Preview = {
         date: /Date$/i
       }
     }
-  },
-  decorators: [
-    (Story) => (
-      <AppProvider>
-        <Story />
-      </AppProvider>
-    )
-  ]
+  }
 }
 
 export default preview

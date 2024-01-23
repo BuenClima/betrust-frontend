@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import AppProvider from '@/providers/AppProvider'
+
 import { ImageUpload } from './ImageUpload'
 
 const meta = {
@@ -28,7 +30,14 @@ const meta = {
         type: 'text'
       }
     }
-  }
+  },
+  decorators: [
+    (Story) => (
+      <AppProvider>
+        <Story />
+      </AppProvider>
+    )
+  ]
 } satisfies Meta<typeof ImageUpload>
 
 export default meta

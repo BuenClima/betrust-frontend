@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import AppProvider from '@/providers/AppProvider'
+
 import { Select } from './Select'
 
 const meta = {
@@ -43,7 +45,14 @@ const meta = {
         type: 'boolean'
       }
     }
-  }
+  },
+  decorators: [
+    (Story) => (
+      <AppProvider>
+        <Story />
+      </AppProvider>
+    )
+  ]
 } satisfies Meta<typeof Select>
 
 export default meta
