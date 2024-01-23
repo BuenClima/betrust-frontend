@@ -20,6 +20,7 @@ export type HeaderType = 'tipsters' | 'tips' | 'user'
 /**
  * @description HeaderProps interface
  * @property {HeaderType} type - HeaderType
+ * @property {boolean} self - Self
  */
 type HeaderProps = {
   type: HeaderType
@@ -33,6 +34,7 @@ type HeaderProps = {
  */
 export const Header = (props: HeaderProps): JSX.Element => {
   const { type, self } = props
+
   const headers: Record<HeaderType, JSX.Element> = {
     tipsters: <ListHeader key={type} title="Our Tipsters" body={loreIpsum} />,
     tips: <ListHeader key={type} title="Our Tipsters Tips" body={loreIpsum} />,
@@ -64,7 +66,9 @@ export default Header
 /**
  * @description Header props types
  * @property {HeaderType} type - HeaderType
+ * @property {boolean} self - Self
  */
 Header.propTypes = {
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  self: PropTypes.bool
 }

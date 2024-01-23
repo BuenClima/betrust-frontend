@@ -12,7 +12,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
-import store from '@/app/store'
+import { setupStore } from '@/app/store'
 import { theme } from '@/app/theme'
 import { Fallback } from '@/components/Fallback/Fallback'
 
@@ -32,7 +32,7 @@ type AppProviderProps = {
 export const AppProvider = (props: AppProviderProps): JSX.Element => {
   return (
     <HelmetProvider>
-      <Provider store={store}>
+      <Provider store={setupStore()}>
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'es'}>
           <ThemeProvider theme={theme}>
             <Suspense fallback={<Fallback />}>

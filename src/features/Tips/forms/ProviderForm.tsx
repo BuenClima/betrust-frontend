@@ -2,7 +2,7 @@ import { Button, Grid, TextField } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store'
-import { Select } from '@/components/Inputs/Select/Select'
+import { Select } from '@/components/Select/Select'
 import { hide } from '@/services/modalSlice'
 
 import useCreateTipForm, { CreateTipFormValues } from '../hooks/useCreateTipForm'

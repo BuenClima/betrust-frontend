@@ -8,7 +8,7 @@ import { TipstersFilterForm } from '@/features/List/forms/TipstersFilterForm'
 import { CreateTipForm } from '@/features/Tips/forms/CreateTipForm'
 import { hide, ModalType } from '@/services/modalSlice'
 
-import Card from '../Cards/Card'
+import Card from '../Card/Card'
 
 /**
  * @description style object for Modal component
@@ -56,8 +56,9 @@ export const Modal = (): JSX.Element => {
 
   return (
     <MuiModal open={modal.show} onClose={handleClose} keepMounted>
-      <Box sx={style}>
+      <Box sx={style} data-testid="modal">
         <IconButton
+          data-testid="close-button"
           onClick={handleClose}
           sx={{ color: 'primary.main', position: 'absolute', top: 8, right: 8 }}
         >

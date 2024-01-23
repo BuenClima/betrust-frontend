@@ -3,7 +3,7 @@ import { DatePicker } from '@mui/x-date-pickers'
 import { Controller } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store'
-import { MultiSelect } from '@/components/Inputs/MultiSelect/MultiSelect'
+import { MultiSelect } from '@/components/MultiSelect/MultiSelect'
 import {
   FilterTipsFormValues,
   useFilterTipsForm
@@ -41,7 +41,9 @@ export const TipsFilterForm = (): JSX.Element => {
       spacing={1}
     >
       <Grid item xs={10} container justifyContent="center">
-        <Typography variant="h6">Filters</Typography>
+        <Typography variant="h6" data-testid="filter-title">
+          Filters
+        </Typography>
       </Grid>
       <Grid item xs={10}>
         <Controller
