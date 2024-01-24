@@ -94,7 +94,7 @@ export const AppBar = (): JSX.Element => {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color="inherit"
+                color="primary"
                 data-testid="menu-icon"
               >
                 <MenuIcon />
@@ -127,7 +127,9 @@ export const AppBar = (): JSX.Element => {
                       handleCloseNavMenu()
                     }}
                   >
-                    <Typography textAlign="center">{page.title}</Typography>
+                    <Typography textAlign="center" color={'primary.main'}>
+                      {page.title}
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -148,12 +150,12 @@ export const AppBar = (): JSX.Element => {
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
-                color: 'inherit',
+                color: 'primary.main',
                 textDecoration: 'none'
               }}
               data-testid="logo-name-xs"
             >
-              Mr.Tipsters
+              BeTrust
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (

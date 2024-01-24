@@ -19,7 +19,7 @@ describe('Footer', async () => {
       </AppProvider>
     )
 
-    const date = screen.getByText(`${new Date().getFullYear()} @ Mr.Tipster`)
+    const date = screen.getByText(`${new Date().getFullYear()} @ BeTrust`)
 
     await waitFor(() => {
       expect(date).toBeInTheDocument()
