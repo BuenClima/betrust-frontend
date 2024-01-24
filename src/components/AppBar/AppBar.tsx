@@ -1,4 +1,4 @@
-import AdbIcon from '@mui/icons-material/Adb'
+import { AccountCircle, Logout } from '@mui/icons-material'
 import MenuIcon from '@mui/icons-material/Menu'
 import {
   AppBar as AppBarMui,
@@ -16,6 +16,8 @@ import {
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import Logo from '@/icons/Logo'
+
 /**
  * @description AppBar pages
  */
@@ -28,8 +30,8 @@ const pages = [
  * @description AppBar settings
  */
 const settings = [
-  { title: 'Account', url: '/account' },
-  { title: 'Logout', url: '/logout' }
+  { title: 'Account', url: '/account', icon: <AccountCircle /> },
+  { title: 'Logout', url: '/logout', icon: <Logout /> }
 ]
 
 /**
@@ -59,10 +61,10 @@ export const AppBar = (): JSX.Element => {
 
   return (
     <>
-      <AppBarMui position="fixed">
+      <AppBarMui position="fixed" style={{ background: '#fff' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters id="appBar" data-testid="toolbar">
-            <AdbIcon
+            <Logo
               sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
               data-testid="logo-md"
             />
@@ -74,15 +76,15 @@ export const AppBar = (): JSX.Element => {
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
+                fontFamily: 'josh',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
-                color: 'inherit',
+                color: 'primary.main',
                 textDecoration: 'none'
               }}
               data-testid="logo-name-md"
             >
-              Mr.Tipsters
+              BETRUST
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -130,7 +132,7 @@ export const AppBar = (): JSX.Element => {
                 ))}
               </Menu>
             </Box>
-            <AdbIcon
+            <Logo
               sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
               data-testid="logo-xs"
             />
@@ -164,7 +166,7 @@ export const AppBar = (): JSX.Element => {
                   }}
                   sx={{
                     my: 2,
-                    color: 'white',
+                    color: 'primary.main',
                     display: 'block',
                     fontSize: '1rem',
                     letterSpacing: '.1rem',
@@ -189,7 +191,8 @@ export const AppBar = (): JSX.Element => {
                     alt="Avatar of the user"
                     src="https://i.pravatar.cc/300"
                     sx={{
-                      border: '2px solid #fff',
+                      border: '2px solid',
+                      borderColor: 'primary.main',
                       width: 42,
                       height: 42,
                       '&:hover': {
@@ -222,7 +225,10 @@ export const AppBar = (): JSX.Element => {
                     onClick={handleCloseUserMenu}
                     data-testid={`menu-user-${setting.title.toLowerCase()}`}
                   >
-                    <Button onClick={() => navigate(setting.url)}>
+                    <Button
+                      onClick={() => navigate(setting.url)}
+                      startIcon={setting.icon}
+                    >
                       <Typography textAlign="center" textTransform="none">
                         {setting.title}
                       </Typography>

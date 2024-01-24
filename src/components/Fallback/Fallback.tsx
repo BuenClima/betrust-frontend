@@ -6,7 +6,14 @@ import { Box, CircularProgress } from '@mui/material'
  */
 export const Fallback = (): JSX.Element => {
   return (
-    <Box sx={{ color: '#fff', backgroundColor: '#000', height: '100vh', width: '100vw' }}>
+    <Box
+      sx={{
+        color: 'primary.main',
+        backgroundColor: '#fff',
+        height: '100vh',
+        width: '100vw'
+      }}
+    >
       <Box
         sx={{
           position: 'absolute' as const,
@@ -16,7 +23,7 @@ export const Fallback = (): JSX.Element => {
         }}
       >
         <CircularProgress
-          color="inherit"
+          color="primary"
           size={60}
           data-testid="circular-progress-fallback"
         />

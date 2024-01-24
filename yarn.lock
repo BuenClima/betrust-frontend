@@ -2196,6 +2196,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/jost@npm:^5.0.16":
+  version: 5.0.16
+  resolution: "@fontsource/jost@npm:5.0.16"
+  checksum: 84035f19a2af7c12c79e839a677fb8d80de0ab0287943f092547328de6cb324abf7fa423dd375d2223bc719510e8abd8498ff83fa6b6079ff4b0970c95cbfcd7
+  languageName: node
+  linkType: hard
+
 "@fontsource/roboto@npm:^5.0.8":
   version: 5.0.8
   resolution: "@fontsource/roboto@npm:5.0.8"
@@ -8259,6 +8266,7 @@ __metadata:
   dependencies:
     "@emotion/react": "npm:^11.11.3"
     "@emotion/styled": "npm:^11.11.0"
+    "@fontsource/jost": "npm:^5.0.16"
     "@fontsource/roboto": "npm:^5.0.8"
     "@mui/icons-material": "npm:^5.15.6"
     "@mui/material": "npm:^5.15.6"

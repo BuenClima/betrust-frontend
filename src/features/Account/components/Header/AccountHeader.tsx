@@ -63,7 +63,8 @@ export const AccountHeader = (props: AccountHeaderProps): JSX.Element => {
           <ImageUpload self={self} tooltip="Upload avatar image" htmlFor="avatar">
             <Avatar
               sx={{
-                border: '4px solid #ffd700',
+                border: '4px solid',
+                borderColor: 'primary.main',
                 width: 124,
                 height: 124,
                 '&:hover': {
@@ -85,10 +86,14 @@ export const AccountHeader = (props: AccountHeaderProps): JSX.Element => {
           alignItems={'center'}
         >
           <Grid item xs={12}>
-            <Typography variant={'h4'}>Name</Typography>
+            <Typography variant={'h4'} color={'#fff'}>
+              Name
+            </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant={'subtitle1'}>Description</Typography>
+            <Typography variant={'subtitle1'} color={'#fff'}>
+              Description
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -107,7 +112,7 @@ export const AccountHeader = (props: AccountHeaderProps): JSX.Element => {
           <Grid item xs={12} sm={2} container>
             <Tooltip title="Create tip">
               <Button
-                variant="outlined"
+                variant="contained"
                 startIcon={<AddIcon />}
                 onClick={handleClickOnCreateTip}
               >

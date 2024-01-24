@@ -85,7 +85,8 @@ export const Card = (props: CardProps): JSX.Element => {
           <Avatar
             data-testid="card-avatar"
             sx={{
-              border: '2px solid #ffd700',
+              border: '2px solid',
+              borderColor: 'primary.main',
               width: 56,
               height: 56,
               '&:hover': {
