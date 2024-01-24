@@ -50,7 +50,7 @@ describe('AppBar', async () => {
       expect(logoMd).toBeInTheDocument()
 
       expect(logoNameMd).toBeInTheDocument()
-      expect(logoNameMd).toHaveTextContent('Mr.Tipsters')
+      expect(logoNameMd).toHaveTextContent('BETRUST')
 
       expect(linkToTipsters).toBeInTheDocument()
       expect(linkToTips).toBeInTheDocument()
@@ -81,7 +81,7 @@ describe('AppBar', async () => {
       expect(logoXs).toBeInTheDocument()
 
       expect(logoNameXs).toBeInTheDocument()
-      expect(logoNameXs).toHaveTextContent('Mr.Tipsters')
+      expect(logoNameXs).toHaveTextContent('BETRUST')
 
       expect(appMenu).toBeInTheDocument()
     })
