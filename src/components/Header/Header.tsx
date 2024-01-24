@@ -47,7 +47,7 @@ export const Header = (props: HeaderProps): JSX.Element => {
       sx={{
         backgroundImage: `linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.9),
       rgba(255, 255, 255, 0.9)
     ),url("https://picsum.photos/1200/300")`,
         backgroundPosition: 'center',

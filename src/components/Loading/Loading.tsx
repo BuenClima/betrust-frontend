@@ -18,7 +18,7 @@ export const Loading = (): JSX.Element => {
       open={loading.isLoading}
       onClick={handleClose}
     >
-      <CircularProgress color="inherit" data-testid="circular-progress-loading" />
+      <CircularProgress color="primary" data-testid="circular-progress-loading" />
     </Backdrop>
   )
 }
