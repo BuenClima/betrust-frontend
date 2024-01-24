@@ -155,7 +155,7 @@ export const AppBar = (): JSX.Element => {
               }}
               data-testid="logo-name-xs"
             >
-              BeTrust
+              BETRUST
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
