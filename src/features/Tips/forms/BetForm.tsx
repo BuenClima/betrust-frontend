@@ -1,21 +1,48 @@
 import { Button, Grid, TextField } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
+import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import { Controller } from 'react-hook-form'
 
-import { useAppDispatch } from '@/app/store'
 import { Select } from '@/components/Select/Select'
-import { hide } from '@/services/modalSlice'
 
 import useCreateTipForm, { CreateTipFormValues } from '../hooks/useCreateTipForm'
 
-export const BetForm = () => {
-  const dispatch = useAppDispatch()
-  const { control, handleSubmit, errors } = useCreateTipForm()
+/**
+ * @description BetForm component
+ * @property {CreateTipFormValues} tip - tip
+ * @property {(index: number, data: CreateTipFormValues) => void} handleTabChange - handleTabChange
+ * @property {number} activeTab - activeTab
+ */
+type BetFormProps = {
+  tip?: CreateTipFormValues
+  handleTabChange: (index: number, data: CreateTipFormValues) => void
+  activeTab: number
+}
+
+/**
+ * @description BetForm component
+ * @param {BetFormProps} props - props
+ * @returns {JSX.Element} BetForm component
+ */
+export const BetForm = (props: BetFormProps): JSX.Element => {
+  const { tip, handleTabChange, activeTab } = props
+  const { control, handleSubmit, errors, setValue } = useCreateTipForm()
 
   const onSubmit = (data: CreateTipFormValues) => {
-    console.log(data)
-    dispatch(hide())
+    const nextTab = activeTab + 1
+    handleTabChange(nextTab, data)
   }
+
+  useEffect(() => {
+    if (tip) {
+      tip.date && setValue('date', tip.date)
+      tip.sport && setValue('sport', tip.sport)
+      tip.league && setValue('league', tip.league)
+      tip.tip && setValue('tip', tip.tip)
+    }
+  }, [tip])
+
   return (
     <Grid
       container
@@ -125,9 +152,27 @@ export const BetForm = () => {
 
       <Grid item xs={12} container justifyContent="center">
         <Button type="submit" variant="contained">
-          Create
+          Next
         </Button>
       </Grid>
     </Grid>
   )
 }
+
+/**
+ * @description BetForm component default props
+ * @property {CreateTipFormValues} tip - tip
+ * @property {(index: number, data: CreateTipFormValues) => void} handleTabChange - handleTabChange
+ */
+BetForm.propTypes = {
+  tip: PropTypes.shape({
+    date: PropTypes.instanceOf(Date),
+    sport: PropTypes.string,
+    league: PropTypes.string,
+    tip: PropTypes.string
+  }),
+  handleTabChange: PropTypes.func.isRequired,
+  activeTab: PropTypes.number.isRequired
+}
+
+export default BetForm

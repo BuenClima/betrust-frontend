@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { act } from 'react-dom/test-utils'
 import { describe, expect, it, vi } from 'vitest'
 
 import AppProvider from '@/providers/AppProvider'
@@ -45,16 +46,18 @@ describe('MultiSelect', async () => {
     expect(placeholder).toBeVisible()
     expect(helperText).toBeVisible()
 
-    await userEvent.type(textbox, 'Option')
+    await act(async () => {
+      await userEvent.type(textbox, 'Option')
+    })
 
     await waitFor(() => {
       expect(screen.getByText('Option 1')).toBeInTheDocument()
       expect(screen.getByText('Option 2')).toBeInTheDocument()
       expect(screen.getByText('Option 3')).toBeInTheDocument()
     })
-
-    await userEvent.click(screen.getByText('Option 1'))
-
+    await act(async () => {
+      await userEvent.click(screen.getByText('Option 1'))
+    })
     await waitFor(() => {
       expect(setValue).toHaveBeenCalled()
       expect(setValue).toHaveBeenCalledWith([{ name: 'Option 1', id: 'option-1' }])

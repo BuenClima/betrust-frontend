@@ -1,3 +1,4 @@
+/* istanbul ignore file -- @preserve */
 import type { Meta, StoryObj } from '@storybook/react'
 
 import AppProvider from '@/providers/AppProvider'
@@ -59,7 +60,8 @@ export const Default: Story = {
     placeholder: 'Select an option',
     helperText: 'This is a helper text',
     error: false,
-    label: 'Password'
+    label: 'Password',
+    onChange: () => {}
   }
 }
 export const Error: Story = {
@@ -68,6 +70,7 @@ export const Error: Story = {
     placeholder: 'Select an option',
     helperText: 'This is a helper text',
     error: true,
-    label: 'Password'
+    label: 'Password',
+    onChange: () => {}
   }
 }

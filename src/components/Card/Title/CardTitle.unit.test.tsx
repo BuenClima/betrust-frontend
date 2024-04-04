@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
@@ -35,9 +35,10 @@ describe('CardTitle', async () => {
     })
 
     const cardTipButton = screen.getByTestId('card-tip-button')
-
-    await userEvent.click(cardTipButton).then(() => {
-      expect(callback).toHaveBeenCalledOnce()
+    await act(async () => {
+      await userEvent.click(cardTipButton).then(() => {
+        expect(callback).toHaveBeenCalledOnce()
+      })
     })
   })
   /**

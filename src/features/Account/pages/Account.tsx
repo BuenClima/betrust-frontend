@@ -9,14 +9,14 @@ import Tabs from '@/components/Tabs/Tabs'
 import { Layout } from '@/layouts/Layout'
 
 import { Stats } from '../components/Stats/Stats'
-import ProfileForm from '../forms/ProfileForm'
+import ProfileForm from '../forms/Profile/ProfileForm'
 
 /**
  * @description Account props
  * @property {boolean} self - Is account page for self
  */
 type AccountProps = {
-  self?: boolean
+  self: boolean
 }
 
 /**
@@ -73,5 +73,5 @@ export default Account
  * @property {boolean} self - Is account page for self
  */
 Account.propTypes = {
-  self: PropTypes.bool
+  self: PropTypes.bool.isRequired
 }

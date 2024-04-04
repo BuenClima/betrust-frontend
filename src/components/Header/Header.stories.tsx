@@ -1,3 +1,4 @@
+/* istanbul ignore file -- @preserve */
 import type { Meta, StoryObj } from '@storybook/react'
 
 import AppProvider from '@/providers/AppProvider'
@@ -6,7 +7,6 @@ import { Header } from './Header'
 
 const meta = {
   title: 'Components/Header',
-  // @ts-expect-error Invalid PropTypes
   component: Header,
   parameters: {
     layout: 'centered'

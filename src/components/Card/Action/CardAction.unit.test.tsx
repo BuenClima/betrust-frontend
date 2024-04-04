@@ -15,7 +15,7 @@ describe('CardAction', async () => {
   it('renders a tip card action', async () => {
     render(
       <AppProvider>
-        <CardAction type="tip" status="Active" />
+        <CardAction type="tip" status="active" />
       </AppProvider>
     )
 
@@ -23,7 +23,7 @@ describe('CardAction', async () => {
 
     await waitFor(() => {
       expect(cardTipAction).toBeInTheDocument()
-      expect(cardTipAction).toHaveTextContent('Active')
+      expect(cardTipAction).toHaveTextContent('active')
     })
   })
 })

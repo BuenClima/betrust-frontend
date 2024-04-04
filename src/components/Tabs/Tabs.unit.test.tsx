@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
@@ -36,8 +36,9 @@ describe('Tabs', async () => {
     expect(tab1Content).toBeVisible()
     expect(tab2Content).not.toBeInTheDocument()
 
-    await userEvent.click(tab2)
-
+    await act(async () => {
+      await userEvent.click(tab2)
+    })
     tab1Content = screen.queryByText('Tab1')
     tab2Content = screen.getByText('Tab2')
 

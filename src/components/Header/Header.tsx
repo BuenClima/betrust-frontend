@@ -1,5 +1,7 @@
 import { Grid } from '@mui/material'
 import PropTypes from 'prop-types'
+import { useMemo } from 'react'
+import { useAuthUser } from 'react-auth-kit'
 
 import { AccountHeader } from '../../features/Account/components/Header/AccountHeader'
 import { ListHeader } from '../../features/List/Header/ListHeader'
@@ -24,7 +26,7 @@ export type HeaderType = 'tipsters' | 'tips' | 'user'
  */
 type HeaderProps = {
   type: HeaderType
-  self?: boolean
+  self: boolean
 }
 
 /**
@@ -34,11 +36,17 @@ type HeaderProps = {
  */
 export const Header = (props: HeaderProps): JSX.Element => {
   const { type, self } = props
+  const user = useAuthUser()
+
+  /**
+   * @description Tipster
+   */
+  const tipster = useMemo(() => user()?.role?.name === 'tipster', [user])
 
   const headers: Record<HeaderType, JSX.Element> = {
     tipsters: <ListHeader key={type} title="Our Tipsters" body={loreIpsum} />,
     tips: <ListHeader key={type} title="Our Tipsters Tips" body={loreIpsum} />,
-    user: <AccountHeader key={type} self={self} />
+    user: <AccountHeader key={type} self={self} tipster={tipster} />
   }
 
   return (
@@ -70,5 +78,5 @@ export default Header
  */
 Header.propTypes = {
   type: PropTypes.string.isRequired,
-  self: PropTypes.bool
+  self: PropTypes.bool.isRequired
 }

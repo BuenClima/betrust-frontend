@@ -1,3 +1,4 @@
+/* istanbul ignore file -- @preserve */
 import type { Meta, StoryObj } from '@storybook/react'
 
 import AppProvider from '@/providers/AppProvider'
@@ -6,7 +7,6 @@ import { FilteredList } from './FilteredList'
 
 const meta = {
   title: 'Components/FilteredList',
-  // @ts-expect-error Invalid PropTypes
   component: FilteredList,
   parameters: {
     layout: 'centered'
