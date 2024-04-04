@@ -15,7 +15,7 @@ describe('Header', async () => {
   it('renders a Header for a list of tips', async () => {
     render(
       <AppProvider>
-        <Header type="tips" />
+        <Header type="tips" self={false} />
       </AppProvider>
     )
 
@@ -32,7 +32,7 @@ describe('Header', async () => {
   it('renders a Header for a list of tipsters', async () => {
     render(
       <AppProvider>
-        <Header type="tipsters" />
+        <Header type="tipsters" self={false} />
       </AppProvider>
     )
 
@@ -49,7 +49,7 @@ describe('Header', async () => {
   it('renders a Header for a user', async () => {
     render(
       <AppProvider>
-        <Header type="user" />
+        <Header type="user" self={false} />
       </AppProvider>
     )
 
