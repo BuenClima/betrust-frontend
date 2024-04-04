@@ -9,8 +9,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/setupTests.ts'],
     include: ['src/**/*.unit.test.tsx', 'src/**/*.unit.test.ts'],
+    exclude: ['src/**/*.stories.tsx'],
     coverage: {
       reporter: ['text', 'json-summary', 'json'],
+      provider: 'istanbul',
       reportOnFailure: true
     }
   },
