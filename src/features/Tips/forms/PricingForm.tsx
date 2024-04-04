@@ -1,4 +1,5 @@
 import { Button, Grid, TextField } from '@mui/material'
+import PropTypes from 'prop-types'
 import { Controller } from 'react-hook-form'
 
 import { useAppDispatch } from '@/app/store'
@@ -7,12 +8,26 @@ import { hide } from '@/services/modalSlice'
 
 import useCreateTipForm, { CreateTipFormValues } from '../hooks/useCreateTipForm'
 
-export const PricingForm = () => {
+/**
+ * @description PricingForm component
+ * @property {CreateTipFormValues} tip - tip
+ */
+type PricingFormProps = {
+  tip?: CreateTipFormValues
+}
+
+/**
+ * @description PricingForm component
+ * @param {PricingFormProps} props - props
+ * @returns {JSX.Element} PricingForm component
+ */
+export const PricingForm = (props: PricingFormProps): JSX.Element => {
+  const { tip } = props
   const dispatch = useAppDispatch()
   const { control, handleSubmit, errors } = useCreateTipForm()
 
   const onSubmit = (data: CreateTipFormValues) => {
-    console.log(data)
+    console.log(data, tip)
     dispatch(hide())
   }
   return (
@@ -69,4 +84,19 @@ export const PricingForm = () => {
       </Grid>
     </Grid>
   )
+}
+
+export default PricingForm
+
+/**
+ * @description PricingForm props types
+ * @property {CreateTipFormValues} tip - tip
+ */
+PricingForm.propTypes = {
+  tip: PropTypes.shape({
+    date: PropTypes.instanceOf(Date),
+    sport: PropTypes.string,
+    league: PropTypes.string,
+    tip: PropTypes.string
+  })
 }

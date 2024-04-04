@@ -22,22 +22,43 @@ export const CreateTipForm = (): JSX.Element => {
     setTip({ ...tip, ...data })
   }
 
-  console.log(activeTab)
-
   return (
     <Layout>
       <Tabs
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
         tabs={[
           {
             label: 'Bet',
-            component: <BetForm tip={tip} handleTabChange={handleTabChange} />
+            component: (
+              <BetForm
+                tip={tip}
+                handleTabChange={handleTabChange}
+                activeTab={activeTab}
+              />
+            )
           },
-          { label: 'Provider', component: <ProviderForm tip={tip} setTip={setTip} /> },
+          {
+            label: 'Provider',
+            component: (
+              <ProviderForm
+                tip={tip}
+                handleTabChange={handleTabChange}
+                activeTab={activeTab}
+              />
+            )
+          },
           {
             label: 'Publishing',
-            component: <PublishingForm tip={tip} setTip={setTip} />
+            component: (
+              <PublishingForm
+                tip={tip}
+                handleTabChange={handleTabChange}
+                activeTab={activeTab}
+              />
+            )
           },
-          { label: 'Pricing', component: <PricingForm tip={tip} setTip={setTip} /> }
+          { label: 'Pricing', component: <PricingForm tip={tip} /> }
         ]}
       />
     </Layout>

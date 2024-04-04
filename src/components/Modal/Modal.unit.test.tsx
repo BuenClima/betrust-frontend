@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
 import { describe, expect, it } from 'vitest'
@@ -26,6 +26,6 @@ describe('Modal', async () => {
     expect(modal).toBeVisible()
     expect(closeButton).toBeVisible()
 
-    await userEvent.click(closeButton)
+    await act(async () => await userEvent.click(closeButton))
   })
 })

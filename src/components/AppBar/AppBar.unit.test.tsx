@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
@@ -86,15 +86,17 @@ describe('AppBar', async () => {
       expect(appMenu).toBeInTheDocument()
     })
 
-    await userEvent.click(appMenu).then(() => {
-      const linkToTipsters = screen.getByTestId('xs-menu-tipsters-button')
-      const linkToTips = screen.getByTestId('xs-menu-tips-button')
+    await act(async () => {
+      await userEvent.click(appMenu).then(() => {
+        const linkToTipsters = screen.getByTestId('xs-menu-tipsters-button')
+        const linkToTips = screen.getByTestId('xs-menu-tips-button')
 
-      expect(linkToTipsters).toBeInTheDocument()
-      expect(linkToTips).toBeInTheDocument()
+        expect(linkToTipsters).toBeInTheDocument()
+        expect(linkToTips).toBeInTheDocument()
 
-      expect(linkToTipsters).toHaveTextContent('Tipsters')
-      expect(linkToTips).toHaveTextContent('Tips')
+        expect(linkToTipsters).toHaveTextContent('Tipsters')
+        expect(linkToTips).toHaveTextContent('Tips')
+      })
     })
   })
 
@@ -109,19 +111,20 @@ describe('AppBar', async () => {
     )
 
     const menuUserButton = screen.getByTestId('menu-user-button')
+    await act(async () => {
+      await userEvent.click(menuUserButton).then(() => {
+        const menuAppBar = screen.getByTestId('menu-user')
+        const linkToAccount = screen.getByTestId('menu-user-account')
+        const linkToLogout = screen.getByTestId('menu-user-logout')
 
-    await userEvent.click(menuUserButton).then(() => {
-      const menuAppBar = screen.getByTestId('menu-user')
-      const linkToAccount = screen.getByTestId('menu-user-account')
-      const linkToLogout = screen.getByTestId('menu-user-logout')
+        expect(menuAppBar).toBeInTheDocument()
 
-      expect(menuAppBar).toBeInTheDocument()
+        expect(linkToAccount).toBeInTheDocument()
+        expect(linkToLogout).toBeInTheDocument()
 
-      expect(linkToAccount).toBeInTheDocument()
-      expect(linkToLogout).toBeInTheDocument()
-
-      expect(linkToAccount).toHaveTextContent('Account')
-      expect(linkToLogout).toHaveTextContent('Logout')
+        expect(linkToAccount).toHaveTextContent('Account')
+        expect(linkToLogout).toHaveTextContent('Logout')
+      })
     })
   })
 })

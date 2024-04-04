@@ -9,7 +9,7 @@ import Tabs from '@/components/Tabs/Tabs'
 import { Layout } from '@/layouts/Layout'
 
 import { Stats } from '../components/Stats/Stats'
-import ProfileForm from '../forms/ProfileForm'
+import ProfileForm from '../forms/Profile/ProfileForm'
 
 /**
  * @description Account props

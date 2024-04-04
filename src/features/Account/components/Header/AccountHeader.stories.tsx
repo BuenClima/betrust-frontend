@@ -16,6 +16,11 @@ const meta = {
       control: {
         type: 'boolean'
       }
+    },
+    tipster: {
+      control: {
+        type: 'boolean'
+      }
     }
   },
   decorators: [
@@ -32,6 +37,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    self: true
+    self: true,
+    tipster: true
   }
 }

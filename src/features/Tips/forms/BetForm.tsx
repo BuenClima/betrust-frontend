@@ -4,9 +4,7 @@ import PropTypes from 'prop-types'
 import { useEffect } from 'react'
 import { Controller } from 'react-hook-form'
 
-import { useAppDispatch } from '@/app/store'
 import { Select } from '@/components/Select/Select'
-import { hide } from '@/services/modalSlice'
 
 import useCreateTipForm, { CreateTipFormValues } from '../hooks/useCreateTipForm'
 
@@ -14,10 +12,12 @@ import useCreateTipForm, { CreateTipFormValues } from '../hooks/useCreateTipForm
  * @description BetForm component
  * @property {CreateTipFormValues} tip - tip
  * @property {(index: number, data: CreateTipFormValues) => void} handleTabChange - handleTabChange
+ * @property {number} activeTab - activeTab
  */
 type BetFormProps = {
   tip?: CreateTipFormValues
   handleTabChange: (index: number, data: CreateTipFormValues) => void
+  activeTab: number
 }
 
 /**
@@ -26,13 +26,12 @@ type BetFormProps = {
  * @returns {JSX.Element} BetForm component
  */
 export const BetForm = (props: BetFormProps): JSX.Element => {
-  const { tip, handleTabChange } = props
-  const dispatch = useAppDispatch()
+  const { tip, handleTabChange, activeTab } = props
   const { control, handleSubmit, errors, setValue } = useCreateTipForm()
 
   const onSubmit = (data: CreateTipFormValues) => {
-    dispatch(hide())
-    handleTabChange(1, { ...tip, ...data })
+    const nextTab = activeTab + 1
+    handleTabChange(nextTab, data)
   }
 
   useEffect(() => {
@@ -172,7 +171,8 @@ BetForm.propTypes = {
     league: PropTypes.string,
     tip: PropTypes.string
   }),
-  handleTabChange: PropTypes.func.isRequired
+  handleTabChange: PropTypes.func.isRequired,
+  activeTab: PropTypes.number.isRequired
 }
 
 export default BetForm

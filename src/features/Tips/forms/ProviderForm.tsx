@@ -1,20 +1,37 @@
 import { Button, Grid, TextField } from '@mui/material'
+import PropTypes from 'prop-types'
 import { Controller } from 'react-hook-form'
 
-import { useAppDispatch } from '@/app/store'
 import { Select } from '@/components/Select/Select'
-import { hide } from '@/services/modalSlice'
 
 import useCreateTipForm, { CreateTipFormValues } from '../hooks/useCreateTipForm'
 
-export const ProviderForm = () => {
-  const dispatch = useAppDispatch()
+/**
+ * @description BetForm component
+ * @property {CreateTipFormValues} tip - tip
+ * @property {(index: number, data: CreateTipFormValues) => void} handleTabChange - handleTabChange
+ * @property {number} activeTab - activeTab
+ */
+type ProviderFormProps = {
+  tip?: CreateTipFormValues
+  handleTabChange: (index: number, data: CreateTipFormValues) => void
+  activeTab: number
+}
+
+/**
+ * @description ProviderForm component
+ * @param {ProviderFormProps} props - props
+ * @returns {JSX.Element} ProviderForm component
+ */
+export const ProviderForm = (props: ProviderFormProps): JSX.Element => {
+  const { handleTabChange, activeTab } = props
   const { control, handleSubmit, errors } = useCreateTipForm()
 
   const onSubmit = (data: CreateTipFormValues) => {
-    console.log(data)
-    dispatch(hide())
+    const nextTab = activeTab + 1
+    handleTabChange(nextTab, data)
   }
+
   return (
     <Grid
       container
@@ -81,9 +98,28 @@ export const ProviderForm = () => {
 
       <Grid item xs={12} container justifyContent="center">
         <Button type="submit" variant="contained">
-          Create
+          Next
         </Button>
       </Grid>
     </Grid>
   )
+}
+
+export default ProviderForm
+
+/**
+ * @description ProviderForm props types
+ * @property {CreateTipFormValues} tip - tip
+ * @property {(index: number, data: CreateTipFormValues) => void} handleTabChange - handleTabChange
+ * @property {number} activeTab - activeTab
+ */
+ProviderForm.propTypes = {
+  tip: PropTypes.shape({
+    date: PropTypes.instanceOf(Date),
+    sport: PropTypes.string,
+    league: PropTypes.string,
+    tip: PropTypes.string
+  }),
+  handleTabChange: PropTypes.func.isRequired,
+  activeTab: PropTypes.number.isRequired
 }

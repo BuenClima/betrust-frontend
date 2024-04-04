@@ -12,7 +12,7 @@ export const List = (): JSX.Element => {
 
   return (
     <Layout>
-      <Header type={content.header} />
+      <Header type={content.header} self={false} />
       <FilteredList type={content.content} filter={content.filter} />
     </Layout>
   )

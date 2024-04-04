@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
@@ -31,10 +31,11 @@ describe('ImageUpload', async () => {
     await waitFor(() => {
       expect(imageUpload).toBeInTheDocument()
     })
-
-    await userEvent.upload(
-      imageUpload.querySelector('input') as HTMLElement,
-      new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })
-    )
+    await act(async () => {
+      await userEvent.upload(
+        imageUpload.querySelector('input') as HTMLElement,
+        new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })
+      )
+    })
   })
 })

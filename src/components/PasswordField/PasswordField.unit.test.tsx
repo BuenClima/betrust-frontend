@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
@@ -48,8 +48,9 @@ describe('PasswordField', async () => {
 
     expect(textbox).not.toHaveTextContent(value)
 
-    await userEvent.click(visibilityOffButton)
-
+    await act(async () => {
+      await userEvent.click(visibilityOffButton)
+    })
     const visibilityButton = screen.getByTestId('password-visible-button')
 
     expect(visibilityButton).toBeInTheDocument()

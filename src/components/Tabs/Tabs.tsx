@@ -21,6 +21,8 @@ type TabType = {
  */
 type TabsProps = {
   tabs: TabType[]
+  activeTab?: number
+  setActiveTab?: (index: number) => void
 }
 
 /**
@@ -28,16 +30,26 @@ type TabsProps = {
  * @returns {JSX.Element} Tabs component
  */
 export const Tabs = (props: TabsProps): JSX.Element => {
-  const { tabs } = props
+  const { tabs, activeTab, setActiveTab } = props
   const [value, setValue] = useState(0)
 
+  /**
+   * @description handleChange
+   * @param _event - event
+   * @param newValue - newValue
+   */
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
+    setActiveTab && setActiveTab(newValue)
   }
 
+  /**
+   * @description listen to activeTab and tabs changes
+   */
   useEffect(() => {
-    setValue(0)
-  }, [tabs])
+    if (activeTab !== undefined) setValue(activeTab)
+    else setValue(0)
+  }, [tabs, activeTab])
 
   return (
     <Container maxWidth="xl">

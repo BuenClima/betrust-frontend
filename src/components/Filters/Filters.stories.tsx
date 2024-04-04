@@ -6,7 +6,6 @@ import { Filters } from './Filters'
 
 const meta = {
   title: 'Components/Filters',
-  // @ts-expect-error Invalid PropTypes
   component: Filters,
   parameters: {
     layout: 'centered'

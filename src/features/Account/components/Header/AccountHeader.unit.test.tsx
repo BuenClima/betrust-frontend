@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
@@ -24,8 +24,11 @@ describe('AccountHeader', async () => {
 
     const avatar = screen.getByTestId('avatar')
     expect(avatar).toBeVisible()
-    await userEvent.click(avatar, {
-      pointerEventsCheck: PointerEventsCheckLevel.Never
+
+    await act(async () => {
+      await userEvent.click(avatar, {
+        pointerEventsCheck: PointerEventsCheckLevel.Never
+      })
     })
 
     const cover = screen.queryByTestId('edit-cover')
@@ -47,8 +50,11 @@ describe('AccountHeader', async () => {
 
     const avatar = screen.getByTestId('avatar')
     expect(avatar).toBeVisible()
-    await userEvent.click(avatar, {
-      pointerEventsCheck: PointerEventsCheckLevel.Never
+
+    await act(async () => {
+      await userEvent.click(avatar, {
+        pointerEventsCheck: PointerEventsCheckLevel.Never
+      })
     })
 
     const cover = screen.queryByTestId('edit-cover')
@@ -70,8 +76,11 @@ describe('AccountHeader', async () => {
 
     const avatar = screen.getByTestId('avatar')
     expect(avatar).toBeVisible()
-    await userEvent.click(avatar, {
-      pointerEventsCheck: PointerEventsCheckLevel.Never
+
+    await act(async () => {
+      await userEvent.click(avatar, {
+        pointerEventsCheck: PointerEventsCheckLevel.Never
+      })
     })
 
     const cover = screen.queryByTestId('edit-cover')

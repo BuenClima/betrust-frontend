@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
@@ -126,10 +126,12 @@ describe('Card', async () => {
       expect(cardTipsterTitle).toBeInTheDocument()
     })
 
-    await userEvent.click(card).then(async () => {
-      const modal = screen.getByTestId('modal')
-      await waitFor(() => {
-        expect(modal).toBeInTheDocument()
+    await act(async () => {
+      await userEvent.click(card).then(async () => {
+        const modal = screen.getByTestId('modal')
+        await waitFor(() => {
+          expect(modal).toBeInTheDocument()
+        })
       })
     })
   })

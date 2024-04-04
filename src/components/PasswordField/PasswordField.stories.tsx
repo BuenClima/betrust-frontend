@@ -59,7 +59,8 @@ export const Default: Story = {
     placeholder: 'Select an option',
     helperText: 'This is a helper text',
     error: false,
-    label: 'Password'
+    label: 'Password',
+    onChange: () => {}
   }
 }
 export const Error: Story = {
@@ -68,6 +69,7 @@ export const Error: Story = {
     placeholder: 'Select an option',
     helperText: 'This is a helper text',
     error: true,
-    label: 'Password'
+    label: 'Password',
+    onChange: () => {}
   }
 }

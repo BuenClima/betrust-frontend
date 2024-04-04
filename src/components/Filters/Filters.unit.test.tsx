@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
@@ -45,9 +45,9 @@ describe('Filters', async () => {
     )
 
     const sortButton = screen.getByTestId('sort-button')
-
-    await userEvent.click(sortButton)
-
+    await act(async () => {
+      await userEvent.click(sortButton)
+    })
     await waitFor(() => {
       const filterTitle = screen.getByTestId('sort-title')
       expect(filterTitle).toBeInTheDocument()
@@ -68,9 +68,9 @@ describe('Filters', async () => {
     )
 
     const filtersButton = screen.getByTestId('filters-button')
-
-    await userEvent.click(filtersButton)
-
+    await act(async () => {
+      await userEvent.click(filtersButton)
+    })
     await waitFor(() => {
       const filterTitle = screen.getByTestId('filter-title')
       expect(filterTitle).toBeInTheDocument()

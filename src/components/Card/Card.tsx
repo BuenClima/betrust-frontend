@@ -107,7 +107,7 @@ export const Card = (props: CardProps): JSX.Element => {
         subheader={
           <CardSubTitle type={type} subtitle={dayjs().format('DD/MM/YYYY HH:mm')} />
         }
-        action={<CardAction type={type} status="Active" />}
+        action={<CardAction type={type} status="active" />}
       />
       <CardContent
         type={type}
