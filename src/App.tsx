@@ -34,7 +34,7 @@ function App(): JSX.Element {
           path="/tipsters/:id"
           element={
             <PrivateRoute>
-              <Account />
+              <Account self={false} />
             </PrivateRoute>
           }
         />
@@ -43,7 +43,7 @@ function App(): JSX.Element {
           path="/account"
           element={
             <PrivateRoute>
-              <Account self />
+              <Account self={true} />
             </PrivateRoute>
           }
         />

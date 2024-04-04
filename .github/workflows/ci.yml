@@ -27,4 +27,7 @@ jobs:
       - name: 🧱 Build Project
         run: yarn build
       - name: 📊 Run Tests
-        run: yarn test
+        run: yarn test --coverage.enabled true
+      - name: 📊 Upload Coverage
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2

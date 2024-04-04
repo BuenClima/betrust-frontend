@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import TipsterStatistics from '@/components/TipsterStatistics/TipsterStatistic'
+import TipsterStatistics from '@/components/TipsterStatistics/TipsterStatistics'
 
 /**
  * @description ExpandMoreProps interface

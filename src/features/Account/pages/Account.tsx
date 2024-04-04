@@ -16,7 +16,7 @@ import ProfileForm from '../forms/ProfileForm'
  * @property {boolean} self - Is account page for self
  */
 type AccountProps = {
-  self?: boolean
+  self: boolean
 }
 
 /**
@@ -73,5 +73,5 @@ export default Account
  * @property {boolean} self - Is account page for self
  */
 Account.propTypes = {
-  self: PropTypes.bool
+  self: PropTypes.bool.isRequired
 }
