@@ -38,6 +38,7 @@ export const ProfileForm = (): JSX.Element => {
               fullWidth
               helperText={errors.name?.message ?? 'Helper text'}
               error={!!errors.name}
+              placeholder="Name"
             />
           )}
         />
@@ -54,6 +55,7 @@ export const ProfileForm = (): JSX.Element => {
               fullWidth
               helperText={errors.email?.message ?? 'Helper text'}
               error={!!errors.email}
+              placeholder="Email"
             />
           )}
         />
@@ -72,6 +74,7 @@ export const ProfileForm = (): JSX.Element => {
               error={!!errors.description}
               multiline
               rows={4}
+              placeholder="Description"
             />
           )}
         />
