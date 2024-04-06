@@ -6,7 +6,7 @@ import AppProvider from '@/providers/AppProvider'
 import { Tips } from './Tips'
 
 const meta = {
-  title: 'Account/Components/Header',
+  title: 'Account/Components/Tips',
   component: Tips,
   parameters: {
     layout: 'centered'

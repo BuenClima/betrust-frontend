@@ -26,7 +26,7 @@ const Copyright = ({ ...props }: TypographyProps): JSX.Element => {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        BETRUST
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -89,11 +89,11 @@ export const SignIn = (): JSX.Element => {
             justifyContent: 'center'
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign In
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField

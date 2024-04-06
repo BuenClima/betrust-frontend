@@ -31,7 +31,7 @@ const pages = [
  */
 const settings = [
   { title: 'Account', url: '/account', icon: <AccountCircle /> },
-  { title: 'Logout', url: '/logout', icon: <Logout /> }
+  { title: 'Sign Out', url: '/signout', icon: <Logout /> }
 ]
 
 /**

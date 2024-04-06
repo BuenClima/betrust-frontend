@@ -1,4 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
 
 import AppProvider from '@/providers/AppProvider'
@@ -15,7 +16,9 @@ describe('FilteredList', async () => {
   it('renders a FilteredList for a list of tips with a tip filter', async () => {
     render(
       <AppProvider>
-        <FilteredList type="tip" filter="filterTips" />
+        <MemoryRouter>
+          <FilteredList type="tip" filter="filterTips" />
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -42,7 +45,9 @@ describe('FilteredList', async () => {
   it('renders a FilteredList for a list of tipsters with a tipster filter', async () => {
     render(
       <AppProvider>
-        <FilteredList type="tipster" filter="filterTipsters" />
+        <MemoryRouter>
+          <FilteredList type="tipster" filter="filterTipsters" />
+        </MemoryRouter>
       </AppProvider>
     )
 

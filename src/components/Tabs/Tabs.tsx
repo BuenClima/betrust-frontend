@@ -55,7 +55,12 @@ export const Tabs = (props: TabsProps): JSX.Element => {
     <Container maxWidth="xl">
       <TabsMui value={value} onChange={handleChange}>
         {tabs.map((tab, index) => (
-          <Tab key={index} label={tab.label} {...a11yProps(index)} />
+          <Tab
+            key={index}
+            label={tab.label}
+            data-testid={`tab-${tab.label.toLowerCase().replace(' ', '-')}`}
+            {...a11yProps(index)}
+          />
         ))}
       </TabsMui>
       {tabs.map((tab, index) => (

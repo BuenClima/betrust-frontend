@@ -11,7 +11,6 @@ import { Suspense } from 'react'
 import { AuthProvider } from 'react-auth-kit'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
 
 import { RootState, setupStore } from '@/app/store'
 import { theme } from '@/app/theme'
@@ -42,9 +41,7 @@ export const AppProvider = (props: AppProviderProps): JSX.Element => {
               <SnackbarProvider maxSnack={3}>
                 <AuthProvider authType="localstorage" authName="auth">
                   <CssBaseline />
-                  <div style={{ height: '100vh', width: '100vw' }}>
-                    <BrowserRouter>{props.children}</BrowserRouter>
-                  </div>
+                  <div style={{ height: '100vh', width: '100vw' }}>{props.children}</div>
                 </AuthProvider>
               </SnackbarProvider>
             </Suspense>

@@ -30,12 +30,25 @@ export const Account = (props: AccountProps): JSX.Element => {
   const location = useLocation()
   const tipsterRegexPath = /\/tipsters\/[0-9]+/
 
+  /**
+   * @description role
+   */
   const role = useMemo(() => user()?.role?.name, [user])
 
+  /**
+   * @description tabs for account page
+   */
   const tabs = useMemo(() => {
-    if (location.pathname === '/account') {
-      const tabs = []
-      if (role === 'tipster') {
+    const tabs: {
+      label: string
+      component: JSX.Element
+    }[] = []
+
+    if (location.pathname.match(tipsterRegexPath) || location.pathname === '/account') {
+      if (self) {
+        tabs.push({ label: 'Profile', component: <ProfileForm /> })
+      }
+      if (role === 'tipster' || location.pathname.match(tipsterRegexPath)) {
         tabs.push(
           { label: 'Stats', component: <Stats /> },
           {
@@ -44,19 +57,9 @@ export const Account = (props: AccountProps): JSX.Element => {
           }
         )
       }
-      if (self) {
-        tabs.push({ label: 'Profile', component: <ProfileForm /> })
-      }
-      return tabs
     }
-    if (location.pathname.match(tipsterRegexPath)) {
-      return [
-        { label: 'Stats', component: <Stats /> },
-        { label: 'Tips', component: <FilteredList type="tip" filter="filterTips" /> }
-      ]
-    }
-    return []
-  }, [self])
+    return tabs
+  }, [self, location.pathname])
 
   return (
     <Layout>
