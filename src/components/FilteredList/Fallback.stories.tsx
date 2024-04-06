@@ -7,7 +7,7 @@ import { FilteredList } from './FilteredList'
 
 const meta = {
   title: 'Components/FilteredList',
-  component: FilteredList,
+  component: FilteredList as any,
   parameters: {
     layout: 'centered'
   },

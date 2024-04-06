@@ -77,6 +77,6 @@ export default Header
  * @property {boolean} self - Self
  */
 Header.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['tipsters', 'tips', 'user']).isRequired,
   self: PropTypes.bool.isRequired
 }

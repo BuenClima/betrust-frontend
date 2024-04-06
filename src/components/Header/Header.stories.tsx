@@ -7,7 +7,7 @@ import { Header } from './Header'
 
 const meta = {
   title: 'Components/Header',
-  component: Header,
+  component: Header as any,
   parameters: {
     layout: 'centered'
   },
