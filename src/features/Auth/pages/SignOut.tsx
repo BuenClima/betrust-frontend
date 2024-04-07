@@ -8,6 +8,9 @@ import { useSignOut } from 'react-auth-kit'
 export const SignOut = (): JSX.Element => {
   const signOut = useSignOut()
 
+  /**
+   * @description Sign out user on mount
+   */
   useEffect(() => {
     signOut()
   }, [signOut])

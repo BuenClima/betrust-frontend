@@ -12,8 +12,9 @@ describe('Copyright', async () => {
    */
   it('renders a Copyright', async () => {
     render(<Copyright />)
-    expect(screen.getByText('Copyright ©')).toBeInTheDocument()
-    expect(screen.getByText('BETRUST')).toBeInTheDocument()
-    expect(screen.getByText(new Date().getFullYear())).toBeInTheDocument()
+    expect(screen.getByTestId('copyright')).toBeVisible()
+    expect(screen.getByTestId('copyright')).toHaveTextContent(
+      `Copyright © BETRUST ${new Date().getFullYear()}.`
+    )
   })
 })

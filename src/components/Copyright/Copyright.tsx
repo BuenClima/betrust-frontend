@@ -7,7 +7,13 @@ import PropTypes from 'prop-types'
  */
 export const Copyright = ({ ...props }: TypographyProps): JSX.Element => {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+      data-testid="copyright"
+    >
       {'Copyright © '}
       <Link color="inherit" href="https://betrust.com">
         BETRUST
