@@ -1,5 +1,6 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
 
 import AppProvider from '@/providers/AppProvider'
@@ -17,7 +18,9 @@ describe('AppBar', async () => {
   it('renders with a toolbar and content', async () => {
     render(
       <AppProvider>
-        <AppBar />
+        <MemoryRouter initialEntries={[{ pathname: '/account' }]}>
+          <AppBar />
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -34,7 +37,9 @@ describe('AppBar', async () => {
   it('renders with desktop viewport', async () => {
     render(
       <AppProvider>
-        <AppBar />
+        <MemoryRouter initialEntries={[{ pathname: '/account' }]}>
+          <AppBar />
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -66,7 +71,9 @@ describe('AppBar', async () => {
     resizeScreenSize(390, 844)
     render(
       <AppProvider>
-        <AppBar />
+        <MemoryRouter initialEntries={[{ pathname: '/account' }]}>
+          <AppBar />
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -106,7 +113,9 @@ describe('AppBar', async () => {
   it('on menu settings click it should open the menu settings', async () => {
     render(
       <AppProvider>
-        <AppBar />
+        <MemoryRouter initialEntries={[{ pathname: '/account' }]}>
+          <AppBar />
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -115,7 +124,7 @@ describe('AppBar', async () => {
       await userEvent.click(menuUserButton).then(() => {
         const menuAppBar = screen.getByTestId('menu-user')
         const linkToAccount = screen.getByTestId('menu-user-account')
-        const linkToLogout = screen.getByTestId('menu-user-logout')
+        const linkToLogout = screen.getByTestId('menu-user-sign out')
 
         expect(menuAppBar).toBeInTheDocument()
 
@@ -123,7 +132,7 @@ describe('AppBar', async () => {
         expect(linkToLogout).toBeInTheDocument()
 
         expect(linkToAccount).toHaveTextContent('Account')
-        expect(linkToLogout).toHaveTextContent('Logout')
+        expect(linkToLogout).toHaveTextContent('Sign Out')
       })
     })
   })

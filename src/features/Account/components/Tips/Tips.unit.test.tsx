@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
 
 import AppProvider from '@/providers/AppProvider'
@@ -15,7 +16,9 @@ describe('Tips', async () => {
   it('renders a Tips', async () => {
     render(
       <AppProvider>
-        <Tips />
+        <MemoryRouter initialEntries={[{ pathname: '/account' }]}>
+          <Tips />
+        </MemoryRouter>
       </AppProvider>
     )
     expect(screen.getByText('History (100)')).toBeVisible()

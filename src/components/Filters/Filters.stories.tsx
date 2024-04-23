@@ -7,7 +7,7 @@ import { Filters } from './Filters'
 
 const meta = {
   title: 'Components/Filters',
-  component: Filters,
+  component: Filters as any,
   parameters: {
     layout: 'centered'
   },

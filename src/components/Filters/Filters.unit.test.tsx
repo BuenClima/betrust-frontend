@@ -1,5 +1,6 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
 
 import Layout from '@/layouts/Layout'
@@ -17,7 +18,9 @@ describe('Filters', async () => {
   it('renders a Filters for a list of tips with a tip filter', async () => {
     render(
       <AppProvider>
-        <Filters filter="filterTips" />
+        <MemoryRouter>
+          <Filters filter="filterTips" />
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -38,9 +41,11 @@ describe('Filters', async () => {
   it('renders a sort menu when clicking on sorting button', async () => {
     render(
       <AppProvider>
-        <Layout>
-          <Filters filter="filterTips" />
-        </Layout>
+        <MemoryRouter>
+          <Layout>
+            <Filters filter="filterTips" />
+          </Layout>
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -61,9 +66,11 @@ describe('Filters', async () => {
   it('renders a filters menu when clicking on filters button', async () => {
     render(
       <AppProvider>
-        <Layout>
-          <Filters filter="filterTips" />
-        </Layout>
+        <MemoryRouter>
+          <Layout>
+            <Filters filter="filterTips" />
+          </Layout>
+        </MemoryRouter>
       </AppProvider>
     )
 

@@ -3,28 +3,16 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import AppProvider from '@/providers/AppProvider'
 
-import { Header } from './Header'
+import { SignInForm } from './SignInForm'
 
 const meta = {
-  title: 'Components/Header',
-  component: Header as any,
+  title: 'Forms/SignInForm',
+  component: SignInForm,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs'],
-  argTypes: {
-    type: {
-      control: {
-        type: 'select',
-        options: ['tipsters', 'tips', 'user']
-      }
-    },
-    self: {
-      control: {
-        type: 'boolean'
-      }
-    }
-  },
+  argTypes: {},
   decorators: [
     (Story) => (
       <AppProvider>
@@ -32,14 +20,11 @@ const meta = {
       </AppProvider>
     )
   ]
-} satisfies Meta<typeof Header>
+} satisfies Meta<typeof SignInForm>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {
-    type: 'tipsters',
-    self: false
-  }
+  args: {}
 }

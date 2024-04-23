@@ -1,5 +1,6 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
 
 import Layout from '@/layouts/Layout'
@@ -17,7 +18,9 @@ describe('Card', async () => {
   it('renders a tip card', async () => {
     render(
       <AppProvider>
-        <Card type="tip" extended={false} />
+        <MemoryRouter>
+          <Card type="tip" extended={false} />
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -52,7 +55,9 @@ describe('Card', async () => {
   it('renders a tipster card', async () => {
     render(
       <AppProvider>
-        <Card type="tipster" extended={false} />
+        <MemoryRouter>
+          <Card type="tipster" extended={false} />
+        </MemoryRouter>
       </AppProvider>
     )
 
@@ -91,9 +96,11 @@ describe('Card', async () => {
   it('renders a tipster card extended', async () => {
     render(
       <AppProvider>
-        <Layout>
-          <Card type="tipster" extended={true} />
-        </Layout>
+        <MemoryRouter>
+          <Layout>
+            <Card type="tipster" extended={true} />
+          </Layout>
+        </MemoryRouter>
       </AppProvider>
     )
 

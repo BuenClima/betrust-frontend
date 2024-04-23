@@ -3,11 +3,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import AppProvider from '@/providers/AppProvider'
 
-import { Tips } from './Tips'
+import { Copyright } from './Copyright'
 
 const meta = {
-  title: 'Account/Components/Tips',
-  component: Tips,
+  title: 'Components/Copyright',
+  component: Copyright as any,
   parameters: {
     layout: 'centered'
   },
@@ -20,11 +20,11 @@ const meta = {
       </AppProvider>
     )
   ]
-} satisfies Meta<typeof Tips>
+} satisfies Meta<typeof Copyright>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {}
 }

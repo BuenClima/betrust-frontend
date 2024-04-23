@@ -66,5 +66,5 @@ export default Filters
  * @property {FilterType} filter - FilterType
  */
 Filters.propTypes = {
-  filter: PropTypes.string.isRequired
+  filter: PropTypes.oneOf(['filterTips', 'filterTipsters']).isRequired
 }
