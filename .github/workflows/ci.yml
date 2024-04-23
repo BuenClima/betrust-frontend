@@ -9,12 +9,12 @@ permissions:
   pull-requests: write
 
 jobs:
-  build_lint_test:
-    name: 📊 Build, Lint and Test
+  build-and-lint:
+    name: 📊 Build and Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
       - name: 📡 Corepack enable
@@ -27,8 +27,48 @@ jobs:
         run: yarn type-check
       - name: 🧱 Build Project
         run: yarn build
+
+  test:
+    name: 📊 Test
+    runs-on: ubuntu-latest
+    needs: build-and-lint
+    strategy:
+      matrix:
+        branch:
+          - ${{ github.head_ref }}
+          - 'main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: 📡 Corepack enable
+        run: corepack enable
+      - name: 📦 Install Packages
+        run: yarn
       - name: 📊 Run Tests
         run: yarn test --coverage.enabled true
-      - name: 📊 Upload Coverage
-        if: always()
+      - name: Upload Coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.branch }}
+          path: coverage
+
+  report-coverage:
+    name: 📊 Report Coverage
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Coverage Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-${{ github.head_ref }}
+          path: coverage
+      - uses: actions/download-artifact@v4
+        with:
+          name: coverage-main
+          path: coverage-main
+      - name: 'Report Coverage'
         uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          json-summary-compare-path: coverage-main/coverage-summary.json
