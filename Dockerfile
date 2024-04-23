@@ -13,6 +13,7 @@ RUN corepack enable
 
 COPY package.json ./
 COPY yarn.lock ./
+COPY .yarn ./.yarn
 COPY .yarnrc.yml ./
 
 RUN yarn 
