@@ -18,7 +18,7 @@ const meta = {
   argTypes: {
     value: {
       control: {
-        type: 'array'
+        type: 'object'
       }
     },
     placeholder: {

@@ -25,7 +25,7 @@ const meta = {
     },
     children: {
       control: {
-        type: 'array'
+        type: 'object'
       }
     }
   },

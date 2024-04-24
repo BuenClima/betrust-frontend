@@ -15,7 +15,7 @@ const meta = {
   argTypes: {
     tabs: {
       control: {
-        type: 'array'
+        type: 'object'
       }
     }
   },
