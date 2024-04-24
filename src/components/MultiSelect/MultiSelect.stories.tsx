@@ -18,12 +18,12 @@ const meta = {
   argTypes: {
     value: {
       control: {
-        type: 'array'
+        type: 'object'
       }
     },
     options: {
       control: {
-        type: 'array'
+        type: 'object'
       }
     },
     placeholder: {
