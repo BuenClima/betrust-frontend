@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi8/ubi-minimal:latest AS builder
 WORKDIR /react-app
 
 RUN microdnf module reset nodejs && \
-    microdnf -y module enable nodejs:18 && \
+    microdnf -y module enable nodejs:20 && \
     microdnf -y install nodejs npm && \
     microdnf -y clean all
 
@@ -25,7 +25,7 @@ RUN yarn build
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
-RUN microdnf module reset nodejs && \
+RUN microdnf module reset nginx && \
     microdnf -y module enable nginx && \
     microdnf -y install nginx && \
     microdnf -y clean all
