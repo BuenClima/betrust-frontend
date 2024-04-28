@@ -1,7 +1,6 @@
+import RequireAuth from '@auth-kit/react-router/RequireAuth'
 import { lazy } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-
-import PrivateRoute from '@/components/PrivateRoute/PrivateRoute'
 
 const List = lazy(() => import('@/features/List/pages/List'))
 const Auth = lazy(() => import('@/features/Auth/pages/Auth'))
@@ -22,45 +21,45 @@ export const RoutesProvider = (): JSX.Element => {
         <Route
           path="/:resource"
           element={
-            <PrivateRoute>
+            <RequireAuth fallbackPath="/auth/signin">
               <List />
-            </PrivateRoute>
+            </RequireAuth>
           }
         />
 
         <Route
           path="/tipsters/:id"
           element={
-            <PrivateRoute>
+            <RequireAuth fallbackPath="/auth/signin">
               <Account self={false} />
-            </PrivateRoute>
+            </RequireAuth>
           }
         />
 
         <Route
           path="/account"
           element={
-            <PrivateRoute>
+            <RequireAuth fallbackPath="/auth/signin">
               <Account self={true} />
-            </PrivateRoute>
+            </RequireAuth>
           }
         />
 
         <Route
           path="/signout"
           element={
-            <PrivateRoute>
+            <RequireAuth fallbackPath="/auth/signin">
               <SignOut />
-            </PrivateRoute>
+            </RequireAuth>
           }
         />
 
         <Route
           path="/"
           element={
-            <PrivateRoute>
+            <RequireAuth fallbackPath="/auth/signin">
               <Home />
-            </PrivateRoute>
+            </RequireAuth>
           }
         />
 

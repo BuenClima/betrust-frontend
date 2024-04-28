@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
-import { useAuthUser } from 'react-auth-kit'
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser'
 import { useLocation } from 'react-router-dom'
 
 import FilteredList from '@/components/FilteredList/FilteredList'
 import { Header } from '@/components/Header/Header'
 import Tabs from '@/components/Tabs/Tabs'
 import { Layout } from '@/layouts/Layout'
+import { User } from '@/types/user'
 
 import { Stats } from '../components/Stats/Stats'
 import ProfileForm from '../forms/Profile/ProfileForm'
@@ -26,14 +27,14 @@ type AccountProps = {
 export const Account = (props: AccountProps): JSX.Element => {
   const { self } = props
 
-  const user = useAuthUser()
+  const user = useAuthUser<User>()
   const location = useLocation()
   const tipsterRegexPath = /\/tipsters\/[0-9]+/
 
   /**
    * @description role
    */
-  const role = useMemo(() => user()?.role?.name, [user])
+  const role = useMemo(() => user?.role?.name, [user])
 
   /**
    * @description tabs for account page

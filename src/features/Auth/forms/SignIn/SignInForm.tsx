@@ -7,24 +7,23 @@ import {
   Link,
   TextField
 } from '@mui/material'
-import { useSignIn } from 'react-auth-kit'
+import useSignIn from 'react-auth-kit/hooks/useSignIn'
 import { Controller } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { useAppDispatch } from '@/app/store'
 import Copyright from '@/components/Copyright/Copyright'
+import { User } from '@/types/user'
 
 import useSignInForm, { SignInFormValues } from '../../hooks/useSignInForm'
-import { signIn } from '../../services/authSlice'
 
 /**
  * @description SignInForm component
  * @returns {JSX.Element} SignInForm component
  */
 export const SignInForm = (): JSX.Element => {
-  const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const authSignIn = useSignIn()
+  const authSignIn = useSignIn<User>()
+
   const { control, handleSubmit, errors } = useSignInForm()
 
   /**
@@ -87,7 +86,7 @@ export const SignInForm = (): JSX.Element => {
       <Button
         onClick={() => {
           const user = {
-            id: '1',
+            id: 1,
             email: 'user@email.com',
             name: 'User',
             role: {
@@ -95,17 +94,13 @@ export const SignInForm = (): JSX.Element => {
               name: 'user'
             }
           }
-          dispatch(
-            signIn({
-              token: '123',
-              user
-            })
-          )
+
           authSignIn({
-            token: '123',
-            tokenType: 'Bearer',
-            expiresIn: 3600,
-            authState: user
+            auth: {
+              token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzczOTQxNzgsImlkIjoxLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwibmFtZSI6IlVzZXIiLCJyb2xlIjp7ImlkIjoxLCJuYW1lIjoidXNlciJ9fQ.rzWmqKIRtgGg5czVf14JaofYskg_V_d-MkNeV75SkNo`,
+              type: 'Bearer'
+            },
+            userState: user
           })
           navigate('/')
         }}
@@ -115,7 +110,7 @@ export const SignInForm = (): JSX.Element => {
       <Button
         onClick={() => {
           const user = {
-            id: '1',
+            id: 1,
             email: 'tipster@email.com',
             name: 'Tipster',
             role: {
@@ -123,17 +118,13 @@ export const SignInForm = (): JSX.Element => {
               name: 'tipster'
             }
           }
-          dispatch(
-            signIn({
-              token: '123',
-              user
-            })
-          )
+
           authSignIn({
-            token: '123',
-            tokenType: 'Bearer',
-            expiresIn: 3600,
-            authState: user
+            auth: {
+              token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzczOTQxNzgsImlkIjoxLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwibmFtZSI6IlVzZXIiLCJyb2xlIjp7ImlkIjoxLCJuYW1lIjoidXNlciJ9fQ.rzWmqKIRtgGg5czVf14JaofYskg_V_d-MkNeV75SkNo`,
+              type: 'Bearer'
+            },
+            userState: user
           })
           navigate('/')
         }}

@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 /**
  * @description Loading State
  */
-type LoadingState = {
+export type LoadingState = {
   isLoading: boolean
   message: string
 }
@@ -11,9 +11,28 @@ type LoadingState = {
 /**
  * @description Loading Initial State
  */
-const initialState: LoadingState = {
+export const initialState: LoadingState = {
   isLoading: false,
   message: ''
+}
+
+/**
+ * @description Show Action
+ * @param state - Loading state
+ * @param action - Payload action
+ */
+export const showAction = (state: LoadingState, action: PayloadAction<string>) => {
+  state.isLoading = true
+  state.message = action.payload
+}
+
+/**
+ * @description Hide Action
+ * @param state - Loading state
+ */
+export const hideAction = (state: LoadingState) => {
+  state.isLoading = false
+  state.message = ''
 }
 
 /**
@@ -23,24 +42,8 @@ const loadingSlice = createSlice({
   name: 'loading',
   initialState,
   reducers: {
-    /**
-     * @description Show loading
-     * @param state - Loading state
-     * @param action - Payload action
-     */
-    show: (state, action: PayloadAction<string>) => {
-      state.isLoading = true
-      state.message = action.payload
-    },
-
-    /**
-     * @description Hide loading
-     * @param state - Loading state
-     */
-    hide: (state) => {
-      state.isLoading = false
-      state.message = ''
-    }
+    show: showAction,
+    hide: hideAction
   }
 })
 

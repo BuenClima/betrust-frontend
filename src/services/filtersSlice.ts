@@ -6,7 +6,7 @@ import { SelectValueProps } from '@/types'
 /**
  * @description Filters State
  */
-type FiltersState = {
+export type FiltersState = {
   active: boolean
   filters: {
     date?: Dayjs | null
@@ -23,7 +23,7 @@ type FiltersState = {
 /**
  * @description Filters Initial State
  */
-const initialState: FiltersState = {
+export const initialState: FiltersState = {
   active: false,
   filters: {
     date: null,
@@ -38,30 +38,36 @@ const initialState: FiltersState = {
 }
 
 /**
+ * @description Filter Action
+ * @param state - Filters state
+ * @param action - Payload action
+ */
+export const filterAction = (
+  state: FiltersState,
+  action: PayloadAction<FiltersState>
+) => {
+  state.active = true
+  state.filters = action.payload.filters
+}
+
+/**
+ * @description Reset Action
+ * @param state - Filters state
+ */
+export const resetAction = (state: FiltersState) => {
+  state.active = false
+  state.filters = initialState.filters
+}
+
+/**
  * @description Filters Slice
  */
 const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    /**
-     * @description Show Filters
-     * @param state - Filters state
-     * @param action - Payload action
-     */
-    filter: (state, action: PayloadAction<FiltersState>) => {
-      state.active = true
-      state.filters = action.payload.filters
-    },
-
-    /**
-     * @description Reset Filters
-     * @param state - Filters state
-     */
-    reset: (state) => {
-      state.active = false
-      state.filters = initialState.filters
-    }
+    filter: filterAction,
+    reset: resetAction
   }
 })
 
