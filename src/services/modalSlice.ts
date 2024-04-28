@@ -7,7 +7,7 @@ export type ModalType = FilterType | 'tipDetails' | 'null' | 'sort' | 'createTip
 /**
  * @description Modal State
  */
-type ModalState = {
+export type ModalState = {
   show: boolean
   type: ModalType
 }
@@ -15,9 +15,28 @@ type ModalState = {
 /**
  * @description Modal Initial State
  */
-const initialState: ModalState = {
+export const initialState: ModalState = {
   show: false,
   type: 'null'
+}
+
+/**
+ * @description Show Action
+ * @param state - Modal state
+ * @param action - Payload action
+ */
+export const showAction = (state: ModalState, action: PayloadAction<ModalType>) => {
+  state.show = true
+  state.type = action.payload
+}
+
+/**
+ * @description Hide Action
+ * @param state - Modal state
+ */
+export const hideAction = (state: ModalState) => {
+  state.show = false
+  state.type = 'null'
 }
 
 /**
@@ -27,24 +46,8 @@ const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    /**
-     * @description Show Modal
-     * @param state - Modal state
-     * @param action - Payload action
-     */
-    show: (state, action: PayloadAction<ModalType>) => {
-      state.show = true
-      state.type = action.payload
-    },
-
-    /**
-     * @description Hide Modal
-     * @param state - Modal state
-     */
-    hide: (state) => {
-      state.show = false
-      state.type = 'null'
-    }
+    show: showAction,
+    hide: hideAction
   }
 })
 

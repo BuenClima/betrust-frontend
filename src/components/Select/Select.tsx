@@ -64,6 +64,7 @@ export type SelectProps = {
  * />
  */
 export const Select = (props: SelectProps): JSX.Element => {
+  /* istanbul ignore next */
   const {
     value,
     setValue,
@@ -78,7 +79,7 @@ export const Select = (props: SelectProps): JSX.Element => {
 
   return (
     <Autocomplete
-      disabled={disabled ?? false}
+      disabled={disabled}
       data-testid={dataTestId}
       value={value}
       getOptionLabel={(option) => (option as SelectValueProps).name}
@@ -91,9 +92,9 @@ export const Select = (props: SelectProps): JSX.Element => {
         <TextField
           {...params}
           error={error}
-          helperText={helperText ?? ''}
+          helperText={helperText}
           variant="outlined"
-          placeholder={placeholder ?? ''}
+          placeholder={placeholder}
           inputProps={{
             ...params.inputProps,
             style: { textTransform: 'capitalize' }

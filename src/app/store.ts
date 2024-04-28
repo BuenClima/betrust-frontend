@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
-import authSlice from '@/features/Auth/services/authSlice'
 import filtersSlice from '@/services/filtersSlice'
 import loadingSlice from '@/services/loadingSlice'
 import modalSlice from '@/services/modalSlice'
@@ -12,8 +11,7 @@ import modalSlice from '@/services/modalSlice'
 const rootReducer = combineReducers({
   loading: loadingSlice,
   modal: modalSlice,
-  filters: filtersSlice,
-  auth: authSlice
+  filters: filtersSlice
 })
 
 /**

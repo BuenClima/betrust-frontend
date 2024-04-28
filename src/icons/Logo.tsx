@@ -1,5 +1,10 @@
 import { SvgIcon, SvgIconProps } from '@mui/material'
 
+/**
+ * @description Logo Icon
+ * @param props - SvgIconProps
+ * @returns React.FC
+ */
 export const Logo = (props: SvgIconProps) => {
   return (
     <SvgIcon

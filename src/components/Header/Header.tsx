@@ -1,7 +1,9 @@
 import { Grid } from '@mui/material'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
-import { useAuthUser } from 'react-auth-kit'
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser'
+
+import { User } from '@/types/user'
 
 import { AccountHeader } from '../../features/Account/components/Header/AccountHeader'
 import { ListHeader } from '../../features/List/Header/ListHeader'
@@ -36,12 +38,12 @@ type HeaderProps = {
  */
 export const Header = (props: HeaderProps): JSX.Element => {
   const { type, self } = props
-  const user = useAuthUser()
+  const user = useAuthUser<User>()
 
   /**
    * @description Tipster
    */
-  const tipster = useMemo(() => user()?.role?.name === 'tipster', [user])
+  const tipster = useMemo(() => user?.role?.name === 'tipster', [user])
 
   const headers: Record<HeaderType, JSX.Element> = {
     tipsters: <ListHeader key={type} title="Our Tipsters" body={loreIpsum} />,

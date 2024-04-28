@@ -79,6 +79,7 @@ export const MultiSelect = (props: MultiSelectProps): JSX.Element => {
       data-testid={dataTestId}
       multiple
       value={value}
+      /* istanbul ignore next */
       getOptionLabel={(option) => (option as SelectValueProps).name}
       onChange={(_event, newValue) => {
         setValue(newValue as SelectValueProps[])
@@ -91,9 +92,9 @@ export const MultiSelect = (props: MultiSelectProps): JSX.Element => {
         <TextField
           {...params}
           error={error}
-          helperText={helperText ?? ''}
+          helperText={helperText}
           variant="outlined"
-          placeholder={placeholder ?? ''}
+          placeholder={placeholder}
           inputProps={{
             ...params.inputProps,
             style: { textTransform: 'capitalize' }

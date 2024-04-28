@@ -8,10 +8,11 @@ import { SnackbarProvider } from 'notistack'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Suspense } from 'react'
-import { AuthProvider } from 'react-auth-kit'
+import AuthProvider from 'react-auth-kit/AuthProvider'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
 
+import { setupAuthStore } from '@/app/authStore'
 import { RootState, setupStore } from '@/app/store'
 import { theme } from '@/app/theme'
 import { Fallback } from '@/components/Fallback/Fallback'
@@ -39,7 +40,7 @@ export const AppProvider = (props: AppProviderProps): JSX.Element => {
           <ThemeProvider theme={theme}>
             <Suspense fallback={<Fallback />}>
               <SnackbarProvider maxSnack={3}>
-                <AuthProvider authType="localstorage" authName="auth">
+                <AuthProvider store={setupAuthStore()}>
                   <CssBaseline />
                   <div style={{ height: '100vh', width: '100vw' }}>{props.children}</div>
                 </AuthProvider>
