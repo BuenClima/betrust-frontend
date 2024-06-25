@@ -1,6 +1,5 @@
 import { styled } from '@mui/material'
 import {
-  DefaultizedPieValueType,
   pieArcLabelClasses,
   PieChart as PieChartMui,
   useDrawingArea
@@ -15,11 +14,6 @@ const data = [
   { id: 1, value: 15, label: 'Basketball' },
   { id: 2, value: 20, label: 'Baseball' }
 ]
-
-/**
- * @description Total value of data test
- */
-const TOTAL = data.map((item) => item.value).reduce((a, b) => a + b, 0)
 
 /**
  * @description StyledText for the PieCenterLabel
@@ -47,16 +41,6 @@ function PieCenterLabel({ children }: { children: React.ReactNode }): JSX.Elemen
 }
 
 /**
- * @description getArcLabel function
- * @param {DefaultizedPieValueType} params - params
- * @returns {string} arc label
- */
-const getArcLabel = (params: DefaultizedPieValueType): string => {
-  const percent = params.value / TOTAL
-  return `${(percent * 100).toFixed(0)}%`
-}
-
-/**
  * @description PieChartProps interface
  * @property {string} centerLabel - centerLabel
  */
@@ -77,8 +61,7 @@ export const PieChart = ({ centerLabel }: PieChartProps): JSX.Element => {
           highlightScope: { faded: 'global', highlighted: 'item' },
           faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
           outerRadius: 70,
-          innerRadius: 20,
-          arcLabel: getArcLabel
+          innerRadius: 20
         }
       ]}
       sx={{
